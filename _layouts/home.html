@@ -1,0 +1,154 @@
+---
+layout: default
+---
+{%- comment -%}
+  Página inicial (RF-01).
+
+  "Próximos Encontros" é calculado no build, a partir de site.time. Um site
+  estático republicado uma vez por semana mostraria a lista atrasada, então a
+  seção é ancorada na Semana corrente marcada pelo cronograma, e o link para o
+  cronograma completo fica sempre à vista.
+{%- endcomment -%}
+
+<div class="container">
+  <section class="hero">
+    <p class="hero__eyebrow">
+      <span>{{ site.disciplina.curso }} · {{ site.disciplina.unidade }}</span>
+      <span class="badge">Oferta {{ site.oferta.codigo }}</span>
+    </p>
+
+    <h1 class="hero__title">{{ site.disciplina.nome }}</h1>
+
+    <p class="hero__tema">{{ site.tagline }}</p>
+
+    <p class="hero__lead">{{ page.resumo }}</p>
+
+    <ul class="hero__facts">
+      <li><strong>{{ site.disciplina.creditos }}</strong> créditos · <strong>{{ site.disciplina.carga_horaria }}</strong></li>
+      <li>Pré-requisito: <strong>{{ site.disciplina.pre_requisito }}</strong></li>
+      <li><strong>{{ site.oferta.semanas }}</strong> Semanas · <strong>{{ site.encontros.size }}</strong> Encontros</li>
+    </ul>
+  </section>
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  {%- comment -%} --- Avisos ------------------------------------------- {%- endcomment -%}
+  {%- assign avisos = site.announcements | sort: "data" | reverse -%}
+  {%- if avisos.size > 0 -%}
+    <section class="home-section" aria-labelledby="h-avisos">
+      <div class="home-section__head">
+        <h2 class="home-section__title" id="h-avisos">Avisos</h2>
+        <a class="home-section__more" href="{{ '/blog/' | relative_url }}">Blog da disciplina</a>
+      </div>
+      <ul class="avisos">
+        {%- for a in avisos limit: 4 -%}
+          <li class="aviso">
+            <time class="aviso__data" datetime="{{ a.data | date: '%Y-%m-%d' }}">{{ a.data | date: "%d/%m/%Y" }}</time>
+            <div>
+              <p class="aviso__titulo">{{ a.titulo }}</p>
+              <div class="aviso__corpo">{{ a.content | markdownify }}</div>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} --- Próximos Encontros ------------------------------- {%- endcomment -%}
+  {%- assign hoje = site.time | date: "%Y%m%d" | plus: 0 -%}
+  {%- assign proximos = "" | split: "" -%}
+  {%- for linha in site.data.cronograma -%}
+    {%- assign quando = linha.data | date: "%Y%m%d" | plus: 0 -%}
+    {%- if quando >= hoje and proximos.size < 3 -%}
+      {%- assign proximos = proximos | push: linha -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if proximos.size > 0 -%}
+    <section class="home-section" aria-labelledby="h-proximos">
+      <div class="home-section__head">
+        <h2 class="home-section__title" id="h-proximos">Próximos Encontros</h2>
+        <a class="home-section__more" href="{{ '/cronograma/' | relative_url }}">Cronograma completo</a>
+      </div>
+      <div class="grid">
+        {%- for linha in proximos -%}
+          {%- assign alvo = linha.encontro | prepend: "/encontros/" | append: "/" -%}
+          {%- assign e = site.encontros | where: "url", alvo | first -%}
+          {%- if e -%}
+            {% include encontro_card.html encontro=e %}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} --- Corpo docente -------------------------------------- {%- endcomment -%}
+  {%- assign docentes = site.data.pessoas.docentes -%}
+  {%- if docentes.size > 0 -%}
+    <section class="home-section" aria-labelledby="h-equipe">
+      <div class="home-section__head">
+        <h2 class="home-section__title" id="h-equipe">Quem conduz</h2>
+        <a class="home-section__more" href="{{ '/equipe/' | relative_url }}">Docência e monitoria</a>
+      </div>
+      <div class="grid grid--wide">
+        {%- for p in docentes -%}
+          {% include people_card.html pessoa=p %}
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} --- Instituição ----------------------------------------- {%- endcomment -%}
+  <section class="home-section" aria-labelledby="h-instituicao">
+    <div class="home-section__head">
+      <h2 class="home-section__title" id="h-instituicao">Onde isto acontece</h2>
+    </div>
+    <div class="instituicao">
+      {%- comment -%}
+        Marca institucional da UnB. No modo escuro ela vai para um campo claro
+        em vez de ser recolorida — marca institucional não se altera.
+      {%- endcomment -%}
+      <span class="instituicao__logo">
+        <img src="{{ '/assets/img/unb.png' | relative_url }}"
+             alt="Universidade de Brasília" width="240" height="61" data-no-dim>
+      </span>
+      <div class="instituicao__marca">
+        <strong>{{ site.disciplina.unidade }}</strong>
+        <span>{{ site.disciplina.curso }} — Campus UnB Gama</span>
+      </div>
+      <div class="instituicao__marca">
+        <strong>Lab Livre</strong>
+        <span>A prática de software livre que orienta a stack da disciplina</span>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} --- Chamada ---------------------------------------------- {%- endcomment -%}
+  <section class="cta" aria-labelledby="h-cta">
+    <div>
+      <h2 id="h-cta">Comece pelo Plano de Ensino</h2>
+      <p>
+        Objetivos, competências, metodologia, avaliação com pesos e as 16 Semanas
+        de conteúdo. É o documento que responde a quase toda pergunta sobre a
+        disciplina.
+      </p>
+      <div class="button-row">
+        <a class="button" href="{{ '/plano-ensino/' | relative_url }}">Ler o Plano de Ensino</a>
+        <a class="button button--ghost" href="{{ '/projeto/' | relative_url }}">Ver o Projeto Integrado</a>
+      </div>
+    </div>
+    <div>
+      <h2>Este site é software livre</h2>
+      <p>
+        Todo o material está em Markdown versionado, sob licença MIT. Achou um
+        erro? Abra um pull request — a correção entra no ar assim que passar
+        na integração contínua.
+      </p>
+      <div class="button-row">
+        <a class="button button--ghost" href="https://github.com/{{ site.repository }}" rel="noopener">Repositório no GitHub</a>
+      </div>
+    </div>
+  </section>
+</div>

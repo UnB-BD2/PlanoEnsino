@@ -1,0 +1,102 @@
+// ---------------------------------------------------------------------------
+// Impressão (§6.4). Plano de Ensino, cronograma e rubricas saem limpos: sem
+// menu, sem rodapé, com a URL expandida depois de cada link.
+//
+// Quem imprime o Plano de Ensino leva para uma reunião de colegiado. O que
+// importa é o texto e a tabela caberem na folha.
+// ---------------------------------------------------------------------------
+
+@media print {
+  :root {
+    // Impressão é sempre em papel branco, independente do tema da tela.
+    --bg: #FFF;
+    --surface: #FFF;
+    --text: #000;
+    --text-muted: #444;
+    --accent: #000;
+    --accent-2: #000;
+    --border: #BBB;
+    --code-bg: #F4F4F4;
+    --size-base: 10.5pt;
+    --leading: 1.4;
+    --measure: none;
+  }
+
+  body {
+    background: #FFF;
+    color: #000;
+    font-size: 10.5pt;
+  }
+
+  .site-header,
+  .site-footer,
+  .skip-link,
+  .theme-toggle,
+  .nav-drawer,
+  .breadcrumbs,
+  .copy-code,
+  .pdf__frame,
+  .button-row,
+  .pagination,
+  .edit-page,
+  [data-print="hide"] { display: none !important; }
+
+  .site-main { padding: 0; }
+  .container { max-width: none; padding: 0; }
+  .prose { max-width: none; }
+
+  // O índice lateral vira sumário no topo da primeira folha.
+  .with-toc { display: block; }
+  .toc {
+    position: static;
+    max-height: none;
+    border: 1px solid #BBB;
+    border-radius: 0;
+    padding: 8pt 10pt;
+    margin-bottom: 14pt;
+    break-inside: avoid;
+    columns: 2;
+    column-gap: 18pt;
+  }
+
+  a { color: #000; text-decoration: underline; }
+
+  // URL expandida depois do link — em papel o link não clica.
+  .prose a[href^="http"]::after,
+  .toc a::after { content: ""; }
+
+  .prose a[href^="http"]::after {
+    content: " <" attr(href) ">";
+    font-size: 8.5pt;
+    color: #444;
+    word-break: break-all;
+  }
+
+  h1, h2, h3, h4 { break-after: avoid; }
+  h2 { margin-top: 16pt; font-size: 14pt; }
+  h3 { font-size: 12pt; }
+
+  table, figure, .callout, .card, .rubric, .crono-marco, .semana {
+    break-inside: avoid;
+  }
+
+  thead { display: table-header-group; }
+
+  .card, .callout, .table-scroll, .diagram, .rubric table {
+    border: 1px solid #BBB;
+    box-shadow: none;
+  }
+
+  .callout { background: #FFF; }
+  .crono-marco { background: #FFF; border-left-width: 3pt; }
+  .semana.is-current { background: #FFF; }
+
+  // A barra de pesos não sobrevive à impressão em preto e branco; a tabela
+  // logo abaixo já diz o mesmo.
+  .pesos, .pesos-legenda { display: none; }
+
+  pre { white-space: pre-wrap; word-wrap: break-word; }
+
+  // Cada página grande começa em folha nova.
+  .page-break { break-before: page; }
+}

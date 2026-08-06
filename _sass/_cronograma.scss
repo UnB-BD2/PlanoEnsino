@@ -1,0 +1,191 @@
+// ---------------------------------------------------------------------------
+// Linha do cronograma. Uma linha por Encontro, agrupada por Semana e por
+// módulo. Entrega entra como marco, com estilo próprio.
+//
+// Em tela larga é grade; abaixo de 48rem vira pilha, sem scroll horizontal.
+// ---------------------------------------------------------------------------
+
+.cronograma { margin-bottom: var(--space-7); }
+
+.cronograma__modulo {
+  margin-top: var(--space-7);
+
+  &:first-child { margin-top: 0; }
+}
+
+.cronograma__modulo-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-3);
+  border-bottom: 2px solid var(--border);
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.cronograma__modulo-title {
+  font-family: var(--font-serif);
+  font-size: var(--size-lg);
+  margin: 0;
+}
+
+.cronograma__semanas { display: block; }
+
+.semana {
+  border-bottom: 1px solid var(--border);
+  padding-block: var(--space-2);
+}
+
+.semana__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  padding: var(--space-2) 0;
+  margin: 0;
+}
+
+// Semana corrente: marcada pelo site.js a partir da data do navegador, para
+// não depender da data do último build.
+.semana.is-current {
+  background: var(--accent-wash);
+  border-radius: var(--radius);
+  padding-inline: var(--space-3);
+  margin-inline: calc(var(--space-3) * -1);
+}
+
+.semana.is-current .semana__label {
+  color: var(--accent);
+  font-weight: 650;
+}
+
+.semana__now {
+  font-weight: 650;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 0.05rem 0.5rem;
+  letter-spacing: 0.03em;
+}
+
+// --- Linha ---------------------------------------------------------------
+.crono-row {
+  display: grid;
+  grid-template-columns: 6.5rem 9rem minmax(0, 1fr) auto;
+  gap: var(--space-3) var(--space-4);
+  align-items: baseline;
+  padding: var(--space-3) var(--space-2);
+  border-radius: var(--radius);
+  position: relative;
+
+  &:hover { background: var(--code-bg); }
+
+  @media (max-width: 48rem) {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+    padding-block: var(--space-4);
+  }
+}
+
+.crono-row__data {
+  font-family: var(--font-mono);
+  font-size: var(--size-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.crono-row__tipo { min-width: 0; }
+
+.crono-row__tema {
+  min-width: 0;
+
+  a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+
+    &::after { content: ""; position: absolute; inset: 0; }
+    &:hover { color: var(--accent); text-decoration: underline; }
+  }
+}
+
+.crono-row__sub {
+  display: block;
+  font-size: var(--size-xs);
+  color: var(--text-muted);
+  margin-top: var(--space-1);
+}
+
+.crono-row__mat {
+  display: flex;
+  gap: var(--space-3);
+  font-size: var(--size-xs);
+  white-space: nowrap;
+
+  // Fica acima da âncora que cobre a linha inteira.
+  a { position: relative; z-index: 1; }
+}
+
+// --- Marco de Entrega ----------------------------------------------------
+.crono-marco {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr) auto;
+  gap: var(--space-3) var(--space-4);
+  align-items: baseline;
+  margin-block: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--accent-2);
+  border-left-width: 3px;
+  border-radius: var(--radius);
+  background: var(--accent-2-wash);
+  position: relative;
+
+  @media (max-width: 48rem) { grid-template-columns: 1fr; }
+}
+
+.crono-marco__data {
+  font-family: var(--font-mono);
+  font-size: var(--size-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-2);
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.crono-marco__titulo {
+  font-weight: 650;
+
+  a {
+    color: var(--text);
+    text-decoration: none;
+
+    &::after { content: ""; position: absolute; inset: 0; }
+    &:hover { color: var(--accent-2); text-decoration: underline; }
+  }
+}
+
+.crono-marco__peso {
+  font-size: var(--size-xs);
+  color: var(--accent-2);
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+// --- Legenda -------------------------------------------------------------
+.legenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  align-items: center;
+  font-size: var(--size-sm);
+  color: var(--text-muted);
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  margin-bottom: var(--space-6);
+}

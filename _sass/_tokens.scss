@@ -1,0 +1,81 @@
+// ---------------------------------------------------------------------------
+// Tokens do tema acadêmico.
+//
+// Cor vive só aqui, como custom property, para que o modo escuro seja uma
+// redefinição de valores e não uma duplicação de regras.
+// Todo par texto/fundo foi conferido em ≥ 4.5:1 nos dois temas (RNF-03).
+// ---------------------------------------------------------------------------
+
+:root {
+  --bg: #FBFAF8;
+  --surface: #FFFFFF;
+  --text: #1A1D21;
+  --text-muted: #5A6069;
+  --accent: #0B4F6C;
+  --accent-2: #B45309;
+  --border: #E4E0DA;
+  --code-bg: #F4F2EE;
+
+  // Derivados: fundo tênue de destaque, com contraste suficiente para texto.
+  --accent-wash: #{rgba(#0B4F6C, 0.07)};
+  --accent-2-wash: #{rgba(#B45309, 0.09)};
+  --shadow: 0 1px 2px #{rgba(#1A1D21, 0.05)}, 0 4px 12px #{rgba(#1A1D21, 0.04)};
+  --focus-ring: 0 0 0 3px #{rgba(#0B4F6C, 0.35)};
+
+  // Tipografia
+  --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono",
+    Menlo, Consolas, monospace;
+
+  // Escala modular 1.25, base 17px (§6.2)
+  --size-base: 1.0625rem; // 17px
+  --size-sm: 0.875rem;
+  --size-xs: 0.78rem;
+  --size-lg: 1.328rem;
+  --size-xl: 1.66rem;
+  --size-2xl: 2.075rem;
+  --size-3xl: 2.594rem;
+
+  --leading: 1.65;
+  --measure: 70ch;
+
+  // Espaçamento
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  --radius: 6px;
+  --header-h: 3.75rem;
+  --content-max: 74rem;
+}
+
+// Modo escuro. A regra vale quando o sistema pede escuro E o leitor não fixou
+// claro no alternador; e sempre que o leitor fixou escuro.
+@mixin dark-tokens {
+  --bg: #14161A;
+  --surface: #1C1F24;
+  --text: #E8E6E3;
+  --text-muted: #9BA3AD;
+  --accent: #5FB3D4;
+  --accent-2: #F0A85C;
+  --border: #2C3037;
+  --code-bg: #22262C;
+
+  --accent-wash: #{rgba(#5FB3D4, 0.12)};
+  --accent-2-wash: #{rgba(#F0A85C, 0.13)};
+  --shadow: 0 1px 2px #{rgba(#000, 0.4)}, 0 4px 12px #{rgba(#000, 0.3)};
+  --focus-ring: 0 0 0 3px #{rgba(#5FB3D4, 0.45)};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { @include dark-tokens; }
+}
+
+:root[data-theme="dark"] { @include dark-tokens; }

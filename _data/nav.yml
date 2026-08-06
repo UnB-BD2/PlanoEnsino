@@ -1,0 +1,32 @@
+# Menu principal. Ordem daqui é a ordem no cabeçalho e no drawer.
+#
+# `url` é relativo à raiz do site; o baseurl entra sozinho.
+# `curto` é opcional: é o rótulo usado na barra do cabeçalho, onde o espaço é
+# disputado por dez itens. O drawer e a leitura por leitor de tela usam sempre
+# o `titulo` completo.
+
+- titulo: "Plano de Ensino"
+  url: /plano-ensino/
+- titulo: "Cronograma"
+  url: /cronograma/
+- titulo: "Encontros"
+  url: /encontros/
+- titulo: "Projeto Integrado"
+  curto: "Projeto"
+  url: /projeto/
+- titulo: "Avaliação e rubricas"
+  curto: "Avaliação"
+  url: /avaliacao/
+- titulo: "Guia de ADR"
+  curto: "ADR"
+  url: /adr/
+- titulo: "Seminários Técnicos"
+  curto: "Seminários"
+  url: /seminarios/
+- titulo: "Materiais e ambiente"
+  curto: "Materiais"
+  url: /materiais/
+- titulo: "Equipe"
+  url: /equipe/
+- titulo: "Blog"
+  url: /blog/

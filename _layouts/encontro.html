@@ -1,0 +1,143 @@
+---
+layout: default
+---
+{%- comment -%}
+  Página de um Encontro (RF-04). Serve conceitual, laboratório, seminário e
+  banca: cada seção só aparece se o campo existir, para que o front matter
+  mínimo já produza uma página íntegra.
+
+  Não há campo `data` — a data vive no cronograma (ADR-0002). O que a página
+  mostra é a Semana, e o link para o cronograma resolve o resto.
+{%- endcomment -%}
+
+{%- case page.tipo -%}
+  {%- when "laboratorio" -%}{%- assign rotulo = "Laboratório" -%}
+  {%- when "seminario" -%}{%- assign rotulo = "Seminário Técnico" -%}
+  {%- when "banca" -%}{%- assign rotulo = "Banca" -%}
+  {%- else -%}{%- assign rotulo = "Encontro conceitual" -%}
+{%- endcase -%}
+
+<div class="container">
+  <nav class="breadcrumbs" aria-label="Trilha de navegação">
+    <ol>
+      <li><a href="{{ '/' | relative_url }}">Início</a></li>
+      <li><a href="{{ '/encontros/' | relative_url }}">Encontros</a></li>
+      <li><span aria-current="page">Semana {{ page.semana }} — {{ rotulo }}</span></li>
+    </ol>
+  </nav>
+
+  <header class="page-head">
+    <p class="page-head__eyebrow">
+      <span class="badge badge--semana">Semana {{ page.semana }}</span>
+      <span class="badge badge--{{ page.tipo }}">{{ rotulo }}</span>
+      {%- if page.modulo -%}
+        <span class="badge badge--modulo">
+          {%- if page.modulo == "Encerramento" -%}{{ page.modulo }}
+          {%- else -%}Módulo {{ page.modulo }}{%- endif -%}
+        </span>
+      {%- endif -%}
+    </p>
+    <h1>{{ page.titulo }}</h1>
+    {%- if page.resumo -%}<p class="page-head__lead">{{ page.resumo }}</p>{%- endif -%}
+  </header>
+
+  <div class="prose">
+    <dl class="factsheet">
+      <dt>Semana</dt>
+      <dd><a href="{{ '/cronograma/' | relative_url }}">{{ page.semana }} de {{ site.oferta.semanas }} — ver data no cronograma</a></dd>
+      {%- if page.titular -%}
+        <dt>Titularidade</dt>
+        <dd>{{ page.titular | capitalize }}</dd>
+      {%- endif -%}
+      {%- if page.modulo -%}
+        <dt>Módulo</dt>
+        <dd>{{ page.modulo }}</dd>
+      {%- endif -%}
+    </dl>
+
+    {%- comment -%} --- Objetivos de aprendizagem ------------------------ {%- endcomment -%}
+    {%- if page.objetivos and page.objetivos.size > 0 -%}
+      <h2 id="objetivos">Objetivos de aprendizagem</h2>
+      <p>Ao fim deste Encontro você deve conseguir:</p>
+      <ul>
+        {%- for o in page.objetivos -%}<li>{{ o }}</li>{%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- comment -%} --- Leitura prévia ----------------------------------- {%- endcomment -%}
+    {%- if page.leitura_previa and page.leitura_previa.size > 0 -%}
+      <aside class="callout callout--leitura">
+        <strong class="callout__label">Leitura prévia obrigatória</strong>
+        <p>A sala é invertida: o Encontro discute o que você leu, não o resume.</p>
+        <ul>
+          {%- for l in page.leitura_previa -%}
+            <li>
+              {%- if l.link -%}<a href="{{ l.link }}" rel="noopener">{{ l.titulo }}</a>
+              {%- else -%}{{ l.titulo }}{%- endif -%}
+              {%- if l.nota %} — {{ l.nota }}{% endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </aside>
+    {%- endif -%}
+
+    {%- comment -%} --- Pré-requisitos de ambiente (laboratório) --------- {%- endcomment -%}
+    {%- if page.requisitos_ambiente and page.requisitos_ambiente.size > 0 -%}
+      <h2 id="ambiente">Pré-requisitos de ambiente</h2>
+      <p>Chegue com isto funcionando. O tempo do laboratório é para medir, não para instalar.</p>
+      <ul>
+        {%- for r in page.requisitos_ambiente -%}<li>{{ r }}</li>{%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- comment -%} --- Corpo livre -------------------------------------- {%- endcomment -%}
+    {{ content }}
+
+    {%- comment -%} --- Caso ou paper ------------------------------------ {%- endcomment -%}
+    {%- if page.caso -%}
+      <h2 id="caso">Caso em discussão</h2>
+      <p>
+        {%- if page.caso.link -%}<a href="{{ page.caso.link }}" rel="noopener">{{ page.caso.titulo }}</a>
+        {%- else -%}<strong>{{ page.caso.titulo }}</strong>{%- endif -%}
+      </p>
+      {%- if page.caso.pergunta -%}<p>{{ page.caso.pergunta }}</p>{%- endif -%}
+    {%- endif -%}
+
+    {%- comment -%} --- Entregável da sessão ----------------------------- {%- endcomment -%}
+    {%- if page.entregavel -%}
+      <aside class="callout callout--entrega">
+        <strong class="callout__label">Entregável da sessão</strong>
+        <p>{{ page.entregavel }}</p>
+      </aside>
+    {%- endif -%}
+
+    {%- comment -%} --- Material ----------------------------------------- {%- endcomment -%}
+    {%- if page.slides or page.roteiro -%}
+      <h2 id="material">Material</h2>
+
+      {%- if page.roteiro -%}
+        <p><a href="{{ page.roteiro | relative_url }}">Roteiro do laboratório</a></p>
+      {%- endif -%}
+
+      {%- if page.slides -%}
+        {% include embedpdf.html src=page.slides titulo=page.titulo %}
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- comment -%} --- Complementar ------------------------------------- {%- endcomment -%}
+    {%- if page.complementar and page.complementar.size > 0 -%}
+      <h2 id="complementar">Material complementar</h2>
+      <ul>
+        {%- for c in page.complementar -%}
+          <li>
+            {%- if c.link -%}<a href="{{ c.link }}" rel="noopener">{{ c.titulo }}</a>
+            {%- else -%}{{ c.titulo }}{%- endif -%}
+            {%- if c.nota %} — {{ c.nota }}{% endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+
+  {% include encontros_da_semana.html encontro=page %}
+</div>

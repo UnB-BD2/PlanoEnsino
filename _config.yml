@@ -1,0 +1,123 @@
+# ---------------------------------------------------------------------------
+# Site da disciplina Banco de Dados 2 — FCTE/UnB
+# Editar aqui muda o site inteiro. Conteúdo fica em _data/, _encontros/ e nas
+# páginas Markdown da raiz.
+# ---------------------------------------------------------------------------
+
+title: "Banco de Dados 2"
+tagline: "O ciclo de vida do dado, do byte gravado em disco à decisão tomada"
+description: >-
+  Material de apoio da disciplina de graduação Banco de Dados 2 —
+  Engenharia de Software, FCTE/Universidade de Brasília.
+
+url: "https://unb-bd2.github.io"
+baseurl: "/Disciplina"
+repository: "UnB-BD2/Disciplina"
+branch: "main"
+
+lang: "pt-BR"
+timezone: "America/Sao_Paulo"
+
+# A Oferta viva. Ver docs/adr/0001-oferta-unica-viva-com-historico-em-tag.md
+oferta:
+  codigo: "2026/2"
+  tag: "2026-2"
+  inicio: 2026-08-11
+  semanas: 16
+
+disciplina:
+  nome: "Banco de Dados 2"
+  creditos: 4
+  carga_horaria: "60h"
+  pre_requisito: "Introdução a Banco de Dados"
+  unidade: "Faculdade de Ciências e Tecnologias em Engenharia (FCTE)"
+  curso: "Engenharia de Software"
+  universidade: "Universidade de Brasília"
+
+# ---------------------------------------------------------------------------
+# Coleções
+# ---------------------------------------------------------------------------
+collections:
+  encontros:
+    output: true
+    permalink: /encontros/:name/
+  entregas:
+    output: true
+    permalink: /projeto/:name/
+  announcements:
+    output: false
+
+defaults:
+  - scope: { path: "", type: "encontros" }
+    values:
+      layout: "encontro"
+  - scope: { path: "", type: "entregas" }
+    values:
+      layout: "entrega"
+  - scope: { path: "", type: "posts" }
+    values:
+      layout: "post"
+  - scope: { path: "" }
+    values:
+      layout: "page"
+
+# ---------------------------------------------------------------------------
+# Build
+# ---------------------------------------------------------------------------
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate-v2
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+sass:
+  style: compressed
+  sourcemap: never
+
+permalink: /blog/:year/:month/:title/
+
+# jekyll-paginate-v2. Ligado aqui e ativado por página no front matter de blog.md.
+pagination:
+  enabled: true
+  per_page: 12
+  permalink: "/pagina/:num/"
+  title: ":title — página :num"
+  sort_field: "date"
+  sort_reverse: true
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - Makefile
+  - Dockerfile
+  - docker-compose.yml
+  - .dockerignore
+  - .ruby-version
+  - SPEC.md
+  - CONTEXT.md
+  # Os ADRs do site são lidos no GitHub, onde o guia de ADR aponta. Copiá-los
+  # como Markdown cru para o _site só criaria uma segunda cópia a divergir.
+  - docs/
+  - CONTRIBUTING.md
+  - CODE_OF_CONDUCT.md
+  - README.md
+  - script/
+  - vendor/
+  - node_modules/
+
+include:
+  - .nojekyll
+
+feed:
+  path: /feed.xml
+  collections:
+    - posts

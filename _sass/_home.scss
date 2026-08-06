@@ -1,0 +1,191 @@
+// ---------------------------------------------------------------------------
+// Página inicial: hero, próximos Encontros, avisos, corpo docente, instituição.
+// ---------------------------------------------------------------------------
+
+.hero {
+  padding-block: var(--space-7) var(--space-6);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--space-7);
+}
+
+.hero__eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.hero__title {
+  font-size: clamp(2.1rem, 5.2vw, 3.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-4);
+}
+
+.hero__tema {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--accent);
+  max-width: 34ch;
+  margin-bottom: var(--space-5);
+}
+
+.hero__lead {
+  font-size: var(--size-lg);
+  line-height: 1.5;
+  color: var(--text-muted);
+  max-width: var(--measure);
+  margin-bottom: var(--space-5);
+}
+
+.hero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--size-sm);
+  color: var(--text-muted);
+
+  li { display: flex; align-items: center; gap: var(--space-2); margin: 0; }
+  strong { color: var(--text); font-weight: 650; }
+}
+
+// --- Seções da home ------------------------------------------------------
+// Margem só no topo: entre duas seções vale uma distância, e a primeira ganha
+// respiro do texto que vem antes dela.
+.home-section {
+  margin-top: var(--space-8);
+  margin-bottom: 0;
+}
+
+.cta { margin-top: var(--space-8); margin-bottom: var(--space-6); }
+
+.home-section__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.home-section__title {
+  font-size: var(--size-xl);
+  margin: 0;
+}
+
+.home-section__more {
+  font-size: var(--size-sm);
+  white-space: nowrap;
+}
+
+// --- Avisos --------------------------------------------------------------
+.avisos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.aviso {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--border);
+  margin: 0;
+
+  &:last-child { border-bottom: 0; }
+
+  @media (max-width: 40rem) {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+}
+
+.aviso__data {
+  font-family: var(--font-mono);
+  font-size: var(--size-xs);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.aviso__titulo {
+  font-weight: 650;
+  font-size: var(--size-sm);
+  margin: 0 0 var(--space-1);
+}
+
+.aviso__corpo {
+  font-size: var(--size-sm);
+  color: var(--text-muted);
+
+  > :last-child { margin-bottom: 0; }
+}
+
+// --- Instituição ---------------------------------------------------------
+.instituicao {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-5) var(--space-7);
+  padding: var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+// A marca da UnB é azul-escura sobre transparente: sobre o fundo escuro ela
+// sumiria. A saída correta não é recolorir uma marca institucional — é apoiá-la
+// num campo claro, que é o que a regra de aplicação dela prevê.
+.instituicao__logo {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  border-radius: var(--radius);
+
+  img { width: 15rem; height: auto; }
+
+  @media (max-width: 30rem) { img { width: 11rem; } }
+}
+
+.instituicao__marca {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: var(--size-sm);
+  line-height: 1.35;
+
+  strong { font-family: var(--font-serif); font-size: var(--size-base); }
+  span { color: var(--text-muted); font-size: var(--size-xs); }
+}
+
+// --- Chamada final -------------------------------------------------------
+.cta {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  padding: var(--space-6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--accent-wash);
+
+  h2 { margin-top: 0; }
+  p { color: var(--text-muted); max-width: 46ch; }
+  > div > :last-child { margin-bottom: 0; }
+}

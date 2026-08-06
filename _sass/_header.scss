@@ -1,0 +1,213 @@
+// ---------------------------------------------------------------------------
+// Cabeçalho fixo: disciplina, Oferta, menu e alternador de tema.
+// No mobile o menu vira drawer. Sem JavaScript o drawer não abre, então o
+// <details> nativo faz o trabalho — funciona com teclado e sem script.
+// ---------------------------------------------------------------------------
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .site-header { background: var(--bg); }
+}
+
+// O cabeçalho tem contêiner próprio, mais largo que o do conteúdo: dez itens
+// de menu não cabem na medida de leitura, e apertá-los ali fazia a barra
+// transbordar por cima da marca.
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: var(--header-h);
+  max-width: 86rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: var(--text);
+  margin-right: auto;
+  min-width: 0;
+
+  &:hover .brand__name { color: var(--accent); }
+}
+
+// Símbolo da UnB. Fica num campo próprio para que o modo escuro possa
+// apoiá-lo em branco em vez de recolorir a marca.
+.brand__mark {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  border-radius: 3px;
+
+  img { height: 1.3rem; width: auto; display: block; }
+
+  @media (max-width: 30rem) { img { height: 1.1rem; } }
+}
+
+.brand__name {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: var(--size-lg);
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+
+  // Em 320 px o nome disputa a linha com o botão do menu e o alternador.
+  @media (max-width: 30rem) { font-size: var(--size-base); }
+}
+
+// A Oferta some na faixa em que a barra de menu disputa espaço com a marca.
+// Ela continua no rodapé e na home, então nada se perde.
+.brand__oferta {
+  font-size: var(--size-xs);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
+  white-space: nowrap;
+
+  @media (max-width: 30rem), (min-width: 78rem) and (max-width: 86rem) {
+    display: none;
+  }
+}
+
+// --- Menu ---------------------------------------------------------------
+// A lista pode rolar na horizontal. É rede de segurança: se um item novo for
+// acrescentado a nav.yml e a barra deixar de caber, ela rola em vez de
+// atropelar a marca.
+.site-nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+.site-nav__link {
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius);
+  font-size: var(--size-sm);
+  color: var(--text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover { background: var(--accent-wash); color: var(--accent); }
+  &[aria-current="page"] { color: var(--accent); font-weight: 650; background: var(--accent-wash); }
+}
+
+// O menu completo só cabe em tela larga; abaixo disso vira drawer.
+.site-nav { display: none; }
+@media (min-width: 78rem) {
+  .site-nav { display: block; min-width: 0; flex: 0 1 auto; }
+}
+
+// --- Drawer -------------------------------------------------------------
+.nav-drawer { position: relative; flex: none; }
+@media (min-width: 78rem) { .nav-drawer { display: none; } }
+
+.nav-drawer > summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: var(--size-sm);
+  cursor: pointer;
+
+  &::-webkit-details-marker { display: none; }
+  &:hover { border-color: var(--accent); color: var(--accent); }
+}
+
+.nav-drawer[open] > summary { border-color: var(--accent); color: var(--accent); }
+
+// Abaixo de 30rem sobra só o ícone. O rótulo continua no aria-label do summary.
+@media (max-width: 30rem) {
+  .nav-drawer > summary { gap: 0; }
+  .nav-drawer__label { display: none; }
+}
+
+.nav-drawer__panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + var(--space-2));
+  width: min(18rem, calc(100vw - 2rem));
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space-2);
+  max-height: min(28rem, calc(100vh - var(--header-h) - 2rem));
+  overflow-y: auto;
+
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { margin: 0; }
+
+  a {
+    display: block;
+    padding: var(--space-3);
+    border-radius: var(--radius);
+    color: var(--text);
+    text-decoration: none;
+    font-size: var(--size-sm);
+
+    &:hover { background: var(--accent-wash); color: var(--accent); }
+    &[aria-current="page"] { color: var(--accent); font-weight: 650; }
+  }
+}
+
+// --- Alternador de tema --------------------------------------------------
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text-muted);
+  flex: none;
+
+  &:hover { border-color: var(--accent); color: var(--accent); }
+  svg { width: 1.05rem; height: 1.05rem; }
+
+  // Um ícone por vez: o do tema que o clique vai aplicar.
+  .icon-sun { display: none; }
+}
+
+:root[data-theme="dark"] .theme-toggle,
+:root:not([data-theme="light"]) .theme-toggle {
+  @media (prefers-color-scheme: dark) {
+    .icon-sun { display: block; }
+    .icon-moon { display: none; }
+  }
+}
+
+:root[data-theme="dark"] .theme-toggle {
+  .icon-sun { display: block; }
+  .icon-moon { display: none; }
+}
+
+:root[data-theme="light"] .theme-toggle {
+  .icon-sun { display: none; }
+  .icon-moon { display: block; }
+}

@@ -1,0 +1,32 @@
+{%- comment -%}
+  "Editar esta página no GitHub" (RF-13). Abre o arquivo de origem já no editor
+  do GitHub, que cria o branch e o PR sozinho — é o caminho de correção mais
+  curto para quem não clona o repositório.
+
+  page.path é o caminho real do arquivo. Página gerada por plugin não tem um
+  arquivo de origem — a paginada do blog chega aqui com `.html` —, e apontar o
+  editor do GitHub para um caminho que não existe daria 404. Nesses casos o
+  botão simplesmente não aparece.
+{%- endcomment -%}
+
+{%- comment -%}
+  `editar` no front matter aponta para outro arquivo. Serve para páginas que são
+  só invólucro de um documento que vive na raiz — o Código de Conduta, por
+  exemplo: quem clica quer corrigir o texto, não o include que o puxa.
+{%- endcomment -%}
+
+{%- assign origem = page.editar | default: page.path | default: "" -%}
+{%- assign primeiro = origem | slice: 0 -%}
+
+{%- if origem != "" and primeiro != "." -%}
+  <a class="edit-page"
+     href="https://github.com/{{ site.repository }}/edit/{{ site.branch }}/{{ origem }}"
+     rel="noopener">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z"/>
+      <path d="M2 14.5h12"/>
+    </svg>
+    Editar esta página no GitHub
+  </a>
+{%- endif -%}

@@ -1,0 +1,23 @@
+{%- comment -%}
+  Visualizador de PDF com fallback de download (§6.3).
+
+  O <object> não carrega em boa parte dos navegadores móveis e é escondido por
+  CSS abaixo de 48rem — por isso o link de download fica sempre visível, fora
+  do elemento, e não só no conteúdo alternativo.
+
+  Uso: {% include embedpdf.html src="/static_files/slides/x.pdf" titulo="Slides — Semana 2" %}
+{%- endcomment -%}
+
+{%- assign href = include.src | relative_url -%}
+{%- assign rotulo = include.titulo | default: "Documento em PDF" -%}
+
+<div class="pdf">
+  <object class="pdf__frame" data="{{ href }}" type="application/pdf"
+          aria-label="{{ rotulo }} — visualizador de PDF">
+    <p>O navegador não exibe PDF embutido. Use o link de download abaixo.</p>
+  </object>
+  <div class="pdf__bar">
+    <span>{{ rotulo }}</span>
+    <a href="{{ href }}" download>Baixar o PDF</a>
+  </div>
+</div>

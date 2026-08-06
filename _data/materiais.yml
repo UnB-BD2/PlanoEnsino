@@ -1,0 +1,132 @@
+# Bibliografia e material de apoio.
+# `link` só quando a obra é aberta e o link é oficial.
+
+basica:
+  - autores: "REIS, J.; HOUSLEY, M."
+    titulo: "Fundamentals of Data Engineering"
+    editora: "O'Reilly"
+    ano: 2022
+    modulo: "todos"
+    nota: "Referência estruturante do ciclo de vida do dado adotado no plano."
+  - autores: "KLEPPMANN, M."
+    titulo: "Designing Data-Intensive Applications"
+    editora: "O'Reilly"
+    ano: 2017
+    modulo: "I e II"
+    nota: "Armazenamento, replicação, particionamento e consistência."
+  - autores: "SILBERSCHATZ, A.; KORTH, H.; SUDARSHAN, S."
+    titulo: "Database System Concepts"
+    edicao: "7. ed."
+    editora: "McGraw-Hill"
+    ano: 2019
+    modulo: "I"
+    link: https://www.db-book.com/
+    nota: "Fundamentos e internals. Slides e material de apoio abertos no site oficial."
+  - autores: "KIMBALL, R.; ROSS, M."
+    titulo: "The Data Warehouse Toolkit"
+    edicao: "3. ed."
+    editora: "Wiley"
+    ano: 2013
+    modulo: "III"
+    nota: "Modelagem dimensional."
+  - autores: "ELMASRI, R.; NAVATHE, S."
+    titulo: "Sistemas de Banco de Dados"
+    edicao: "7. ed."
+    editora: "Pearson"
+    ano: 2018
+    modulo: "I"
+    nota: "Apoio em português."
+
+complementar:
+  - autores: "PETROV, A."
+    titulo: "Database Internals"
+    editora: "O'Reilly"
+    ano: 2019
+    modulo: "I"
+  - autores: "WINAND, M."
+    titulo: "SQL Performance Explained"
+    ano: 2012
+    modulo: "I"
+    link: https://use-the-index-luke.com/
+    nota: "O material aberto *Use The Index, Luke!* cobre boa parte do livro."
+  - autores: "SADALAGE, P.; FOWLER, M."
+    titulo: "NoSQL Distilled"
+    editora: "Addison-Wesley"
+    ano: 2012
+    modulo: "II"
+  - autores: "DENSMORE, J."
+    titulo: "Data Pipelines Pocket Reference"
+    editora: "O'Reilly"
+    ano: 2021
+    modulo: "II e III"
+  - autores: "MACHADO, F. N. R."
+    titulo: "Tecnologia e Projeto de Data Warehouse"
+    edicao: "6. ed."
+    editora: "Érica"
+    ano: 2013
+    modulo: "III"
+  - autores: "DAMA INTERNATIONAL"
+    titulo: "DAMA-DMBOK: Data Management Body of Knowledge"
+    edicao: "2. ed."
+    ano: 2017
+    modulo: "IV"
+  - autores: "BRASIL"
+    titulo: "Lei nº 13.709/2018 — Lei Geral de Proteção de Dados Pessoais"
+    ano: 2018
+    modulo: "IV"
+    link: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm
+  - autores: "MALKOV, Y.; YASHUNIN, D."
+    titulo: "Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs"
+    editora: "IEEE TPAMI"
+    ano: 2020
+    modulo: "IV"
+    link: https://arxiv.org/abs/1603.09320
+  - autores: "LEWIS, P. et al."
+    titulo: "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks"
+    editora: "NeurIPS"
+    ano: 2020
+    modulo: "IV"
+    link: https://arxiv.org/abs/2005.11401
+  - autores: "ARMBRUST, M. et al."
+    titulo: "Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics"
+    editora: "CIDR"
+    ano: 2021
+    modulo: "II"
+    link: https://www.cidrdb.org/cidr2021/papers/cidr2021_paper17.pdf
+  - autores: "NYGARD, M."
+    titulo: "Documenting Architecture Decisions"
+    ano: 2011
+    modulo: "todos"
+    link: https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions
+    nota: "O formato de ADR adotado na disciplina."
+
+# Material produzido na disciplina, hospedado no próprio repositório.
+apostila:
+  titulo: "Apostila de Banco de Dados"
+  arquivo: /static_files/apostila/Apostila_Banco_de_Dados.pdf
+  nota: >-
+    Material de apoio da disciplina, cobrindo os fundamentos do Módulo I.
+
+templates:
+  - titulo: "Template de ADR (formato Nygard)"
+    arquivo: /static_files/templates/adr-template.md
+    nota: "O mesmo template usado nos ADRs deste site."
+  - titulo: "Template de diário de bordo da Squad"
+    arquivo: /static_files/templates/diario-de-bordo.md
+    nota: "Registro semanal: o que foi medido, o que surpreendeu, o que foi decidido."
+  - titulo: "Template de AI-USAGE.md"
+    arquivo: /static_files/templates/ai-usage.md
+    nota: "Registro de uso de assistentes e agentes de IA, exigido pela política da disciplina."
+
+# Fontes de dados abertos sugeridas para o Projeto Integrado.
+fontes_de_dados:
+  - nome: "Portal Brasileiro de Dados Abertos"
+    link: https://dados.gov.br/
+  - nome: "SNIS — Sistema Nacional de Informações sobre Saneamento"
+    link: https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/snis
+  - nome: "Ministério das Cidades — dados e estatísticas"
+    link: https://www.gov.br/cidades/pt-br
+  - nome: "IBGE — portal de dados"
+    link: https://www.ibge.gov.br/estatisticas.html
+  - nome: "Portal da Transparência"
+    link: https://portaldatransparencia.gov.br/

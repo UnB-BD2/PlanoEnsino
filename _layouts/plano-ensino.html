@@ -1,0 +1,36 @@
+---
+layout: default
+---
+{%- comment -%}
+  Plano de Ensino (RF-02). Índice lateral fixo em tela larga, derivado dos
+  <h2> do próprio texto.
+
+  O site é o texto publicado; o PDF aprovado pelo colegiado é o registro formal
+  e fica para download — ADR-0004.
+{%- endcomment -%}
+
+<div class="container">
+  {% include breadcrumbs.html %}
+
+  <header class="page-head">
+    {%- if page.eyebrow -%}<p class="page-head__eyebrow">{{ page.eyebrow }}</p>{%- endif -%}
+    <h1>{{ page.titulo }}</h1>
+    {%- if page.resumo -%}<p class="page-head__lead">{{ page.resumo }}</p>{%- endif -%}
+  </header>
+
+  <div class="with-toc">
+    {% include toc.html html=content %}
+
+    <div class="prose">
+      {%- if page.pdf -%}
+        <div class="button-row" data-print="hide">
+          <a class="button button--ghost" href="{{ page.pdf | relative_url }}" download>
+            Baixar o PDF aprovado pelo colegiado
+          </a>
+        </div>
+      {%- endif -%}
+
+      {{ content }}
+    </div>
+  </div>
+</div>

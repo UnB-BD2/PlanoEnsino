@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          # Fonte única da versão de Ruby: o mesmo .ruby-version que o
+          # Dockerfile lê no build local (RNF-02).
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Build
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build
+
+      # O baseurl sai do _config.yml em vez de ser repetido aqui: repetido, ele
+      # se desatualiza em silêncio e o html-proofer passa a validar o caminho
+      # errado sem reclamar.
+      - name: Ler o baseurl
+        id: cfg
+        run: echo "baseurl=$(grep -E '^baseurl:' _config.yml | sed 's/.*"\(.*\)".*/\1/')" >> "$GITHUB_OUTPUT"
+
+      # Links internos são obrigatórios; externos entram em modo tolerante para
+      # que a CI não quebre por site de terceiro fora do ar.
+      - name: html-proofer
+        run: |
+          bundle exec htmlproofer ./_site \
+            --disable-external \
+            --allow-hash-href \
+            --swap-urls "^${{ steps.cfg.outputs.baseurl }}:"
+
+      - name: html-proofer — links externos (tolerante)
+        continue-on-error: true
+        run: |
+          bundle exec htmlproofer ./_site \
+            --allow-hash-href \
+            --swap-urls "^${{ steps.cfg.outputs.baseurl }}:" \
+            --ignore-status-codes 0,403,429,503 \
+            --no-enforce-https
+
+      # Nenhum Encontro pode declarar data. Ver
+      # docs/adr/0002-material-ancorado-em-semana-nao-em-data.md
+      - name: Encontro não tem data
+        run: |
+          if grep -rnE '^data:' _encontros/ ; then
+            echo "::error::Encontro não pode ter campo 'data'. A data vive só em _data/cronograma.yml (ADR-0002)."
+            exit 1
+          fi

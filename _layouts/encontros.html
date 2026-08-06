@@ -1,0 +1,57 @@
+---
+layout: default
+---
+{%- comment -%}
+  Índice da coleção, agrupado por módulo e por Semana (RF-04).
+  A ordem vem do cronograma — é o único lugar que conhece a sequência real.
+{%- endcomment -%}
+
+<div class="container">
+  {% include breadcrumbs.html %}
+
+  <header class="page-head">
+    <h1>{{ page.titulo }}</h1>
+    {%- if page.resumo -%}<p class="page-head__lead">{{ page.resumo }}</p>{%- endif -%}
+  </header>
+
+  <div class="prose">
+    {{ content }}
+
+    {%- comment -%}
+      Percorre o cronograma em ordem, resolve cada Encontro e quebra a seção a
+      cada troca de módulo e de Semana.
+    {%- endcomment -%}
+    {%- assign modulo_atual = "" -%}
+    {%- assign semana_atual = "" -%}
+
+    {%- for linha in site.data.cronograma -%}
+      {%- assign alvo = linha.encontro | prepend: "/encontros/" | append: "/" -%}
+      {%- assign e = site.encontros | where: "url", alvo | first -%}
+      {%- if e -%}
+
+        {%- if e.modulo != modulo_atual -%}
+          {%- unless forloop.first -%}</div></section>{%- endunless -%}
+          {%- assign modulo_atual = e.modulo -%}
+          {%- assign semana_atual = "" -%}
+          <h2 id="modulo-{{ forloop.index }}">
+            {%- if e.modulo == "Encerramento" -%}{{ e.modulo }}
+            {%- else -%}Módulo {{ e.modulo }}{%- endif -%}
+          </h2>
+        {%- endif -%}
+
+        {%- if e.semana != semana_atual -%}
+          {%- unless semana_atual == "" -%}</div></section>{%- endunless -%}
+          {%- assign semana_atual = e.semana -%}
+          <section aria-label="Semana {{ e.semana }}">
+            <h3 id="semana-{{ e.semana }}">Semana {{ e.semana }}</h3>
+            <div class="grid">
+        {%- endif -%}
+
+        {% include encontro_card.html encontro=e %}
+
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- unless semana_atual == "" -%}</div></section>{%- endunless -%}
+  </div>
+</div>

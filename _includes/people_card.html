@@ -1,0 +1,44 @@
+{%- comment -%}
+  Card de pessoa (RF-10). Só dado institucional de quem tem vínculo docente ou
+  de monitoria — ver docs/adr/0005-vitrine-identifica-squad-nao-pessoa.md.
+
+  Sem foto, o card mostra as iniciais: campo ausente degrada, não quebra.
+
+  Uso: {% include people_card.html pessoa=p %}
+{%- endcomment -%}
+
+{%- assign p = include.pessoa -%}
+
+<article class="card person">
+  {%- if p.foto -%}
+    <img class="person__avatar" src="{{ p.foto | relative_url }}"
+         alt="Retrato de {{ p.nome }}" width="72" height="72" loading="lazy">
+  {%- else -%}
+    {%- assign partes = p.nome | split: " " -%}
+    {%- assign inicial1 = partes.first | slice: 0 -%}
+    {%- assign inicial2 = "" -%}
+    {%- if partes.size > 1 -%}{%- assign inicial2 = partes.last | slice: 0 -%}{%- endif -%}
+    <div class="person__avatar person__initials" aria-hidden="true">{{ inicial1 }}{{ inicial2 }}</div>
+  {%- endif -%}
+
+  <div>
+    <h3 class="person__name">{{ p.nome }}</h3>
+    <p class="person__role">{{ p.papel }}</p>
+    {%- if p.bio -%}<p class="person__bio">{{ p.bio }}</p>{%- endif -%}
+
+    <ul class="person__links">
+      {%- if p.email -%}
+        <li><a href="mailto:{{ p.email }}">{{ p.email }}</a></li>
+      {%- endif -%}
+      {%- if p.links.github and p.links.github != "" -%}
+        <li><a href="{{ p.links.github }}" rel="noopener">GitHub</a></li>
+      {%- endif -%}
+      {%- if p.links.lattes and p.links.lattes != "" -%}
+        <li><a href="{{ p.links.lattes }}" rel="noopener">Lattes</a></li>
+      {%- endif -%}
+      {%- if p.links.orcid and p.links.orcid != "" -%}
+        <li><a href="{{ p.links.orcid }}" rel="noopener">ORCID</a></li>
+      {%- endif -%}
+    </ul>
+  </div>
+</article>

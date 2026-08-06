@@ -1,0 +1,35 @@
+{%- comment -%}
+  Card de Encontro, tipado pela natureza (§6.3).
+  Uso: {% include encontro_card.html encontro=e %}
+{%- endcomment -%}
+
+{%- assign e = include.encontro -%}
+{%- case e.tipo -%}
+  {%- when "laboratorio" -%}{%- assign rotulo = "Laboratório" -%}
+  {%- when "seminario" -%}{%- assign rotulo = "Seminário" -%}
+  {%- when "banca" -%}{%- assign rotulo = "Banca" -%}
+  {%- else -%}{%- assign rotulo = "Conceitual" -%}
+{%- endcase -%}
+
+<article class="card card--link card--encontro is-{{ e.tipo }}">
+  <p class="card__meta">
+    <span class="badge badge--semana">Semana {{ e.semana }}</span>
+    <span class="badge badge--{{ e.tipo }}">{{ rotulo }}</span>
+    {%- if e.titular %}<span>{{ e.titular | capitalize }}</span>{% endif -%}
+  </p>
+
+  <h3 class="card__title"><a href="{{ e.url | relative_url }}">{{ e.titulo }}</a></h3>
+
+  {%- if e.objetivos and e.objetivos.size > 0 -%}
+    <p class="card__excerpt">{{ e.objetivos[0] }}</p>
+  {%- elsif e.entregavel -%}
+    <p class="card__excerpt">{{ e.entregavel }}</p>
+  {%- endif -%}
+
+  {%- if e.slides or e.roteiro -%}
+    <p class="card__meta">
+      {%- if e.slides %}<span>Slides</span>{% endif -%}
+      {%- if e.roteiro %}<span>Roteiro</span>{% endif -%}
+    </p>
+  {%- endif -%}
+</article>

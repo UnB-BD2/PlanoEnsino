@@ -1,0 +1,53 @@
+---
+layout: default
+---
+{%- comment -%}
+  Índice do blog (RF-11): tutoriais, retrospectivas e vitrine de projetos.
+  Usa jekyll-paginate-v2 quando a paginação está ligada no front matter da
+  página; sem ela, lista tudo.
+{%- endcomment -%}
+
+<div class="container">
+  {% include breadcrumbs.html %}
+
+  <header class="page-head">
+    <h1>{{ page.titulo }}</h1>
+    {%- if page.resumo -%}<p class="page-head__lead">{{ page.resumo }}</p>{%- endif -%}
+  </header>
+
+  <div class="prose">
+    {{ content }}
+
+    {%- assign lista = paginator.posts | default: site.posts -%}
+
+    {%- if lista.size == 0 -%}
+      <p>Nada publicado ainda. O primeiro post entra durante a Oferta.</p>
+    {%- else -%}
+      <div class="grid grid--wide">
+        {%- for post in lista -%}
+          <article class="card card--link">
+            <p class="card__meta">
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d/%m/%Y" }}</time>
+              {%- if post.categoria %}<span class="badge">{{ post.categoria }}</span>{% endif -%}
+              {%- if post.squad %}<span class="badge badge--modulo">{{ post.squad }}</span>{% endif -%}
+            </p>
+            <h2 class="card__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+            <p class="card__excerpt">{{ post.resumo | default: post.excerpt | strip_html | truncate: 180 }}</p>
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if paginator and paginator.total_pages > 1 -%}
+      <nav class="pagination" aria-label="Paginação do blog">
+        {%- if paginator.previous_page -%}
+          <a href="{{ paginator.previous_page_path | relative_url }}">← Mais recentes</a>
+        {%- else -%}<span></span>{%- endif -%}
+        <span>Página {{ paginator.page }} de {{ paginator.total_pages }}</span>
+        {%- if paginator.next_page -%}
+          <a href="{{ paginator.next_page_path | relative_url }}">Mais antigos →</a>
+        {%- else -%}<span></span>{%- endif -%}
+      </nav>
+    {%- endif -%}
+  </div>
+</div>

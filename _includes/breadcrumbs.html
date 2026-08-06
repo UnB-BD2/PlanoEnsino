@@ -1,0 +1,20 @@
+{%- comment -%}
+  Trilha de navegação (RF-12). A seção pai vem de `crumb` no front matter da
+  página; sem ela, a trilha é só Início › página atual.
+
+  Uso:  crumb: { titulo: "Encontros", url: /encontros/ }
+{%- endcomment -%}
+
+{%- unless page.url == "/" -%}
+<nav class="breadcrumbs" aria-label="Trilha de navegação">
+  <ol>
+    <li><a href="{{ '/' | relative_url }}">Início</a></li>
+    {%- if page.crumb -%}
+      <li><a href="{{ page.crumb.url | relative_url }}">{{ page.crumb.titulo }}</a></li>
+    {%- endif -%}
+    <li>
+      <span aria-current="page">{{ page.titulo | default: page.title }}</span>
+    </li>
+  </ol>
+</nav>
+{%- endunless -%}

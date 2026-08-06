@@ -1,0 +1,86 @@
+# Seminários Técnicos — Semanas 13 a 15.
+#
+# Cada Squad apresenta um aprofundamento sobre tema do roadmap de Engenharia de
+# Dados que a disciplina não cobre em Encontro. Tema é exclusivo: quem inscreve
+# primeiro fica com ele.
+#
+# `squad` fica vazio até a inscrição. Preencher com o nome da Squad, nunca com
+# nome de estudante (ADR-0005).
+
+formato:
+  duracao: "20 minutos de apresentação + 10 de arguição"
+  publico: "Turma, docência e monitoria — perfil técnico e de gestão"
+  entregavel: >-
+    Slides no repositório da Squad e um experimento reprodutível, ainda que
+    mínimo. Seminário sem nada que rode é resenha, e a rubrica cobra isso.
+  peso: >-
+    Compõe, com a defesa final, os 15% de Seminário Técnico + defesa.
+
+inscricao:
+  - "A Squad escolhe um tema desta lista, ou propõe outro, até a Semana 10."
+  - "Tema é exclusivo por Oferta: a primeira Squad a inscrever fica com ele."
+  - "Tema proposto fora da lista precisa de aval da docência — o critério é estar no roadmap de Engenharia de Dados e fora do que os Encontros cobrem."
+  - "A ordem de apresentação nas Semanas 13 a 15 é sorteada na Semana 11."
+
+temas:
+  - titulo: "Spark e processamento distribuído em cluster"
+    resumo: >-
+      Quando o dado não cabe em uma máquina: modelo de execução, shuffle,
+      particionamento e o custo real de sair do DuckDB. Compare com a plataforma
+      da própria Squad — a que volume a mudança se pagaria?
+    roadmap: "Processamento distribuído — introdutório no plano, remetido a eletiva"
+    squad: ""
+  - titulo: "Nuvem gerenciada, IaC e Kubernetes para plataformas de dados"
+    resumo: >-
+      O que muda ao sair do Docker Compose: serviços gerenciados, custo por
+      consulta, infraestrutura como código e o que se perde em portabilidade.
+    roadmap: "Nuvem e IaC — fora do escopo do plano, remetido a Computação em Nuvem / DevOps"
+    squad: ""
+  - titulo: "Bancos de séries temporais e dados de sensor"
+    resumo: >-
+      TimescaleDB, InfluxDB e ClickHouse: compressão, downsampling, política de
+      retenção e por que série temporal justifica motor próprio.
+    roadmap: "Famílias especializadas — tratado só de forma comparativa na Semana 7"
+    squad: ""
+  - titulo: "Motores de busca textual: Elasticsearch e OpenSearch"
+    resumo: >-
+      Índice invertido, BM25, analisadores para português e a fronteira com a
+      busca vetorial da Semana 14.
+    roadmap: "Busca — a disciplina cobre a metade semântica, não a léxica em profundidade"
+    squad: ""
+  - titulo: "Data mesh e contratos entre domínios na prática"
+    resumo: >-
+      A tese organizacional além do slogan: onde o mesh resolve, onde ele só
+      renomeia o problema, e o que um contrato de dados precisa ter para valer.
+    roadmap: "Arquiteturas organizacionais — conceitual na Semana 15"
+    squad: ""
+  - titulo: "Privacidade diferencial e dados sintéticos"
+    resumo: >-
+      Além da anonimização da Semana 15: garantia formal, orçamento de
+      privacidade e o compromisso com utilidade do dado.
+    roadmap: "Governança — aprofundamento além da Semana 15"
+    squad: ""
+  - titulo: "Bancos de dados embarcados e o computador de ponta"
+    resumo: >-
+      SQLite, DuckDB no navegador via WASM e sincronização com o servidor:
+      o que o dado ganha ao morar perto de quem o usa.
+    roadmap: "Acréscimo — fora do roadmap clássico"
+    squad: ""
+  - titulo: "Observabilidade de dados e detecção de anomalia em pipeline"
+    resumo: >-
+      Além dos testes da Semana 11: perfilamento contínuo, detecção estatística
+      de desvio e o custo de alarme falso na confiança do time.
+    roadmap: "Qualidade e observabilidade — aprofundamento além das Semanas 11 e 12"
+    squad: ""
+  - titulo: "Formatos de tabela aberta em disputa: Iceberg, Delta e Hudi"
+    resumo: >-
+      Como cada um resolve transação, evolução de esquema e compactação; o que
+      trava a Squad em cada escolha e o estado da interoperabilidade.
+    roadmap: "Lakehouse — a disciplina usa um formato, não compara os três"
+    squad: ""
+  - titulo: "Feature stores e o desvio entre treino e serviço"
+    resumo: >-
+      Feature skew, viagem no tempo em feature, e por que o problema é de
+      engenharia de dados antes de ser de aprendizado de máquina.
+    roadmap: "Dados para IA — mencionado na Semana 14"
+    squad: ""

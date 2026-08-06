@@ -1,0 +1,33 @@
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      {%- comment -%}
+        Só o símbolo da marca, sem a palavra "UnB": o lockup completo não cabe
+        ao lado de dez itens de menu. `alt` vazio porque o texto do link já
+        nomeia a disciplina — repetir daria dois rótulos ao mesmo destino.
+      {%- endcomment -%}
+      <span class="brand__mark">
+        <img src="{{ '/assets/img/unb-simbolo.png' | relative_url }}"
+             alt="" width="40" height="20" data-no-dim>
+      </span>
+      <span class="brand__name">{{ site.disciplina.nome }}</span>
+      <span class="brand__oferta">{{ site.oferta.codigo }}</span>
+    </a>
+
+    {% include nav.html %}
+
+    <button type="button" class="theme-toggle" aria-label="Alternar entre tema claro e escuro">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+           aria-hidden="true" focusable="false">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+      </svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+           aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="4.2"/>
+        <path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/>
+      </svg>
+    </button>
+  </div>
+</header>

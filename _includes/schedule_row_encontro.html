@@ -1,0 +1,51 @@
+{%- comment -%}
+  Uma linha de cronograma para um Encontro.
+  Uso: {% include schedule_row_encontro.html linha=linha %}
+
+  `linha.encontro` é o nome do arquivo em _encontros/ sem extensão. Se o arquivo
+  ainda não existe, a linha aparece sem link em vez de sumir — assim o furo fica
+  visível na revisão, que é a razão de a data ser declarada e não calculada.
+{%- endcomment -%}
+
+{%- assign linha = include.linha -%}
+{%- assign alvo = linha.encontro | prepend: "/encontros/" | append: "/" -%}
+{%- assign e = site.encontros | where: "url", alvo | first -%}
+
+{%- if e -%}
+  {%- case e.tipo -%}
+    {%- when "laboratorio" -%}{%- assign rotulo = "Laboratório" -%}
+    {%- when "seminario" -%}{%- assign rotulo = "Seminário" -%}
+    {%- when "banca" -%}{%- assign rotulo = "Banca" -%}
+    {%- else -%}{%- assign rotulo = "Conceitual" -%}
+  {%- endcase -%}
+{%- endif -%}
+
+<div class="crono-row">
+  <time class="crono-row__data" datetime="{{ linha.data | date: '%Y-%m-%d' }}">
+    {{ linha.data | date: "%d/%m" }}<span class="visually-hidden">/{{ linha.data | date: "%Y" }}</span>
+    <span class="crono-row__sub">{{ linha.data | date: "%a" | replace: "Mon","seg" | replace: "Tue","ter" | replace: "Wed","qua" | replace: "Thu","qui" | replace: "Fri","sex" | replace: "Sat","sáb" | replace: "Sun","dom" }}</span>
+  </time>
+
+  <div class="crono-row__tipo">
+    {%- if e -%}
+      <span class="badge badge--{{ e.tipo }}">{{ rotulo }}</span>
+    {%- else -%}
+      <span class="badge">A publicar</span>
+    {%- endif -%}
+  </div>
+
+  <div class="crono-row__tema">
+    {%- if e -%}
+      <a href="{{ e.url | relative_url }}">{{ e.titulo }}</a>
+      {%- if e.titular %}<span class="crono-row__sub">{{ e.titular | capitalize }}</span>{% endif -%}
+    {%- else -%}
+      <span>{{ linha.encontro }}</span>
+      <span class="crono-row__sub">Material ainda não publicado</span>
+    {%- endif -%}
+  </div>
+
+  <div class="crono-row__mat">
+    {%- if e.slides -%}<a href="{{ e.slides | relative_url }}">Slides</a>{%- endif -%}
+    {%- if e.roteiro -%}<a href="{{ e.roteiro | relative_url }}">Roteiro</a>{%- endif -%}
+  </div>
+</div>

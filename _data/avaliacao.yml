@@ -1,0 +1,103 @@
+# Pesos e rubricas de avaliação.
+#
+# Este arquivo publica o que o colegiado aprovou. Alterar peso ou faixa aqui é
+# alterar a regra do jogo — só depois de o documento aprovado mudar.
+# Ver docs/adr/0004-site-como-texto-publicado-do-plano-de-ensino.md
+
+componentes:
+  - nome: "Projeto Integrado"
+    peso: 55
+    detalhe: "E1 10% · E2 12% · E3 14% · E4 14% — peso crescente"
+    link: /projeto/
+  - nome: "Portfólio de 5 ADRs"
+    peso: 15
+    detalhe: "Avaliado pela qualidade do raciocínio e da evidência, não pela escolha feita"
+    link: /adr/
+  - nome: "Seminário Técnico + defesa final"
+    peso: 15
+    detalhe: "Apresentação de 20 min + arguição, para público técnico e de gestão"
+    link: /seminarios/
+  - nome: "Participação nos Encontros"
+    peso: 15
+    detalhe: "Participação ativa em sala, com leitura prévia feita"
+    link: /encontros/
+
+rubricas:
+  - id: adr
+    titulo: "Rubrica de ADR"
+    escala: "0 a 10, por ADR"
+    nota: >-
+      A nota não depende de a escolha ter sido a melhor. Depende de a carga ter
+      sido caracterizada, de a opção nula ter sido considerada, de haver medição
+      e de o que se perde estar dito.
+    faixas:
+      - faixa: "9–10"
+        descricao: >-
+          Carga caracterizada com dados do próprio domínio; ao menos três
+          alternativas, incluindo a opção nula; medição reproduzível;
+          consequências negativas explicitadas; gatilho de revisão definido.
+      - faixa: "7–8"
+        descricao: >-
+          Alternativas e medição presentes, mas consequências tratadas de forma
+          genérica.
+      - faixa: "5–6"
+        descricao: >-
+          Decisão justificada apenas por argumento de autoridade ou por
+          documentação do fornecedor.
+      - faixa: "0–4"
+        descricao: >-
+          Escolha declarada sem alternativa considerada, ou benchmark
+          irreprodutível.
+
+  - id: entrega
+    titulo: "Rubrica de Entrega"
+    escala: "0 a 10, por Entrega, aplicada a E1 a E4"
+    nota: >-
+      Os cinco critérios somam 100% da nota da Entrega. O peso da Entrega na
+      nota final é o da tabela de componentes.
+    criterios:
+      - criterio: "Funcionamento e reprodutibilidade"
+        peso: 30
+        descricao: >-
+          Sobe do zero com um comando a partir do repositório, em máquina limpa,
+          e produz o mesmo resultado.
+      - criterio: "Adequação técnica das escolhas"
+        peso: 25
+        descricao: >-
+          A tecnologia escolhida responde à carga caracterizada, e não ao
+          repertório da Squad.
+      - criterio: "Qualidade e testes de dados"
+        peso: 20
+        descricao: >-
+          Testes de esquema, de volume e de distribuição; tratamento explícito
+          de dado faltante e de reprocessamento.
+      - criterio: "Documentação e ADRs"
+        peso: 15
+        descricao: >-
+          README que permite a terceiro rodar e entender; ADRs da Entrega no
+          formato Nygard.
+      - criterio: "Processo da Squad"
+        peso: 10
+        descricao: >-
+          Evidenciado no repositório: histórico do git, revisão entre pares,
+          diário de bordo semanal.
+
+  - id: seminario
+    titulo: "Rubrica de Seminário Técnico"
+    escala: "0 a 10"
+    nota: >-
+      Vinte minutos de apresentação e dez de arguição, para público misto —
+      técnico e de gestão.
+    criterios:
+      - criterio: "Domínio técnico do tema"
+        peso: 35
+        descricao: "Profundidade além do material introdutório; erro conceitual pesa."
+      - criterio: "Resposta à arguição"
+        peso: 25
+        descricao: "Sustenta a afirmação ou reconhece o limite do que sabe."
+      - criterio: "Ligação com o Projeto Integrado"
+        peso: 20
+        descricao: "O tema é situado no ciclo de vida do dado da própria plataforma."
+      - criterio: "Comunicação para público misto"
+        peso: 20
+        descricao: "Gestor entende a consequência; pessoa técnica entende o mecanismo."

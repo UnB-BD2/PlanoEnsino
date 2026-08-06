@@ -1,0 +1,34 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+
+{%- comment -%}
+  jekyll-seo-tag cuida de title, description, canonical, Open Graph e JSON-LD.
+{%- endcomment -%}
+{% seo %}
+
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+<link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+
+{%- comment -%}
+  As duas fontes do primeiro paint. As demais só baixam se a página as usar.
+{%- endcomment -%}
+<link rel="preload" as="font" type="font/woff2" crossorigin
+      href="{{ '/assets/fonts/source-serif-4-latin.woff2' | relative_url }}">
+<link rel="preload" as="font" type="font/woff2" crossorigin
+      href="{{ '/assets/fonts/inter-latin.woff2' | relative_url }}">
+
+<link rel="icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" type="image/svg+xml">
+
+{%- comment -%}
+  Tema aplicado antes da primeira pintura: sem isto, quem escolheu escuro leva
+  um lampejo branco a cada navegação. Precisa ser síncrono e inline.
+{%- endcomment -%}
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('tema');
+      if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>

@@ -1,0 +1,34 @@
+{%- comment -%}
+  Os demais Encontros da mesma Semana.
+
+  O par conceito/laboratório existe no domínio, mas deixou de coabitar o mesmo
+  arquivo quando o Encontro virou a unidade de conteúdo. A ligação é o número da
+  Semana, e reconstruí-la aqui é o que impede o modelo de perder informação —
+  ver docs/adr/0003-encontro-como-unidade-de-conteudo.md.
+
+  Uso: {% include encontros_da_semana.html encontro=page %}
+{%- endcomment -%}
+
+{%- assign atual = include.encontro -%}
+{%- assign irmaos = site.encontros | where: "semana", atual.semana | sort: "tipo" -%}
+
+{%- assign outros = "" | split: "" -%}
+{%- for e in irmaos -%}
+  {%- unless e.url == atual.url -%}
+    {%- assign outros = outros | push: e -%}
+  {%- endunless -%}
+{%- endfor -%}
+
+{%- if outros.size > 0 -%}
+  <section class="home-section" aria-labelledby="semana-irmaos">
+    <div class="home-section__head">
+      <h2 class="home-section__title" id="semana-irmaos">Na mesma Semana</h2>
+      <a class="home-section__more" href="{{ '/cronograma/' | relative_url }}">Ver no cronograma</a>
+    </div>
+    <div class="grid">
+      {%- for e in outros -%}
+        {% include encontro_card.html encontro=e %}
+      {%- endfor -%}
+    </div>
+  </section>
+{%- endif -%}

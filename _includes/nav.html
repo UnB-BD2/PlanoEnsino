@@ -1,0 +1,38 @@
+{%- comment -%}
+  Menu declarativo de _data/nav.yml. Renderizado duas vezes: barra em tela
+  larga e drawer no mobile, cada um com o próprio id para o aria-current não
+  duplicar.
+{%- endcomment -%}
+
+<nav class="site-nav" aria-label="Navegação principal">
+  <ul class="site-nav__list">
+    {%- for item in site.data.nav -%}
+      {%- assign href = item.url | relative_url -%}
+      <li>
+        <a class="site-nav__link" href="{{ href }}"
+           {% if item.curto %}title="{{ item.titulo }}"{% endif %}
+           {% if page.url contains item.url %}aria-current="page"{% endif %}>{{ item.curto | default: item.titulo }}</a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>
+
+<details class="nav-drawer">
+  <summary aria-label="Abrir o menu">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+         stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false">
+      <path d="M2 4h12M2 8h12M2 12h12"/>
+    </svg>
+    <span class="nav-drawer__label">Menu</span>
+  </summary>
+  <div class="nav-drawer__panel">
+    <ul>
+      {%- for item in site.data.nav -%}
+        <li>
+          <a href="{{ item.url | relative_url }}"
+             {% if page.url contains item.url %}aria-current="page"{% endif %}>{{ item.titulo }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</details>

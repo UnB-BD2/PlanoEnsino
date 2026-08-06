@@ -1,0 +1,25 @@
+{%- comment -%}
+  Índice lateral, extraído dos <h2> já renderizados da página.
+
+  É derivado do conteúdo em vez de declarado no front matter: um índice escrito
+  à mão desatualiza em silêncio na primeira seção renomeada, e o Plano de Ensino
+  é justamente o texto que mais vai ser corrigido.
+
+  Depende de `auto_ids: true` no kramdown, que é o padrão.
+{%- endcomment -%}
+
+{%- assign blocos = include.html | split: '<h2 id="' -%}
+
+{%- if blocos.size > 1 -%}
+<nav class="toc" aria-labelledby="toc-titulo">
+  <h2 class="toc__title" id="toc-titulo">Nesta página</h2>
+  <ol>
+    {%- for bloco in blocos offset: 1 -%}
+      {%- assign cabecalho = bloco | split: "</h2>" | first -%}
+      {%- assign id = cabecalho | split: '">' | first -%}
+      {%- assign texto = cabecalho | split: '">' | last | strip_html | strip -%}
+      <li><a href="#{{ id }}">{{ texto }}</a></li>
+    {%- endfor -%}
+  </ol>
+</nav>
+{%- endif -%}

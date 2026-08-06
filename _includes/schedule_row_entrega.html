@@ -1,0 +1,28 @@
+{%- comment -%}
+  Marco de Entrega no cronograma.
+
+  Entrega não é Encontro: cai numa Semana, mas não ocupa uma sessão. Por isso o
+  estilo é distinto e a linha não entra na contagem de Encontros.
+
+  Uso: {% include schedule_row_entrega.html entrega=e %}
+{%- endcomment -%}
+
+{%- assign en = include.entrega -%}
+{%- assign pagina = site.entregas | where: "entrega_id", en.id | first -%}
+
+<div class="crono-marco">
+  <time class="crono-marco__data" datetime="{{ en.data | date: '%Y-%m-%d' }}">
+    {{ en.data | date: "%d/%m" }}
+  </time>
+
+  <div class="crono-marco__titulo">
+    {%- if pagina -%}
+      <a href="{{ pagina.url | relative_url }}">{{ en.id }} — {{ en.titulo }}</a>
+    {%- else -%}
+      {{ en.id }} — {{ en.titulo }}
+    {%- endif -%}
+    <span class="crono-row__sub">Entrega do Projeto Integrado · Semana {{ en.semana }}</span>
+  </div>
+
+  <span class="crono-marco__peso">{{ en.peso }}% da nota</span>
+</div>

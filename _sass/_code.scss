@@ -1,0 +1,127 @@
+// ---------------------------------------------------------------------------
+// Código: bloco com botão copiar e destaque para SQL, Python e YAML.
+// O tema do Rouge é declarado em custom properties para seguir o modo escuro
+// sem uma segunda folha de estilo.
+// ---------------------------------------------------------------------------
+
+code, kbd, samp, pre {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  font-variant-ligatures: none;
+}
+
+// Código no meio do texto.
+:not(pre) > code {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+  word-break: break-word;
+}
+
+.highlighter-rouge,
+div.highlight,
+figure.highlight {
+  position: relative;
+  margin-bottom: var(--space-5);
+}
+
+pre.highlight,
+pre:not(.highlight) {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  overflow-x: auto;
+  line-height: 1.55;
+  -webkit-overflow-scrolling: touch;
+
+  code {
+    background: none;
+    border: 0;
+    padding: 0;
+  }
+}
+
+.copy-code {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  padding: 0.2rem 0.55rem;
+  font-family: var(--font-sans);
+  font-size: var(--size-xs);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--text-muted);
+  opacity: 0;
+  transition: opacity 0.12s ease;
+
+  &:hover, &:focus-visible { border-color: var(--accent); color: var(--accent); }
+}
+
+.highlighter-rouge:hover .copy-code,
+div.highlight:hover .copy-code,
+.copy-code:focus-visible { opacity: 1; }
+
+// Em toque não há hover: o botão fica sempre visível.
+@media (hover: none) {
+  .copy-code { opacity: 1; }
+}
+
+kbd {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+  font-size: 0.8em;
+}
+
+// --- Rouge ---------------------------------------------------------------
+// Paleta única, derivada dos tokens, com contraste conferido nos dois temas.
+:root {
+  --hl-comment: var(--text-muted);
+  --hl-keyword: #7C3AED;
+  --hl-string: #0F766E;
+  --hl-number: #B45309;
+  --hl-name: var(--text);
+  --hl-func: #0B4F6C;
+  --hl-error: #B91C1C;
+}
+
+:root[data-theme="dark"],
+:root:not([data-theme="light"]) {
+  @media (prefers-color-scheme: dark) {
+    --hl-keyword: #C4A0FF;
+    --hl-string: #5EE9C9;
+    --hl-number: #F0A85C;
+    --hl-func: #5FB3D4;
+    --hl-error: #FF9B9B;
+  }
+}
+
+:root[data-theme="dark"] {
+  --hl-keyword: #C4A0FF;
+  --hl-string: #5EE9C9;
+  --hl-number: #F0A85C;
+  --hl-func: #5FB3D4;
+  --hl-error: #FF9B9B;
+}
+
+.highlight {
+  .c, .cm, .c1, .cs, .cd, .cp { color: var(--hl-comment); font-style: italic; }
+  .k, .kc, .kd, .kn, .kp, .kr, .kt, .kv { color: var(--hl-keyword); font-weight: 600; }
+  .o, .ow { color: var(--hl-keyword); }
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr, .ss { color: var(--hl-string); }
+  .m, .mb, .mf, .mh, .mi, .mo, .il { color: var(--hl-number); }
+  .n, .nx, .nv, .nb, .py { color: var(--hl-name); }
+  .nf, .nc, .nn, .nt { color: var(--hl-func); font-weight: 600; }
+  .na { color: var(--hl-func); }
+  .err { color: var(--hl-error); }
+  .gd { color: var(--hl-error); }
+  .gi { color: var(--hl-string); }
+  .gh, .gu { color: var(--hl-func); font-weight: 600; }
+  .ge { font-style: italic; }
+  .gs { font-weight: 600; }
+}

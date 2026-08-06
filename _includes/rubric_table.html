@@ -1,0 +1,69 @@
+{%- comment -%}
+  Tabela de rubrica, linkável por âncora (RF-06). Aceita as duas formas:
+  faixas (rubrica de ADR) e critérios com peso (Entrega, Seminário).
+
+  Uso: {% include rubric_table.html rubrica=r %}
+{%- endcomment -%}
+
+{%- assign r = include.rubrica -%}
+
+<section class="rubric" id="rubrica-{{ r.id }}">
+  <div class="rubric__head">
+    <h3 class="rubric__title">
+      <a href="#rubrica-{{ r.id }}" aria-label="Link para {{ r.titulo }}">{{ r.titulo }}</a>
+    </h3>
+    {%- if r.escala %}<span class="rubric__escala">{{ r.escala }}</span>{% endif -%}
+  </div>
+
+  {%- if r.nota -%}<p class="rubric__nota">{{ r.nota }}</p>{%- endif -%}
+
+  {%- if r.faixas -%}
+    <div class="table-scroll">
+      <table>
+        <caption class="visually-hidden">{{ r.titulo }} — faixas de nota e o que cada uma exige</caption>
+        <thead>
+          <tr><th scope="col">Faixa</th><th scope="col">O que a caracteriza</th></tr>
+        </thead>
+        <tbody>
+          {%- for f in r.faixas -%}
+            <tr>
+              <th scope="row" class="rubric__faixa">{{ f.faixa }}</th>
+              <td>{{ f.descricao }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+  {%- endif -%}
+
+  {%- if r.criterios -%}
+    {%- assign total = 0 -%}
+    {%- for c in r.criterios -%}{%- assign total = total | plus: c.peso -%}{%- endfor -%}
+    <div class="table-scroll">
+      <table>
+        <caption class="visually-hidden">{{ r.titulo }} — critérios, pesos e o que cada um avalia</caption>
+        <thead>
+          <tr>
+            <th scope="col">Critério</th>
+            <th scope="col">Peso</th>
+            <th scope="col">O que se avalia</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for c in r.criterios -%}
+            <tr>
+              <th scope="row" class="rubric__criterio">{{ c.criterio }}</th>
+              <td class="rubric__peso">{{ c.peso }}%</td>
+              <td>{{ c.descricao }}</td>
+            </tr>
+          {%- endfor -%}
+          <tr class="rubric__total">
+            <td>Total</td>
+            <td class="rubric__peso">{{ total }}%</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  {%- endif -%}
+</section>

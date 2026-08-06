@@ -1,0 +1,54 @@
+// ---------------------------------------------------------------------------
+// Modo escuro.
+//
+// Os valores vivem em _tokens.scss; aqui ficam só os ajustes que não são
+// troca de cor — imagem, sombra e contraste de superfície.
+// ---------------------------------------------------------------------------
+
+@mixin dark-adjustments {
+  // Figura com fundo branco queima a retina no escuro. Uma dessaturação leve
+  // resolve sem inverter a imagem, que arruinaria diagrama colorido.
+  .prose img:not([data-no-dim]),
+  .diagram img {
+    filter: brightness(0.92) contrast(1.02);
+  }
+
+  // Campo claro sob a marca institucional, em vez de recolori-la. A marca da
+  // UnB é azul-marinho e verde sobre transparente: no escuro ela desapareceria,
+  // e recolorir marca institucional não é opção.
+  .instituicao__logo {
+    background: #FFFFFF;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .site-footer__logo {
+    background: #FFFFFF;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .brand__mark {
+    background: #FFFFFF;
+    padding: 0.2rem 0.35rem;
+  }
+
+  // Embed de PDF vem sempre em papel branco; reduzir o brilho ajuda.
+  .pdf__frame { filter: brightness(0.88); }
+
+  // A borda some no escuro se o card e o fundo forem próximos demais.
+  .card, .callout, .table-scroll, .diagram { border-color: var(--border); }
+
+  // O botão primário usa texto sobre acento claro: no escuro o contraste
+  // correto é texto escuro, e --bg já é escuro. Fixa explicitamente.
+  .button { color: #14161A; }
+  .button--ghost { color: var(--accent); }
+
+  // Barra de pesos: os segmentos usam --bg como cor de texto, que no escuro
+  // é quase preto — o que é o contraste certo sobre os acentos claros.
+  .pesos__seg { color: #14161A; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { @include dark-adjustments; }
+}
+
+:root[data-theme="dark"] { @include dark-adjustments; }

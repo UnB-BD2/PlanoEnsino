@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Dúvida sobre o conteúdo da disciplina
+    url: https://unb-bd2.github.io/Disciplina/equipe/
+    about: Dúvida de matéria, de Entrega ou de nota vai para a docência e a monitoria, não para o repositório do site.

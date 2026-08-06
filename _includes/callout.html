@@ -1,0 +1,23 @@
+{%- comment -%}
+  Callout (§6.3). A cor nunca é o único sinal: cada tipo carrega rótulo de
+  texto, para quem não distingue as cores e para a impressão em preto e branco.
+
+  Uso:
+    {% include callout.html tipo="atencao" texto="..." %}
+    {% include callout.html tipo="nota" titulo="Rótulo próprio" texto="..." %}
+
+  Tipos: nota · atencao · entrega · leitura
+{%- endcomment -%}
+
+{%- assign tipo = include.tipo | default: "nota" -%}
+{%- case tipo -%}
+  {%- when "atencao" -%}{%- assign rotulo = "Atenção" -%}
+  {%- when "entrega" -%}{%- assign rotulo = "Entrega" -%}
+  {%- when "leitura" -%}{%- assign rotulo = "Leitura prévia" -%}
+  {%- else -%}{%- assign rotulo = "Nota" -%}
+{%- endcase -%}
+
+<aside class="callout callout--{{ tipo }}">
+  <strong class="callout__label">{{ include.titulo | default: rotulo }}</strong>
+  {{ include.texto | markdownify }}
+</aside>

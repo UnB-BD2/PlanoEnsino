@@ -1,0 +1,18 @@
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+vendor/
+.bundle/
+node_modules/
+
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+.idea/
+.vscode/
+
+# Gerado pelo workflow de deploy para ajustar url/baseurl ao que o Pages serve.
+_config.pages.yml

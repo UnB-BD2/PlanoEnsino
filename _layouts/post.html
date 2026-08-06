@@ -1,0 +1,38 @@
+---
+layout: default
+---
+<div class="container">
+  <nav class="breadcrumbs" aria-label="Trilha de navegação">
+    <ol>
+      <li><a href="{{ '/' | relative_url }}">Início</a></li>
+      <li><a href="{{ '/blog/' | relative_url }}">Blog</a></li>
+      <li><span aria-current="page">{{ page.title }}</span></li>
+    </ol>
+  </nav>
+
+  <header class="page-head">
+    <p class="page-head__eyebrow">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d/%m/%Y" }}</time>
+      {%- if page.categoria %} · <span>{{ page.categoria }}</span>{% endif -%}
+    </p>
+    <h1>{{ page.title }}</h1>
+    {%- if page.resumo -%}<p class="page-head__lead">{{ page.resumo }}</p>{%- endif -%}
+  </header>
+
+  <div class="prose">
+    {%- if page.squad -%}
+      <dl class="factsheet">
+        <dt>Squad</dt>
+        <dd>{{ page.squad }}</dd>
+        {%- if page.dominio -%}<dt>Domínio de dados</dt><dd>{{ page.dominio }}</dd>{%- endif -%}
+        {%- if page.repositorio -%}
+          <dt>Repositório</dt>
+          <dd><a href="{{ page.repositorio }}" rel="noopener">{{ page.repositorio | remove: "https://" }}</a></dd>
+        {%- endif -%}
+        {%- if page.oferta -%}<dt>Oferta</dt><dd>{{ page.oferta }}</dd>{%- endif -%}
+      </dl>
+    {%- endif -%}
+
+    {{ content }}
+  </div>
+</div>

@@ -1,0 +1,128 @@
+# Stack da disciplina, por camada do ciclo de vida do dado.
+# Tudo software livre e executável localmente, sem custo de nuvem.
+# Onde há alternativa, a escolha é da Squad — e vira ADR.
+
+- camada: "Transacional"
+  modulo: "I"
+  ferramentas:
+    - nome: "PostgreSQL"
+      doc: https://www.postgresql.org/docs/current/
+      nota: "Base de tudo. Também é a opção nula de quase todo ADR da disciplina."
+    - nome: "pgvector"
+      doc: https://github.com/pgvector/pgvector
+      nota: "Extensão de busca vetorial. Usada na E4."
+    - nome: "PostGIS"
+      doc: https://postgis.net/documentation/
+      nota: "Extensão geoespacial, útil em domínios de mobilidade e saneamento."
+
+- camada: "Analítico local"
+  modulo: "III"
+  ferramentas:
+    - nome: "DuckDB"
+      doc: https://duckdb.org/docs/
+      nota: "OLAP em processo, lê Parquet direto do disco ou do MinIO."
+
+- camada: "Armazenamento de objetos"
+  modulo: "II"
+  ferramentas:
+    - nome: "MinIO"
+      # min.io/docs redireciona para o produto comercial; a documentação da
+      # edição comunitária, que é a que a disciplina usa, mora em docs.min.io.
+      doc: https://docs.min.io/community/minio-object-store/index.html
+      nota: "Compatível com S3, roda em contêiner."
+
+- camada: "Formatos e tabelas abertas"
+  modulo: "II"
+  ferramentas:
+    - nome: "Apache Parquet"
+      doc: https://parquet.apache.org/docs/
+      nota: "Formato colunar. Obrigatório na camada analítica da E2."
+    - nome: "Apache Iceberg"
+      doc: https://iceberg.apache.org/docs/latest/
+      nota: "Tabela aberta com evolução de esquema e viagem no tempo."
+    - nome: "Delta Lake"
+      doc: https://docs.delta.io/latest/index.html
+      nota: "Alternativa a Iceberg. A escolha entre os dois é ADR."
+
+- camada: "Fluxo e captura de mudanças"
+  modulo: "II"
+  ferramentas:
+    - nome: "Redpanda"
+      doc: https://docs.redpanda.com/
+      nota: "Log distribuído compatível com Kafka, mais leve para rodar na máquina."
+    - nome: "Apache Kafka"
+      doc: https://kafka.apache.org/documentation/
+      nota: "Alternativa a Redpanda."
+    - nome: "Debezium"
+      doc: https://debezium.io/documentation/reference/stable/
+      nota: "CDC por decodificação lógica do WAL do PostgreSQL."
+
+- camada: "Transformação"
+  modulo: "III"
+  ferramentas:
+    - nome: "dbt"
+      doc: https://docs.getdbt.com/
+      nota: "Transformação declarativa versionada, com testes nativos."
+    - nome: "SQLMesh"
+      doc: https://sqlmesh.readthedocs.io/
+      nota: "Alternativa a dbt, com plano de mudança e backfill explícitos."
+
+- camada: "Orquestração"
+  modulo: "III"
+  ferramentas:
+    - nome: "Apache Airflow"
+      doc: https://airflow.apache.org/docs/
+      nota: "Grafo de dependência, agendamento, retry e backfill."
+    - nome: "Dagster"
+      doc: https://docs.dagster.io/
+      nota: "Alternativa a Airflow, orientada a ativo de dado em vez de tarefa."
+
+- camada: "Não relacionais"
+  modulo: "II"
+  ferramentas:
+    - nome: "MongoDB"
+      doc: https://www.mongodb.com/docs/manual/
+      nota: "Documento."
+    - nome: "Neo4j"
+      doc: https://neo4j.com/docs/
+      nota: "Grafo."
+    - nome: "Redis"
+      doc: https://redis.io/docs/latest/
+      nota: "Chave-valor em memória."
+
+- camada: "Qualidade de dados"
+  modulo: "III"
+  ferramentas:
+    - nome: "Great Expectations"
+      doc: https://docs.greatexpectations.io/
+      nota: "Testes de distribuição e perfilamento, além dos testes da ferramenta de transformação."
+
+- camada: "Catálogo e linhagem"
+  modulo: "IV"
+  ferramentas:
+    - nome: "OpenMetadata"
+      doc: https://docs.open-metadata.org/
+      nota: "Catálogo, linhagem e classificação de dado."
+    - nome: "DataHub"
+      doc: https://datahubproject.io/docs/
+      nota: "Alternativa a OpenMetadata."
+
+- camada: "Consumo"
+  modulo: "III"
+  ferramentas:
+    - nome: "Metabase"
+      doc: https://www.metabase.com/docs/latest/
+      nota: "Painel analítico, curva de entrada curta."
+    - nome: "Apache Superset"
+      doc: https://superset.apache.org/docs/intro
+      nota: "Alternativa a Metabase, mais configurável."
+
+- camada: "Empacotamento"
+  modulo: "I"
+  ferramentas:
+    - nome: "Docker Compose"
+      doc: https://docs.docker.com/compose/
+      nota: "Toda a plataforma sobe com um comando. É critério da rubrica de Entrega."
+    - nome: "GitHub Actions"
+      doc: https://docs.github.com/actions
+      nota: "CI no repositório da Squad."

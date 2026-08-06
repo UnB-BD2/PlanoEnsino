@@ -1,0 +1,67 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <span class="site-footer__logo">
+          <img src="{{ '/assets/img/unb.png' | relative_url }}"
+               alt="Universidade de Brasília" width="176" height="45" data-no-dim>
+        </span>
+        <h2>{{ site.disciplina.nome }}</h2>
+        <p>
+          {{ site.disciplina.curso }}<br>
+          {{ site.disciplina.unidade }}
+        </p>
+        <p>Campus UnB Gama — Área Especial de Indústria Projeção A, Gama — DF, 72444-240</p>
+      </div>
+
+      <div>
+        <h2>A disciplina</h2>
+        <ul>
+          <li><a href="{{ '/plano-ensino/' | relative_url }}">Plano de Ensino</a></li>
+          <li><a href="{{ '/cronograma/' | relative_url }}">Cronograma</a></li>
+          <li><a href="{{ '/avaliacao/' | relative_url }}">Avaliação e rubricas</a></li>
+          <li><a href="{{ '/projeto/' | relative_url }}">Projeto Integrado</a></li>
+          <li><a href="{{ '/materiais/' | relative_url }}">Materiais e ambiente</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Contato</h2>
+        <ul>
+          {%- for pessoa in site.data.pessoas.docentes -%}
+            {%- if pessoa.email -%}
+              <li><a href="mailto:{{ pessoa.email }}">{{ pessoa.nome }}</a></li>
+            {%- endif -%}
+          {%- endfor -%}
+          <li><a href="{{ '/equipe/' | relative_url }}">Docência e monitoria</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Este site</h2>
+        <ul>
+          <li><a href="{{ '/codigo-de-conduta/' | relative_url }}">Código de Conduta</a></li>
+          <li><a href="{{ '/uso-de-ia/' | relative_url }}">Política de Uso de IA</a></li>
+          <li><a href="{{ '/sobre-o-site/' | relative_url }}">Sobre este site</a></li>
+          <li><a href="https://github.com/{{ site.repository }}" rel="noopener">Código deste site</a></li>
+          <li><a href="https://github.com/{{ site.repository }}/blob/{{ site.branch }}/CONTRIBUTING.md" rel="noopener">Como contribuir</a></li>
+          <li><a href="{{ '/feed.xml' | relative_url }}">Feed do blog</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bar">
+      <p>
+        Conteúdo e código sob
+        <a href="https://github.com/{{ site.repository }}/blob/{{ site.branch }}/LICENSE" rel="license noopener">licença MIT</a>
+        · © {{ site.time | date: "%Y" }} {{ site.disciplina.universidade }} — FCTE / {{ site.disciplina.curso }}.
+        Material de terceiros mantém a licença de origem.
+        Sem rastreamento, sem cookies.
+        <br>
+        Este site e parte do seu conteúdo foram gerados por agente de IA —
+        <a href="{{ '/sobre-o-site/' | relative_url }}">veja o que foi e o que não foi</a>.
+      </p>
+      {% include edit_on_github.html %}
+    </div>
+  </div>
+</footer>

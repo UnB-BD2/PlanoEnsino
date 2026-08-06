@@ -1,0 +1,105 @@
+---
+layout: default
+---
+{%- comment -%}
+  Cronograma (RF-03). Uma linha por Encontro, agrupada por Semana e por módulo,
+  com as Entregas intercaladas como marcos.
+
+  A ordem é a de _data/cronograma.yml, ordenada por data. As Entregas entram
+  entre a linha anterior e a atual, de modo que uma Entrega em data sem Encontro
+  ainda apareça no lugar certo.
+
+  A Semana corrente é marcada pelo site.js, no navegador: um site republicado
+  uma vez por mês mostraria a Semana errada o resto do tempo.
+{%- endcomment -%}
+
+<div class="container">
+  {% include breadcrumbs.html %}
+
+  <header class="page-head">
+    <h1>{{ page.titulo }}</h1>
+    {%- if page.resumo -%}<p class="page-head__lead">{{ page.resumo }}</p>{%- endif -%}
+  </header>
+
+  <div class="prose">
+    {{ content }}
+
+    <div class="legenda">
+      <span><span class="badge badge--conceitual">Conceitual</span> sala invertida, discussão de caso</span>
+      <span><span class="badge badge--laboratorio">Laboratório</span> trabalho da Squad no Projeto</span>
+      <span><span class="badge badge--seminario">Seminário</span> apresentação de Squad</span>
+      <span><span class="badge badge--banca">Banca</span> defesa final</span>
+    </div>
+
+    <div class="cronograma">
+      {%- assign linhas = site.data.cronograma | sort: "data" -%}
+      {%- assign entregas = site.data.entregas | sort: "data" -%}
+
+      {%- assign anterior = 0 -%}
+      {%- assign modulo_atual = "" -%}
+      {%- assign semana_atual = "" -%}
+
+      {%- for linha in linhas -%}
+        {%- assign quando = linha.data | date: "%Y%m%d" | plus: 0 -%}
+        {%- assign alvo = linha.encontro | prepend: "/encontros/" | append: "/" -%}
+        {%- assign e = site.encontros | where: "url", alvo | first -%}
+        {%- assign modulo = e.modulo | default: "A definir" -%}
+
+        {%- comment -%} Quebra de módulo {%- endcomment -%}
+        {%- if modulo != modulo_atual -%}
+          {%- unless semana_atual == "" -%}</div>{%- endunless -%}
+          {%- unless modulo_atual == "" -%}</div></section>{%- endunless -%}
+          {%- assign modulo_atual = modulo -%}
+          {%- assign semana_atual = "" -%}
+          {%- if modulo == "Encerramento" -%}
+            {%- assign rotulo_modulo = modulo -%}
+          {%- else -%}
+            {%- assign rotulo_modulo = modulo | prepend: "Módulo " -%}
+          {%- endif -%}
+          <section class="cronograma__modulo" aria-label="{{ rotulo_modulo }}">
+            <div class="cronograma__modulo-head">
+              <h2 class="cronograma__modulo-title" id="modulo-{{ forloop.index }}">{{ rotulo_modulo }}</h2>
+            </div>
+            <div class="cronograma__semanas">
+        {%- endif -%}
+
+        {%- comment -%} Quebra de Semana. O intervalo alimenta o marcador do site.js. {%- endcomment -%}
+        {%- if linha.semana != semana_atual -%}
+          {%- unless semana_atual == "" -%}</div>{%- endunless -%}
+          {%- assign semana_atual = linha.semana -%}
+          {%- assign da_semana = linhas | where: "semana", linha.semana | sort: "data" -%}
+          <div class="semana"
+               data-inicio="{{ da_semana.first.data | date: '%Y-%m-%d' }}"
+               data-fim="{{ da_semana.last.data | date: '%Y-%m-%d' }}">
+            <p class="semana__label">
+              Semana {{ linha.semana }}
+              <span class="semana__now" data-semana-now hidden>Semana corrente</span>
+            </p>
+        {%- endif -%}
+
+        {%- comment -%} Entregas que caem entre a linha anterior e esta {%- endcomment -%}
+        {%- for en in entregas -%}
+          {%- assign eq = en.data | date: "%Y%m%d" | plus: 0 -%}
+          {%- if eq > anterior and eq <= quando -%}
+            {% include schedule_row_entrega.html entrega=en %}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {% include schedule_row_encontro.html linha=linha %}
+        {%- assign anterior = quando -%}
+      {%- endfor -%}
+
+      {%- unless semana_atual == "" -%}</div>{%- endunless -%}
+
+      {%- comment -%} Entrega posterior ao último Encontro, se houver {%- endcomment -%}
+      {%- for en in entregas -%}
+        {%- assign eq = en.data | date: "%Y%m%d" | plus: 0 -%}
+        {%- if eq > anterior -%}
+          {% include schedule_row_entrega.html entrega=en %}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- unless modulo_atual == "" -%}</div></section>{%- endunless -%}
+    </div>
+  </div>
+</div>

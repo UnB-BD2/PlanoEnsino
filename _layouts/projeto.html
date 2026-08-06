@@ -1,0 +1,52 @@
+---
+layout: default
+---
+{%- comment -%}
+  Projeto Integrado (RF-05): a especificação em texto, seguida das quatro
+  Entregas em cards gerados de _data/entregas.yml.
+{%- endcomment -%}
+
+<div class="container">
+  {% include breadcrumbs.html %}
+
+  <header class="page-head">
+    {%- if page.eyebrow -%}<p class="page-head__eyebrow">{{ page.eyebrow }}</p>{%- endif -%}
+    <h1>{{ page.titulo }}</h1>
+    {%- if page.resumo -%}<p class="page-head__lead">{{ page.resumo }}</p>{%- endif -%}
+  </header>
+
+  <div class="with-toc">
+    {% include toc.html html=content %}
+
+    <div class="prose">
+      {{ content }}
+
+      <h2 id="entregas">As quatro Entregas</h2>
+      <p>
+        Peso crescente: a Squad erra barato no começo e é cobrada com rigor no
+        fim. Cada Entrega tem página própria com o <em>checklist</em> de aceite
+        que a monitoria usa na correção.
+      </p>
+
+      <div class="grid grid--wide">
+        {%- for en in site.data.entregas -%}
+          {%- assign pagina = site.entregas | where: "entrega_id", en.id | first -%}
+          <article class="card card--link entrega-card">
+            <p class="card__meta">
+              <span class="entrega-card__id">{{ en.id }}</span>
+              <span class="badge badge--semana">Semana {{ en.semana }}</span>
+              <span class="badge badge--peso">{{ en.peso }}%</span>
+            </p>
+            <h3 class="card__title">
+              {%- if pagina -%}
+                <a href="{{ pagina.url | relative_url }}">{{ en.titulo }}</a>
+              {%- else -%}{{ en.titulo }}{%- endif -%}
+            </h3>
+            <p class="card__excerpt">{{ en.resumo }}</p>
+            <p class="card__meta">Entrega em {{ en.data | date: "%d/%m/%Y" }}</p>
+          </article>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>

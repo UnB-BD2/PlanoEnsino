@@ -1,0 +1,120 @@
+// ---------------------------------------------------------------------------
+// Tabelas de rubrica: faixas (ADR) e critérios com peso (Entrega, Seminário).
+// Cada rubrica é linkável por âncora — é o conteúdo mais procurado do site.
+// ---------------------------------------------------------------------------
+
+.rubric {
+  margin-bottom: var(--space-7);
+  scroll-margin-top: calc(var(--header-h) + var(--space-5));
+}
+
+.rubric__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.rubric__title {
+  margin: 0;
+  font-size: var(--size-lg);
+}
+
+.rubric__escala {
+  font-size: var(--size-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.rubric__nota {
+  font-size: var(--size-sm);
+  color: var(--text-muted);
+  max-width: var(--measure);
+  margin-bottom: var(--space-4);
+}
+
+// Coluna de faixa/peso estreita e tabular; a descrição toma o resto.
+.rubric table { table-layout: auto; }
+
+.rubric__faixa,
+.rubric__peso {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+  white-space: nowrap;
+  width: 1%;
+}
+
+.rubric__faixa { color: var(--accent); }
+.rubric__peso { color: var(--accent-2); }
+
+.rubric tbody tr:hover { background: var(--code-bg); }
+
+.rubric__criterio { font-weight: 650; }
+
+.rubric__total td {
+  border-top: 2px solid var(--border);
+  font-weight: 650;
+  background: var(--code-bg);
+}
+
+// --- Barra de pesos da avaliação -----------------------------------------
+.pesos {
+  display: flex;
+  width: 100%;
+  height: 2.5rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin-bottom: var(--space-3);
+}
+
+.pesos__seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--size-xs);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  color: var(--bg);
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+
+  &:nth-child(1) { background: var(--accent); }
+  &:nth-child(2) { background: var(--accent-2); }
+  &:nth-child(3) { background: color-mix(in srgb, var(--accent) 62%, var(--text-muted)); }
+  &:nth-child(4) { background: var(--text-muted); }
+}
+
+.pesos-legenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  list-style: none;
+  margin: 0 0 var(--space-6);
+  padding: 0;
+  font-size: var(--size-sm);
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+  }
+
+  .swatch {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 2px;
+    flex: none;
+
+    &--1 { background: var(--accent); }
+    &--2 { background: var(--accent-2); }
+    &--3 { background: color-mix(in srgb, var(--accent) 62%, var(--text-muted)); }
+    &--4 { background: var(--text-muted); }
+  }
+}

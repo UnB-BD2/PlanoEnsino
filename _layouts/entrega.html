@@ -1,0 +1,79 @@
+---
+layout: default
+---
+{%- comment -%}
+  Página de uma Entrega. Escopo, data, peso e checklist vêm de
+  _data/entregas.yml — a página em _entregas/ só declara `entrega_id` e o texto
+  livre de orientação. Mexer no prazo é editar o YAML, em um lugar só.
+{%- endcomment -%}
+
+{%- assign en = site.data.entregas | where: "id", page.entrega_id | first -%}
+
+<div class="container">
+  <nav class="breadcrumbs" aria-label="Trilha de navegação">
+    <ol>
+      <li><a href="{{ '/' | relative_url }}">Início</a></li>
+      <li><a href="{{ '/projeto/' | relative_url }}">Projeto Integrado</a></li>
+      <li><span aria-current="page">{{ en.id }}</span></li>
+    </ol>
+  </nav>
+
+  <header class="page-head">
+    <p class="page-head__eyebrow">
+      <span class="badge badge--peso">Entrega {{ en.id }} · {{ en.peso }}% da nota</span>
+      <span class="badge badge--semana">Semana {{ en.semana }}</span>
+    </p>
+    <h1>{{ en.titulo }}</h1>
+    <p class="page-head__lead">{{ en.resumo }}</p>
+  </header>
+
+  <div class="prose">
+    <dl class="factsheet">
+      <dt>Prazo</dt>
+      <dd><time datetime="{{ en.data | date: '%Y-%m-%d' }}">{{ en.data | date: "%d/%m/%Y" }}</time></dd>
+      <dt>Peso</dt>
+      <dd>{{ en.peso }}% da nota final</dd>
+      <dt>Semana</dt>
+      <dd><a href="{{ '/cronograma/' | relative_url }}">Semana {{ en.semana }} no cronograma</a></dd>
+      <dt>Onde entregar</dt>
+      <dd>No repositório público da Squad, com a tag <code>{{ en.id | downcase }}</code></dd>
+    </dl>
+
+    {{ content }}
+
+    <h2 id="checklist">Checklist de aceite</h2>
+    <p>
+      É o que a monitoria confere na correção. Item não atendido não zera a
+      Entrega, mas pesa nos critérios de <a href="{{ '/avaliacao/#rubrica-entrega' | relative_url }}">funcionamento e reprodutibilidade</a>.
+    </p>
+    <ul class="checklist">
+      {%- for item in en.checklist -%}<li>{{ item }}</li>{%- endfor -%}
+    </ul>
+
+    {% include callout.html tipo="atencao" texto="A rubrica de Entrega vale igual para E1 a E4. O que muda é o peso na nota final — e a expectativa de maturidade. Consulte a [rubrica completa](/avaliacao/#rubrica-entrega) antes de entregar." %}
+
+    {%- comment -%} --- Navegação entre Entregas ------------------------- {%- endcomment -%}
+    {%- assign todas = site.data.entregas -%}
+    {%- assign indice = 0 -%}
+    {%- for e in todas -%}
+      {%- if e.id == page.entrega_id -%}{%- assign indice = forloop.index0 -%}{%- endif -%}
+    {%- endfor -%}
+
+    <nav class="pagination" aria-label="Navegação entre Entregas">
+      {%- if indice > 0 -%}
+        {%- assign i_anterior = indice | minus: 1 -%}
+        {%- assign anterior = todas[i_anterior] -%}
+        {%- assign pa = site.entregas | where: "entrega_id", anterior.id | first -%}
+        <a href="{{ pa.url | relative_url }}">← {{ anterior.id }} — {{ anterior.titulo }}</a>
+      {%- else -%}<span></span>{%- endif -%}
+
+      {%- assign ultimo = todas.size | minus: 1 -%}
+      {%- if indice < ultimo -%}
+        {%- assign i_proxima = indice | plus: 1 -%}
+        {%- assign proxima = todas[i_proxima] -%}
+        {%- assign pp = site.entregas | where: "entrega_id", proxima.id | first -%}
+        <a href="{{ pp.url | relative_url }}">{{ proxima.id }} — {{ proxima.titulo }} →</a>
+      {%- else -%}<span></span>{%- endif -%}
+    </nav>
+  </div>
+</div>

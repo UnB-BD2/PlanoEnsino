@@ -1,0 +1,67 @@
+{%- comment -%}
+  Diagrama do ciclo de vida do dado (§6.3), o fio condutor da disciplina.
+
+  SVG inline, com <title> e <desc> — quem usa leitor de tela recebe a mesma
+  informação que quem vê o desenho. As cores vêm dos tokens, então o diagrama
+  acompanha o modo escuro sem uma segunda versão.
+{%- endcomment -%}
+
+<figure class="diagram">
+  <svg viewBox="0 0 880 210" role="img" aria-labelledby="ciclo-t ciclo-d"
+       width="880" height="210" style="max-width:100%;height:auto">
+    <title id="ciclo-t">O ciclo de vida do dado, da geração ao consumo</title>
+    <desc id="ciclo-d">
+      Cinco estágios em sequência: geração na fonte transacional; armazenamento
+      em formato aberto; ingestão em lote e por captura de mudanças;
+      transformação versionada e testada; consumo por painel analítico e busca
+      semântica. Atravessando os cinco, quatro correntes contínuas: segurança e
+      LGPD, gestão de dados, engenharia de software de dados, e arquitetura e
+      orquestração. Cada estágio corresponde a um módulo da disciplina.
+    </desc>
+
+    <g font-family="Inter, system-ui, sans-serif" font-size="13">
+      {%- assign estagios = "Geração|Armazenamento|Ingestão|Transformação|Consumo" | split: "|" -%}
+      {%- assign semanas = "Semanas 1–5|Semanas 2–8|Semanas 5–8|Semanas 9–12|Semanas 13–15" | split: "|" -%}
+
+      {%- for e in estagios -%}
+        {%- assign x = forloop.index0 | times: 172 | plus: 12 -%}
+        <g>
+          <rect x="{{ x }}" y="28" width="152" height="62" rx="6"
+                fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="{{ x | plus: 76 }}" y="54" text-anchor="middle"
+                fill="var(--text)" font-weight="650">{{ e }}</text>
+          <text x="{{ x | plus: 76 }}" y="74" text-anchor="middle"
+                fill="var(--text-muted)" font-size="11">{{ semanas[forloop.index0] }}</text>
+        </g>
+        {%- unless forloop.last -%}
+          <path d="M{{ x | plus: 154 }} 59 h14" stroke="var(--accent)" stroke-width="1.5"
+                marker-end="url(#seta)"/>
+        {%- endunless -%}
+      {%- endfor -%}
+
+      <defs>
+        <marker id="seta" viewBox="0 0 8 8" refX="7" refY="4"
+                markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0 0 L8 4 L0 8 z" fill="var(--accent)"/>
+        </marker>
+      </defs>
+
+      {%- comment -%} Correntes que atravessam todos os estágios {%- endcomment -%}
+      {%- assign correntes = "Segurança e LGPD|Gestão de dados|Engenharia de software de dados|Arquitetura e orquestração" | split: "|" -%}
+      {%- for c in correntes -%}
+        {%- assign y = forloop.index0 | times: 24 | plus: 112 -%}
+        <rect x="12" y="{{ y }}" width="856" height="19" rx="4"
+              fill="var(--accent-2-wash)" stroke="var(--accent-2)" stroke-width="0.75"/>
+        <text x="24" y="{{ y | plus: 14 }}" fill="var(--text-muted)" font-size="11">{{ c }}</text>
+      {%- endfor -%}
+
+      <text x="12" y="18" fill="var(--text-muted)" font-size="11"
+            letter-spacing="0.08em">O DADO EM REPOUSO, EM TRÂNSITO, EM USO E COMO ATIVO</text>
+    </g>
+  </svg>
+  <figcaption>
+    O ciclo de vida do dado e as correntes que o atravessam. Cada estágio
+    corresponde a um módulo da disciplina, e o Projeto Integrado percorre os
+    cinco.
+  </figcaption>
+</figure>

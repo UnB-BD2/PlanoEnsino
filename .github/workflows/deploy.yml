@@ -1,0 +1,87 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          # Fonte única da versão de Ruby: o mesmo .ruby-version que o
+          # Dockerfile lê no build local (RNF-02).
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      # Exige que o Pages já esteja ligado com origem "GitHub Actions" em
+      # Settings → Pages. Não dá para automatizar aqui: o input `enablement`
+      # desta action precisa de um token com permissão de administração, e o
+      # GITHUB_TOKEN padrão não tem. Se este passo falhar com "Get Pages site
+      # failed", é isso — ligue o Pages e rode o workflow de novo.
+      - name: Configurar Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      # O `baseurl` do _config.yml é o do endereço final (/Disciplina) e serve
+      # ao desenvolvimento local. Em produção quem manda é o caminho que o Pages
+      # de fato serve: enquanto o repositório não for renomeado, ele é outro, e
+      # publicar com o caminho errado quebraria CSS, fontes e todos os links.
+      - name: Ajustar url e baseurl ao que o Pages serve
+        run: |
+          cat > _config.pages.yml <<EOF
+          url: "${{ steps.pages.outputs.origin }}"
+          baseurl: "${{ steps.pages.outputs.base_path }}"
+          repository: "${{ github.repository }}"
+          branch: "${{ github.ref_name }}"
+          EOF
+          echo "Publicando em ${{ steps.pages.outputs.base_url }}"
+          cat _config.pages.yml
+
+          esperado=$(grep -E '^baseurl:' _config.yml | sed 's/.*"\(.*\)".*/\1/')
+          servido="${{ steps.pages.outputs.base_path }}"
+          if [ "$esperado" != "$servido" ]; then
+            echo "::warning title=baseurl divergente::_config.yml declara '$esperado' mas o Pages serve '$servido'. O site vai funcionar, mas os links absolutos que apontam para o endereço final só resolvem depois que o repositório for renomeado."
+          fi
+
+      - name: Build
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build --config _config.yml,_config.pages.yml
+
+      # Rede de segurança: main é protegida e a CI já roda isto em cada PR, mas
+      # um merge administrativo ou um push forçado passariam por fora. Publicar
+      # link interno quebrado é mais caro que dez segundos de checagem.
+      - name: Verificar links internos
+        run: |
+          bundle exec htmlproofer ./_site \
+            --disable-external \
+            --allow-hash-href \
+            --swap-urls "^${{ steps.pages.outputs.base_path }}:"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

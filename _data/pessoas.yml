@@ -1,0 +1,34 @@
+# Docência e monitoria da Oferta viva.
+#
+# Só dado institucional de quem tem vínculo docente ou de monitoria. Estudante
+# não entra aqui em hipótese alguma — nem com consentimento, porque esta página
+# não é o lugar disso.
+# Ver docs/adr/0005-vitrine-identifica-squad-nao-pessoa.md
+#
+# PENDENTE (D6): composição de docentes e monitoria de 2026/2 a confirmar.
+# Para acrescentar alguém, copie um bloco. Campo vazio pode ser omitido — o card
+# se adapta. `foto` é opcional; sem foto, o card mostra as iniciais.
+
+docentes:
+  - nome: "Carla Rocha"
+    papel: "Professora"
+    # foto: /assets/img/pessoas/carla-rocha.jpg   # sem foto, o card usa as iniciais
+    bio: >-
+      Professora do Departamento de Engenharia de Software (FCTE/UnB) e
+      pesquisadora do Lab Livre. Trabalha com engenharia de dados, software
+      livre e métodos de decisão técnica baseada em evidência.
+    email: caguiar@unb.br
+    # PENDENTE (D6): preencher com as URLs reais. Link vazio ou inventado quebra
+    # o html-proofer na CI — deixe comentado até ter a URL correta.
+    # links:
+    #   github: https://github.com/...
+    #   lattes: https://lattes.cnpq.br/...
+    #   orcid: https://orcid.org/...
+
+monitoria: []
+# PENDENTE (D6): composição da monitoria de 2026/2.
+# Copie o bloco abaixo, descomente e preencha:
+#  - nome: ""
+#    papel: "Monitoria"
+#    bio: ""
+#    email: ""

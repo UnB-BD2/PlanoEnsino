@@ -1,0 +1,22 @@
+---
+# Front matter vazio: sem ele o Jekyll não compila este arquivo.
+# Uma única folha de estilo — inclusive a de impressão — para não custar uma
+# segunda requisição (RNF-05).
+#
+# @use, e não @import: o segundo está a caminho da remoção no Dart Sass 3.
+---
+
+@use "tokens";
+@use "base";
+@use "typography";
+@use "layout";
+@use "header";
+@use "footer";
+@use "home";
+@use "card";
+@use "callout";
+@use "cronograma";
+@use "rubric";
+@use "code";
+@use "dark";
+@use "print";

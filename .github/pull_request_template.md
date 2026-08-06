@@ -41,5 +41,5 @@ A MIT deste repositório não relicencia obra alheia.
 - [ ] Este PR **não** traz material da proposta de Challenge-Based Learning
       (`Proposta_Disciplina_SBD2_…`, `Planejamento_SBD2_Challenge_…`), que
       contradiz o Plano de Ensino vigente
-- [ ] Este PR **não** altera peso ou rubrica de avaliação. Se altera, o
+- [ ] Este PR **não** altera peso ou critério de avaliação. Se altera, o
       documento aprovado pelo colegiado mudou antes — link:

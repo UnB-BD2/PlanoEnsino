@@ -159,7 +159,7 @@ correção verifica.
   <li>O ADR cabe em duas páginas</li>
 </ul>
 
-A [rubrica completa]({{ '/avaliacao/#rubrica-adr' | relative_url }}) está na
+A [avaliação completa]({{ '/avaliacao/#avaliacao-adr' | relative_url }}) está na
 página de avaliação.
 
 ## Exemplos anotados: os ADRs deste site
@@ -211,7 +211,7 @@ site. Você desambigua por quem escreve, não por um termo diferente.
 
 ### Por que eles ficariam na faixa 5–6
 
-Vale dizer abertamente: aplicada a rubrica da disciplina, **esses ADRs não
+Vale dizer abertamente: aplicada a avaliação da disciplina, **esses ADRs não
 passariam da faixa 5–6**. Eles têm contexto, alternativas com a opção nula,
 consequências específicas e o que se torna irreversível. O que não têm é
 **medição reproduzível**.
@@ -221,7 +221,7 @@ a medir.
 
 Uma decisão de esquema de banco tem: você popula as duas modelagens, roda a
 consulta que importa, lê o plano de execução e compara. Quem não mede está
-adivinhando, e a rubrica cobra isso com razão.
+adivinhando, e a avaliação cobra isso com razão.
 
 Uma decisão sobre a unidade de conteúdo de um site não tem. O
 [ADR-0003](https://github.com/{{ site.repository }}/blob/{{ site.branch }}/docs/adr/0003-encontro-como-unidade-de-conteudo.md)
@@ -230,7 +230,7 @@ real é conflito de edição entre duas autoras e clareza de titularidade — n�
 *benchmark* que produza esse número, e inventar uma métrica para parecer
 rigoroso seria pior do que assumir a ausência.
 
-O que a rubrica pede, então, não é medição sempre. É **evidência apropriada à
+O que a avaliação pede, então, não é medição sempre. É **evidência apropriada à
 natureza da decisão**, e honestidade quando ela não existe. Um ADR que diz "não
 medimos, porque o critério aqui é organizacional, e eis o raciocínio" é melhor
 do que um que fabrica um *benchmark* irrelevante — este último cai na faixa 0–4,

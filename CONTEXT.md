@@ -58,7 +58,7 @@ _Avoid_: programa, syllabus
 
 **"Projeto"** colide: o **Projeto Integrado** do estudante e o próprio site. Resolvido: o termo do estudante é sempre escrito por extenso; o site é "o site", nunca "o projeto".
 
-**"ADR"** tem dois autores possíveis: a **Squad**, que produz o artefato avaliado, e a docente, que registra decisões sobre o site. A colisão é deliberada — os ADRs do site servem de exemplo de forma na disciplina, inclusive por não alcançarem a faixa alta da rubrica. Desambigua-se por quem escreve, não por termo distinto.
+**"ADR"** tem dois autores possíveis: a **Squad**, que produz o artefato avaliado, e a docente, que registra decisões sobre o site. A colisão é deliberada — os ADRs do site servem de exemplo de forma na disciplina, inclusive por não alcançarem a faixa alta da avaliação. Desambigua-se por quem escreve, não por termo distinto.
 
 ---
 

@@ -1,16 +1,19 @@
 {%- comment -%}
-  Tabela de rubrica, linkável por âncora (RF-06). Aceita as duas formas:
-  faixas (rubrica de ADR) e critérios com peso (Entrega, Seminário).
+  Tabela de avaliação, linkável por âncora (RF-06). Aceita as duas formas:
+  faixas (avaliação de ADR) e critérios com peso (Entrega, Seminário).
 
-  Uso: {% include rubric_table.html rubrica=r %}
+  Uso: {% include rubric_table.html avaliacao=a %}
+
+  As classes CSS seguem chamando-se .rubric__* — são identificador de
+  código, não texto lido por ninguém.
 {%- endcomment -%}
 
-{%- assign r = include.rubrica -%}
+{%- assign r = include.avaliacao -%}
 
-<section class="rubric" id="rubrica-{{ r.id }}">
+<section class="rubric" id="avaliacao-{{ r.id }}">
   <div class="rubric__head">
     <h3 class="rubric__title">
-      <a href="#rubrica-{{ r.id }}" aria-label="Link para {{ r.titulo }}">{{ r.titulo }}</a>
+      <a href="#avaliacao-{{ r.id }}" aria-label="Link para {{ r.titulo }}">{{ r.titulo }}</a>
     </h3>
     {%- if r.escala %}<span class="rubric__escala">{{ r.escala }}</span>{% endif -%}
   </div>

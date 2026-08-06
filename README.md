@@ -6,7 +6,7 @@ Software — FCTE/Universidade de Brasília), publicado como site estático:
 **<https://unb-bd2.github.io/Disciplina/>**
 
 O site é a fonte única de verdade da disciplina: Plano de Ensino, cronograma,
-material dos Encontros, especificação do Projeto Integrado, rubricas de
+material dos Encontros, especificação do Projeto Integrado, critérios de
 avaliação, guia de ADR, stack de ferramentas e bibliografia.
 
 ## Rodar localmente
@@ -38,7 +38,7 @@ Outros alvos:
 | acrescentar um Encontro | um arquivo em `_encontros/` + uma linha em `_data/cronograma.yml` |
 | corrigir o cronograma | `_data/cronograma.yml` |
 | mudar o menu | `_data/nav.yml` |
-| mexer em pesos e rubricas | `_data/avaliacao.yml` |
+| mexer em pesos e critérios de avaliação | `_data/avaliacao.yml` |
 | detalhar uma Entrega | `_data/entregas.yml` e a página em `_entregas/` |
 | acrescentar alguém à equipe | `_data/pessoas.yml` |
 | publicar um aviso | um arquivo em `_announcements/` |

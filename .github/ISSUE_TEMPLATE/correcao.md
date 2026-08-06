@@ -1,6 +1,6 @@
 ---
 name: Correção
-about: Erro de texto, link quebrado, dado errado no cronograma ou na rubrica
+about: Erro de texto, link quebrado, dado errado no cronograma ou na avaliação
 title: "Correção: "
 labels: correcao
 ---

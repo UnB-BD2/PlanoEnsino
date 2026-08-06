@@ -31,7 +31,7 @@ a especificação do [Projeto Integrado]({{ '/projeto/' | relative_url }}), os
 [Seminário]({{ '/seminarios/' | relative_url }}) e as seções de "erros que se
 repetem".
 
-**Os 32 [Encontros]({{ '/encontros/' | relative_url }}).** Títulos, objetivos de
+**Os [Encontros]({{ '/encontros/' | relative_url }}).** Títulos, objetivos de
 aprendizagem, indicações de leitura prévia, material complementar e o texto de
 orientação de cada sessão.
 
@@ -42,9 +42,9 @@ isso mesmo ainda **não conferida** contra o calendário acadêmico oficial.
 ## O que não foi
 
 **O Plano de Ensino.** Objetivo geral, as dez competências, o Método de Decisão
-em seis passos, a metodologia, a ementa das 16 Semanas, os pesos, as rubricas e
-a bibliografia vêm do **documento aprovado pelo colegiado**. O agente
-transcreveu e formatou; não redigiu.
+em seis passos, a metodologia, a ementa das 16 Semanas, os pesos, os critérios
+de avaliação e a bibliografia vêm do **documento aprovado pelo colegiado**. O
+agente transcreveu e formatou; não redigiu.
 
 **O desenho do site.** A especificação, o vocabulário do projeto e as decisões
 de arquitetura registradas em `docs/adr/` são da docência. O agente as
@@ -60,12 +60,12 @@ erro mais difícil de flagrar do que num rascunho humano. Onde vale desconfiar:
 |---|---|
 | Referência bibliográfica com capítulo | O número do capítulo. Os links foram verificados automaticamente; a correspondência entre capítulo e assunto, não |
 | Data do cronograma ou prazo de Entrega | O calendário oficial da Oferta. As datas publicadas são provisórias |
-| Peso ou faixa de rubrica | O documento aprovado pelo colegiado. Se divergir, **o documento prevalece** e o site está errado |
+| Peso ou faixa de avaliação | O documento aprovado pelo colegiado. Se divergir, **o documento prevalece** e o site está errado |
 | Objetivo de aprendizagem de um Encontro | Com a docência. São rascunho até a Semana ser preparada |
 
-Duas coisas **não** dependem de revisão para valer: os pesos e as rubricas, que
-foram transcritos do documento aprovado, e o texto do Plano de Ensino. Se
-qualquer um dos dois divergir do documento, é erro de transcrição — e a regra
+Duas coisas **não** dependem de revisão para valer: os pesos e os critérios de
+avaliação, que foram transcritos do documento aprovado, e o texto do Plano de
+Ensino. Se qualquer um dos dois divergir do documento, é erro de transcrição — e a regra
 está registrada em
 [ADR-0004](https://github.com/{{ site.repository }}/blob/{{ site.branch }}/docs/adr/0004-site-como-texto-publicado-do-plano-de-ensino.md).
 

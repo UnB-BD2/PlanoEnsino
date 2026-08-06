@@ -1,11 +1,11 @@
 ---
 layout: page
-title: "Avaliação e rubricas"
-titulo: "Avaliação e rubricas"
+title: "Avaliação"
+titulo: "Avaliação"
 permalink: /avaliacao/
 resumo: >-
-  Os quatro componentes da nota, seus pesos, e as rubricas de ADR, de Entrega e
-  de Seminário Técnico.
+  Os quatro componentes da nota, seus pesos, e as avaliações de ADR, de Entrega
+  e de Seminário Técnico.
 ---
 
 {%- assign a = site.data.avaliacao -%}
@@ -48,13 +48,13 @@ percorreu o ciclo inteiro.
 
 {% include callout.html tipo="nota" texto="Estas regras valem para a Oferta inteira. Alterá-las no meio do semestre seria mudar a regra do jogo — o texto aqui publicado acompanha o documento aprovado pelo colegiado, e não o contrário." %}
 
-## Rubricas
+## Como cada instrumento é avaliado
 
-Cada rubrica abaixo tem âncora própria: o link direto funciona e pode ser colado
-numa correção ou numa dúvida.
+Cada avaliação abaixo tem âncora própria: o link direto funciona e pode ser
+colado numa correção ou numa dúvida.
 
-{% assign r_adr = a.rubricas | where: "id", "adr" | first %}
-{% include rubric_table.html rubrica=r_adr %}
+{% assign av_adr = a.avaliacoes | where: "id", "adr" | first %}
+{% include rubric_table.html avaliacao=av_adr %}
 
 O ponto que costuma surpreender: **a nota não depende de a escolha ter sido a
 melhor.** Uma Squad que escolheu MongoDB, mediu, viu que perdeu em consulta
@@ -67,16 +67,16 @@ dizer **o que se perde**. Consequência tratada de forma genérica — "pode hav
 aumento de complexidade" — é o sinal mais comum de que o compromisso não foi
 realmente examinado.
 
-{% assign r_entrega = a.rubricas | where: "id", "entrega" | first %}
-{% include rubric_table.html rubrica=r_entrega %}
+{% assign av_entrega = a.avaliacoes | where: "id", "entrega" | first %}
+{% include rubric_table.html avaliacao=av_entrega %}
 
 Vale igual para E1 a E4; o que muda é o peso na nota final e a maturidade
 esperada. *Funcionamento e reprodutibilidade* é o critério que mais reprova: a
 plataforma precisa subir do zero, em máquina limpa, a partir do repositório.
 Rodar na máquina de quem escreveu não conta.
 
-{% assign r_sem = a.rubricas | where: "id", "seminario" | first %}
-{% include rubric_table.html rubrica=r_sem %}
+{% assign av_sem = a.avaliacoes | where: "id", "seminario" | first %}
+{% include rubric_table.html avaliacao=av_sem %}
 
 ## Participação nos Encontros
 

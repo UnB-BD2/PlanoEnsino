@@ -13,7 +13,7 @@ objetivos:
 ---
 
 A ordem de apresentação é sorteada na Semana 11. Os temas disponíveis, as regras
-de inscrição e a rubrica estão em [Seminários Técnicos](/seminarios/).
+de inscrição e a avaliação estão em [Seminários Técnicos](/seminarios/).
 
 Quem não apresenta nesta rodada participa da arguição — e isso conta como
 participação nos Encontros.

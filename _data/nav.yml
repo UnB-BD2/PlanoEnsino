@@ -14,8 +14,7 @@
 - titulo: "Projeto Integrado"
   curto: "Projeto"
   url: /projeto/
-- titulo: "Avaliação e rubricas"
-  curto: "Avaliação"
+- titulo: "Avaliação"
   url: /avaliacao/
 - titulo: "Guia de ADR"
   curto: "ADR"

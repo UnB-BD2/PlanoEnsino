@@ -44,13 +44,13 @@ layout: default
     <h2 id="checklist">Checklist de aceite</h2>
     <p>
       É o que a monitoria confere na correção. Item não atendido não zera a
-      Entrega, mas pesa nos critérios de <a href="{{ '/avaliacao/#rubrica-entrega' | relative_url }}">funcionamento e reprodutibilidade</a>.
+      Entrega, mas pesa nos critérios de <a href="{{ '/avaliacao/#avaliacao-entrega' | relative_url }}">funcionamento e reprodutibilidade</a>.
     </p>
     <ul class="checklist">
       {%- for item in en.checklist -%}<li>{{ item }}</li>{%- endfor -%}
     </ul>
 
-    {% include callout.html tipo="atencao" texto="A rubrica de Entrega vale igual para E1 a E4. O que muda é o peso na nota final — e a expectativa de maturidade. Consulte a [rubrica completa](/avaliacao/#rubrica-entrega) antes de entregar." %}
+    {% include callout.html tipo="atencao" texto="A avaliação de Entrega vale igual para E1 a E4. O que muda é o peso na nota final — e a expectativa de maturidade. Consulte a [avaliação completa](/avaliacao/#avaliacao-entrega) antes de entregar." %}
 
     {%- comment -%} --- Navegação entre Entregas ------------------------- {%- endcomment -%}
     {%- assign todas = site.data.entregas -%}

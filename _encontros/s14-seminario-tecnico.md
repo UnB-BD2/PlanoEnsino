@@ -12,4 +12,4 @@ objetivos:
   - "Comunicar para público misto — técnico e de gestão"
 ---
 
-Regras, temas e rubrica em [Seminários Técnicos](/seminarios/).
+Regras, temas e avaliação em [Seminários Técnicos](/seminarios/).

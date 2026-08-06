@@ -13,7 +13,6 @@ resumo: >-
 
 {% assign a = site.data.avaliacao %}
 
-{% include callout.html tipo="nota" texto="Esta página é o **texto publicado** do Plano de Ensino: é o que a turma lê, e aceita correção por pull request. O **documento aprovado pelo colegiado** é o registro formal e não muda dentro de uma Oferta. Se os dois divergirem, esta página está errada — e a correção é aqui, não lá." %}
 
 ## Identificação
 
@@ -82,8 +81,8 @@ produzidos no semestre:
 O instrumento é o **ADR** (*Architecture Decision Record*), no formato Nygard:
 contexto, decisão, status, consequências. Cada Squad mantém um portfólio
 versionado no próprio repositório, com **5 ADRs obrigatórios** ao longo do
-semestre. O [guia de ADR]({{ '/adr/' | relative_url }}) traz o template e a
-rubrica.
+semestre. O [guia de ADR]({{ '/adr/' | relative_url }}) traz o template e os
+critérios de avaliação.
 
 ## Metodologia
 
@@ -153,9 +152,8 @@ está em [Projeto Integrado]({{ '/projeto/' | relative_url }}).
 </table>
 </div>
 
-As rubricas completas — de ADR, de Entrega e de Seminário — estão em
-[Avaliação e rubricas]({{ '/avaliacao/' | relative_url }}), cada uma linkável
-por âncora.
+As avaliações completas — de ADR, de Entrega e de Seminário — estão em
+[Avaliação]({{ '/avaliacao/' | relative_url }}), cada uma linkável por âncora.
 
 ## Uso de assistentes e agentes de IA
 
@@ -169,7 +167,7 @@ nos instrumentos que medem entendimento individual — arguições presenciais,
 quizzes, avaliação por pares e ensaio de reflexão crítica.
 
 A política regula **como** os instrumentos deste plano são conduzidos; ela não
-altera peso, rubrica nem critério de avaliação.
+altera peso nem critério de avaliação.
 
 ## Plano das 16 Semanas
 

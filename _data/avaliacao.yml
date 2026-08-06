@@ -1,4 +1,4 @@
-# Pesos e rubricas de avaliação.
+# Pesos e critérios de avaliação.
 #
 # Este arquivo publica o que o colegiado aprovou. Alterar peso ou faixa aqui é
 # alterar a regra do jogo — só depois de o documento aprovado mudar.
@@ -22,9 +22,9 @@ componentes:
     detalhe: "Participação ativa em sala, com leitura prévia feita"
     link: /encontros/
 
-rubricas:
+avaliacoes:
   - id: adr
-    titulo: "Rubrica de ADR"
+    titulo: "Avaliação de ADR"
     escala: "0 a 10, por ADR"
     nota: >-
       A nota não depende de a escolha ter sido a melhor. Depende de a carga ter
@@ -50,7 +50,7 @@ rubricas:
           irreprodutível.
 
   - id: entrega
-    titulo: "Rubrica de Entrega"
+    titulo: "Avaliação de Entrega"
     escala: "0 a 10, por Entrega, aplicada a E1 a E4"
     nota: >-
       Os cinco critérios somam 100% da nota da Entrega. O peso da Entrega na
@@ -83,7 +83,7 @@ rubricas:
           diário de bordo semanal.
 
   - id: seminario
-    titulo: "Rubrica de Seminário Técnico"
+    titulo: "Avaliação de Seminário Técnico"
     escala: "0 a 10"
     nota: >-
       Vinte minutos de apresentação e dez de arguição, para público misto —

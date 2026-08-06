@@ -95,7 +95,7 @@ couber, das instâncias disciplinares da Universidade.
 
 Esta política **complementa** o [Plano de Ensino]({{ '/plano-ensino/' | relative_url }}):
 ela regula como os instrumentos já previstos podem ser conduzidos. Ela não
-altera peso, rubrica nem critério de
+altera peso nem critério de
 [avaliação]({{ '/avaliacao/' | relative_url }}) — esses continuam sendo os do
 documento aprovado pelo colegiado.
 

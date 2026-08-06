@@ -12,4 +12,4 @@ objetivos:
   - "Ligar o tema apresentado às decisões tomadas na própria plataforma"
 ---
 
-Regras, temas e rubrica em [Seminários Técnicos](/seminarios/).
+Regras, temas e avaliação em [Seminários Técnicos](/seminarios/).

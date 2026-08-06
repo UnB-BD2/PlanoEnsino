@@ -25,7 +25,7 @@ quem estudou o assunto a fundo.
   <dt>Peso</dt><dd>{{ s.formato.peso }}</dd>
 </dl>
 
-{% include callout.html tipo="atencao" titulo="Seminário sem experimento é resenha" texto="O entregável inclui **um experimento reprodutível, ainda que mínimo**. Pode ser um contêiner que sobe a ferramenta e roda uma consulta comparativa contra a plataforma da própria Squad — mas precisa existir e rodar. A rubrica cobra isso em domínio técnico." %}
+{% include callout.html tipo="atencao" titulo="Seminário sem experimento é resenha" texto="O entregável inclui **um experimento reprodutível, ainda que mínimo**. Pode ser um contêiner que sobe a ferramenta e roda uma consulta comparativa contra a plataforma da própria Squad — mas precisa existir e rodar. A avaliação cobra isso em domínio técnico." %}
 
 ## Inscrição
 
@@ -74,7 +74,7 @@ roadmap de Engenharia de Dados, e estar fora do que os Encontros cobrem.
 
 ## Como se avalia
 
-A [rubrica de Seminário]({{ '/avaliacao/#rubrica-seminario' | relative_url }})
+A [avaliação de Seminário]({{ '/avaliacao/#avaliacao-seminario' | relative_url }})
 tem quatro critérios. O que mais surpreende quem apresenta é o de **comunicação
 para público misto**: a banca tem perfil técnico e de gestão, e uma apresentação
 que só serve a uma das duas metades perde nota mesmo estando tecnicamente

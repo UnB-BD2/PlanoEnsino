@@ -90,10 +90,10 @@ roda em Docker Compose na máquina de vocês.
 
 ## Como o trabalho é avaliado
 
-Duas rubricas se aplicam. A [rubrica de Entrega]({{ '/avaliacao/#rubrica-entrega' | relative_url }})
+Duas avaliações se aplicam. A [avaliação de Entrega]({{ '/avaliacao/#avaliacao-entrega' | relative_url }})
 vale para E1 a E4, com cinco critérios: funcionamento e reprodutibilidade (30%),
 adequação técnica (25%), qualidade e testes de dados (20%), documentação e ADRs
-(15%), processo da Squad (10%). A [rubrica de ADR]({{ '/avaliacao/#rubrica-adr' | relative_url }})
+(15%), processo da Squad (10%). A [avaliação de ADR]({{ '/avaliacao/#avaliacao-adr' | relative_url }})
 avalia o portfólio, que corre por fora, valendo 15% da nota final.
 
 O critério que mais reprova é o primeiro: **a plataforma precisa subir do zero,

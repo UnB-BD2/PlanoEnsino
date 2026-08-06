@@ -120,7 +120,7 @@ Avisos não viram página própria; se o texto for longo, é post.
   `Planejamento_SBD2_Challenge_…`). É desenho anterior e contradiz o Plano de
   Ensino vigente em estrutura e em avaliação. Não entra em `static_files/`.
 - **Mudança de regra de avaliação** por edição de Markdown. O site publica o que
-  o colegiado aprovou; alterar peso ou rubrica no meio de uma Oferta é mudar a
+  o colegiado aprovou; alterar peso ou critério de avaliação no meio de uma Oferta é mudar a
   regra do jogo ([ADR-0004](./docs/adr/0004-site-como-texto-publicado-do-plano-de-ensino.md)).
 - **Analytics, cookies, embed que rastreia, CDN externo em runtime.** O site não
   observa quem o lê.

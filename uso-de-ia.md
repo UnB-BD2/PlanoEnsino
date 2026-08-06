@@ -83,9 +83,9 @@ capacidade de sustentá-la sob arguição. Não há detector de texto gerado, e
 nenhum seria confiável se houvesse.
 
 O que existe é a **defesa**, a arguição do
-[Seminário]({{ '/seminarios/' | relative_url }}) e a conversa no laboratório —
-onde a pergunta é sempre a mesma: por que assim, e o que você mediu para chegar
-aí. Quem construiu com ajuda e entendeu responde. Quem não construiu, não.
+[Seminário]({{ '/seminarios/' | relative_url }}) e a conversa em sala — onde a
+pergunta é sempre a mesma: por que assim, e o que você mediu para chegar aí.
+Quem construiu com ajuda e entendeu responde. Quem não construiu, não.
 
 Infração apurada é tratada nos termos do
 [Código de Conduta]({{ '/codigo-de-conduta/' | relative_url }}) e, quando

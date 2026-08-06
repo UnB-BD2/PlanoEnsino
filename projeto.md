@@ -22,8 +22,8 @@ não é obstáculo à disciplina; é o objeto dela.
 
 ## Formação das Squads
 
-Squads de **4 a 5 pessoas**, formadas no laboratório da Semana 1 e mantidas até
-a defesa. Menos de 4 sobrecarrega; mais de 5 esconde quem não participa.
+Squads de **4 a 5 pessoas**, formadas na Semana 1 e mantidas até a defesa.
+Menos de 4 sobrecarrega; mais de 5 esconde quem não participa.
 
 O trabalho acontece num **repositório público** da Squad, sob organização
 própria ou pessoal. Público desde o início: parte da avaliação é o processo

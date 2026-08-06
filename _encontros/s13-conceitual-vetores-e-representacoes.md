@@ -30,5 +30,5 @@ material de um ADR.
 busca. Um pedaço curto demais perde contexto; longo demais dilui o sinal. Não há
 valor universal: depende da estrutura do seu documento.
 
-A partir desta Semana, o Encontro de laboratório dá lugar aos
-[Seminários Técnicos](/seminarios/).
+A partir desta Semana, os [Seminários Técnicos](/seminarios/) entram ao lado do
+Encontro conceitual.

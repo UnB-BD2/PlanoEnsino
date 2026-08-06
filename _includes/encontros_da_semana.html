@@ -1,10 +1,12 @@
 {%- comment -%}
   Os demais Encontros da mesma Semana.
 
-  O par conceito/laboratório existe no domínio, mas deixou de coabitar o mesmo
-  arquivo quando o Encontro virou a unidade de conteúdo. A ligação é o número da
-  Semana, e reconstruí-la aqui é o que impede o modelo de perder informação —
-  ver docs/adr/0003-encontro-como-unidade-de-conteudo.md.
+  Quando uma Semana tem mais de um Encontro — as 13 a 15 têm conceitual e
+  seminário, a 16 tem banca e retrospectiva —, a ligação entre eles é o número
+  da Semana, e reconstruí-la aqui é o que impede o modelo de perder informação.
+  Ver docs/adr/0003-encontro-como-unidade-de-conteudo.md.
+
+  Semana com um único Encontro não renderiza nada, o que é o correto.
 
   Uso: {% include encontros_da_semana.html encontro=page %}
 {%- endcomment -%}

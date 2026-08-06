@@ -8,10 +8,15 @@ resumo: >-
   Encontro tem página própria com objetivos, leitura prévia e material.
 ---
 
-A Semana é a unidade de ancoragem: dois Encontros por Semana, de naturezas
-diferentes. O **conceitual** discute o problema e a decisão; o **laboratório**
-mede e constrói. Eles formam par, mas são páginas separadas porque quem escreve
-o roteiro do laboratório é a monitoria, e quem prepara os slides é a docência.
+A Semana é a unidade de ancoragem, e cada Encontro **conceitual** tem página
+própria: objetivos de aprendizagem, leitura prévia obrigatória, material da
+sessão e leitura complementar.
+
+O Encontro conceitual roda em **sala invertida** — a leitura prévia é feita
+antes, e o tempo de sala é de discussão do caso e dos compromissos em jogo. Nas
+Semanas 13 a 15 ele é acompanhado dos
+[Seminários Técnicos]({{ '/seminarios/' | relative_url }}), e a Semana 16 é de
+defesa e retrospectiva.
 
 Nenhum Encontro carrega data — a data vive só no
 [cronograma]({{ '/cronograma/' | relative_url }}). Se você está procurando "a

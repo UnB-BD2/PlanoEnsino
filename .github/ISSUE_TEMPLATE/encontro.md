@@ -1,6 +1,6 @@
 ---
 name: Material de Encontro
-about: Pedir ou combinar slides, roteiro de laboratório ou leitura de um Encontro
+about: Pedir ou combinar slides, leitura prévia ou material de um Encontro
 title: "Semana NN — "
 labels: encontro
 ---
@@ -8,13 +8,13 @@ labels: encontro
 ## Encontro
 
 - **Semana:**
-- **Tipo:** conceitual / laboratório / seminário
+- **Tipo:** conceitual / seminário / banca
 - **Arquivo:** `_encontros/sNN-…md`
 
 ## O que falta
 
 - [ ] Slides
-- [ ] Roteiro de laboratório
+- [ ] Caso ou paper a discutir
 - [ ] Leitura prévia definida
 - [ ] Objetivos de aprendizagem
 - [ ] Material complementar

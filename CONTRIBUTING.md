@@ -1,8 +1,8 @@
 # Como contribuir
 
 Este site é mantido em conjunto pela docência, pela monitoria e por quem cursa a
-disciplina. Correção de erro, link quebrado, roteiro de laboratório e material
-complementar são bem-vindos por *pull request*.
+disciplina. Correção de erro, link quebrado, slides e material complementar são
+bem-vindos por *pull request*.
 
 Antes de escrever, leia [CONTEXT.md](./CONTEXT.md): o projeto tem vocabulário
 fechado e usá-lo errado é o motivo mais comum de pedido de ajuste em revisão.
@@ -44,13 +44,13 @@ make check      # html-proofer: nenhum link interno quebrado
 Duas edições, nenhuma linha de HTML.
 
 **1. Um arquivo em `_encontros/`.** O nome do arquivo é a URL. Padrão:
-`sNN-conceitual-<assunto>.md` ou `sNN-lab-<assunto>.md`, com `NN` = número da
-Semana com dois dígitos.
+`sNN-conceitual-<assunto>.md`, com `NN` = número da Semana com dois dígitos.
+Seminário e banca usam `sNN-seminario-…` e `sNN-banca-…`.
 
 ```yaml
 ---
 semana: 3
-tipo: conceitual              # conceitual | laboratorio | seminario | banca
+tipo: conceitual              # conceitual | seminario | banca | laboratorio
 titular: docente              # docente | monitoria
 modulo: "I — Fundamentos e internals"
 titulo: "Indexação e otimização de consultas"
@@ -83,8 +83,12 @@ igual ao nome do arquivo sem `.md`:
   encontro: s03-conceitual-indexacao
 ```
 
-O par conceitual/laboratório da mesma Semana é reconstruído sozinho pelo campo
-`semana` ([ADR-0003](./docs/adr/0003-encontro-como-unidade-de-conteudo.md)).
+Quando uma Semana tem mais de um Encontro — como as 13 a 15, com conceitual e
+seminário —, a ligação entre eles é reconstruída sozinha pelo campo `semana`
+([ADR-0003](./docs/adr/0003-encontro-como-unidade-de-conteudo.md)).
+
+O tipo `laboratorio` continua suportado pelo tema, mas não há Encontro de
+laboratório publicado nesta Oferta.
 
 ### Corrigir um link ou um erro de texto
 

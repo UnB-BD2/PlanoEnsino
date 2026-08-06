@@ -21,7 +21,7 @@ quem estudou o assunto a fundo.
 <dl class="factsheet">
   <dt>Duração</dt><dd>{{ s.formato.duracao }}</dd>
   <dt>Público</dt><dd>{{ s.formato.publico }}</dd>
-  <dt>Quando</dt><dd><a href="{{ '/cronograma/' | relative_url }}">Semanas 13 a 15</a>, no Encontro de laboratório</dd>
+  <dt>Quando</dt><dd><a href="{{ '/cronograma/' | relative_url }}">Semanas 13 a 15</a>, em sessão própria ao lado do Encontro conceitual</dd>
   <dt>Peso</dt><dd>{{ s.formato.peso }}</dd>
 </dl>
 

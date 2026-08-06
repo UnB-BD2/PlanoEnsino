@@ -9,103 +9,67 @@
 #
 # ---------------------------------------------------------------------------
 # PENDENTE (D5) — DATAS PROVISÓRIAS.
-# Grade de terças e quintas a partir de 2026-08-11, derivada das duas datas
-# fixadas na spec (Semana 2 em 18/08 e E1 em 08/09). NÃO foi conferida contra o
-# calendário acadêmico oficial de 2026/2 nem contra feriados do período.
+# Grade de terças a partir de 2026-08-11, derivada das duas datas fixadas na
+# spec (Semana 2 em 18/08 e E1 em 08/09). NÃO foi conferida contra o calendário
+# acadêmico oficial de 2026/2 nem contra feriados do período.
 # Conferir com a coordenação ANTES de compartilhar o site com a turma.
 #
 # PENDENTE (D4) — CARGA HORÁRIA.
-# São 32 Encontros: 16 Semanas × 2 encontros de 2h = 64h, contra as 60h
-# declaradas pelos 4 créditos. Se a coordenação confirmar 60h, sobram dois
-# Encontros a remover daqui e de _encontros/.
+# São 20 Encontros de 2h = 40h, contra as 60h declaradas pelos 4 créditos.
+# A diferença de 20h é o que os Encontros de laboratório ocupavam antes de
+# saírem do site. Conferir com a coordenação como as 60h se compõem.
 # ---------------------------------------------------------------------------
 
 # Módulo I — Fundamentos e internals
 - data: 2026-08-11
   semana: 1
   encontro: s01-conceitual-ciclo-de-vida-do-dado
-- data: 2026-08-13
-  semana: 1
-  encontro: s01-lab-formacao-de-squads
 
 - data: 2026-08-18
   semana: 2
   encontro: s02-conceitual-armazenamento-fisico
-- data: 2026-08-20
-  semana: 2
-  encontro: s02-lab-paginas-e-planos
 
 - data: 2026-08-25
   semana: 3
   encontro: s03-conceitual-indexacao-e-otimizacao
-- data: 2026-08-27
-  semana: 3
-  encontro: s03-lab-indices-e-seletividade
 
 - data: 2026-09-01
   semana: 4
   encontro: s04-conceitual-transacoes-e-concorrencia
-- data: 2026-09-03
-  semana: 4
-  encontro: s04-lab-isolamento-e-anomalias
 
 - data: 2026-09-08
   semana: 5
   encontro: s05-conceitual-logica-no-servidor-e-cdc
-- data: 2026-09-10
-  semana: 5
-  encontro: s05-lab-wal-e-decodificacao-logica
 
 # Módulo II — Sistemas distribuídos e ingestão
 - data: 2026-09-15
   semana: 6
   encontro: s06-conceitual-tradeoffs-distribuidos
-- data: 2026-09-17
-  semana: 6
-  encontro: s06-lab-replicacao-e-particionamento
 
 - data: 2026-09-22
   semana: 7
   encontro: s07-conceitual-familias-nao-relacionais
-- data: 2026-09-24
-  semana: 7
-  encontro: s07-lab-um-dominio-quatro-bancos
 
 - data: 2026-09-29
   semana: 8
   encontro: s08-conceitual-ingestao-lote-e-fluxo
-- data: 2026-10-01
-  semana: 8
-  encontro: s08-lab-cdc-para-formato-aberto
 
 # Módulo III — Modelagem analítica e transformação
 - data: 2026-10-06
   semana: 9
   encontro: s09-conceitual-oltp-para-olap
-- data: 2026-10-08
-  semana: 9
-  encontro: s09-lab-fato-e-dimensao
 
 - data: 2026-10-13
   semana: 10
   encontro: s10-conceitual-modelagem-alternativa-e-elt
-- data: 2026-10-15
-  semana: 10
-  encontro: s10-lab-transformacao-versionada
 
 - data: 2026-10-20
   semana: 11
   encontro: s11-conceitual-qualidade-e-contratos
-- data: 2026-10-22
-  semana: 11
-  encontro: s11-lab-testes-de-dados
 
 - data: 2026-10-27
   semana: 12
   encontro: s12-conceitual-orquestracao-e-observabilidade
-- data: 2026-10-29
-  semana: 12
-  encontro: s12-lab-grafo-agendado-e-backfill
 
 # Módulo IV — Dados não estruturados, IA e governança
 - data: 2026-11-03

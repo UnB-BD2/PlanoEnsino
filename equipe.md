@@ -30,14 +30,14 @@ A monitoria de {{ site.oferta.codigo }} ainda não foi confirmada. Assim que for
 os contatos aparecem aqui.
 {% endif %}
 
-A monitoria conduz os Encontros de laboratório e é o primeiro canal para dúvida
-de ambiente, de ferramenta e de escopo de Entrega.
+A monitoria acompanha as Squads no Projeto Integrado e é o primeiro canal para
+dúvida de ambiente, de ferramenta e de escopo de Entrega.
 
 ## Como falar com a gente
 
 | Assunto | Onde |
 |---|---|
-| Dúvida de matéria ou de Entrega | Com a monitoria, no Encontro de laboratório |
+| Dúvida de matéria ou de Entrega | Com a monitoria |
 | Nota, prazo, situação individual | Por e-mail institucional, com a docência |
 | Erro no site — link quebrado, data errada, texto confuso | [Issue no repositório](https://github.com/{{ site.repository }}/issues/new/choose) ou pull request |
 | Reaproveitar este material em outra instituição | Por e-mail. A licença já permite; a conversa costuma valer a pena |

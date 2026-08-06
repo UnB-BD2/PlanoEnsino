@@ -10,11 +10,10 @@ resumo: >-
 
 {% include callout.html tipo="atencao" titulo="Datas provisórias" texto="A grade abaixo ainda **não foi conferida contra o calendário acadêmico oficial de 2026/2** nem contra os feriados do período. Confirme com a docência antes de marcar qualquer coisa na agenda. As datas de E1 a E4 dependem da mesma confirmação." %}
 
-Cada linha é um **Encontro** de duas horas. Encontro conceitual roda em sala
-invertida — a leitura prévia é feita antes, e o tempo de sala é de discussão.
-Encontro de laboratório é trabalho da Squad no Projeto Integrado, com a
-monitoria em sala.
+Cada linha é um **Encontro** de duas horas, em sala invertida: a leitura prévia
+é feita antes, e o tempo de sala é de discussão do caso e dos compromissos em
+jogo. Nas Semanas 13 a 15 os Seminários Técnicos entram ao lado do Encontro
+conceitual, e a Semana 16 é de defesa e retrospectiva.
 
 As **Entregas** aparecem destacadas em laranja. Entrega não é Encontro: cai numa
-Semana, mas não ocupa uma sessão. O que acontece no laboratório daquela Semana é
-a Squad trabalhando nela.
+Semana, mas não ocupa uma sessão.

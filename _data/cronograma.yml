@@ -9,86 +9,87 @@
 #
 # ---------------------------------------------------------------------------
 # PENDENTE (D5) — DATAS PROVISÓRIAS.
-# Grade de terças a partir de 2026-08-11, derivada das duas datas fixadas na
-# spec (Semana 2 em 18/08 e E1 em 08/09). NÃO foi conferida contra o calendário
-# acadêmico oficial de 2026/2 nem contra feriados do período.
+# Grade de terças a partir de 2026-08-11, com segundo Encontro às quintas nas
+# Semanas 13 a 16. NÃO foi conferida contra o calendário acadêmico oficial de
+# 2026/2 nem contra feriados do período.
 # Conferir com a coordenação ANTES de compartilhar o site com a turma.
 #
 # PENDENTE (D4) — CARGA HORÁRIA.
 # São 20 Encontros de 2h = 40h, contra as 60h declaradas pelos 4 créditos.
-# A diferença de 20h é o que os Encontros de laboratório ocupavam antes de
-# saírem do site. Conferir com a coordenação como as 60h se compõem.
+# A diferença de 20h é o tempo de trabalho de Squad no Projeto Integrado, que
+# não é Encontro. Conferir com a coordenação como as 60h se compõem.
 # ---------------------------------------------------------------------------
 
-# Módulo I — Fundamentos e internals
+# Módulo I — Fundamentos e componentes essenciais (livro, cap. 1 a 4)
 - data: 2026-08-11
   semana: 1
-  encontro: s01-conceitual-ciclo-de-vida-do-dado
+  encontro: s01-conceitual-o-que-e-engenharia-de-dados
 
 - data: 2026-08-18
   semana: 2
-  encontro: s02-conceitual-armazenamento-fisico
+  encontro: s02-conceitual-ciclo-de-vida-da-engenharia-de-dados
 
 - data: 2026-08-25
   semana: 3
-  encontro: s03-conceitual-indexacao-e-otimizacao
+  encontro: s03-conceitual-principios-de-arquitetura
 
 - data: 2026-09-01
   semana: 4
-  encontro: s04-conceitual-transacoes-e-concorrencia
+  encontro: s04-conceitual-conceitos-e-exemplos-de-arquitetura
 
 - data: 2026-09-08
   semana: 5
-  encontro: s05-conceitual-logica-no-servidor-e-cdc
+  encontro: s05-conceitual-escolhendo-tecnologias
 
-# Módulo II — Sistemas distribuídos e ingestão
+# Módulo II — Origem, armazenamento e ingestão (livro, cap. 5 a 7 e Apêndice A)
 - data: 2026-09-15
   semana: 6
-  encontro: s06-conceitual-tradeoffs-distribuidos
+  encontro: s06-conceitual-sistemas-de-origem
 
 - data: 2026-09-22
   semana: 7
-  encontro: s07-conceitual-familias-nao-relacionais
+  encontro: s07-conceitual-armazenamento-ingredientes-crus
 
 - data: 2026-09-29
   semana: 8
-  encontro: s08-conceitual-ingestao-lote-e-fluxo
+  encontro: s08-conceitual-sistemas-e-abstracoes-de-armazenamento
 
-# Módulo III — Modelagem analítica e transformação
 - data: 2026-10-06
   semana: 9
-  encontro: s09-conceitual-oltp-para-olap
+  encontro: s09-conceitual-ingestao
 
+# Módulo III — Consultas, modelagem, transformação e disponibilização
+# (livro, cap. 8 e 9)
 - data: 2026-10-13
   semana: 10
-  encontro: s10-conceitual-modelagem-alternativa-e-elt
+  encontro: s10-conceitual-consultas
 
 - data: 2026-10-20
   semana: 11
-  encontro: s11-conceitual-qualidade-e-contratos
+  encontro: s11-conceitual-modelagem-de-dados
 
 - data: 2026-10-27
   semana: 12
-  encontro: s12-conceitual-orquestracao-e-observabilidade
+  encontro: s12-conceitual-transformacoes
 
-# Módulo IV — Dados não estruturados, IA e governança
 - data: 2026-11-03
   semana: 13
-  encontro: s13-conceitual-vetores-e-representacoes
+  encontro: s13-conceitual-disponibilizando-dados
 - data: 2026-11-05
   semana: 13
   encontro: s13-seminario-tecnico
 
+# Módulo IV — Segurança, privacidade e o futuro (livro, cap. 10, 11 e Apêndice B)
 - data: 2026-11-10
   semana: 14
-  encontro: s14-conceitual-busca-hibrida-e-dados-para-ia
+  encontro: s14-conceitual-seguranca-e-privacidade
 - data: 2026-11-12
   semana: 14
   encontro: s14-seminario-tecnico
 
 - data: 2026-11-17
   semana: 15
-  encontro: s15-conceitual-governanca-e-lgpd
+  encontro: s15-conceitual-o-futuro-da-engenharia-de-dados
 - data: 2026-11-19
   semana: 15
   encontro: s15-seminario-tecnico

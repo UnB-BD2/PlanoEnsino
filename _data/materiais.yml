@@ -3,39 +3,39 @@
 
 basica:
   - autores: "REIS, J.; HOUSLEY, M."
-    titulo: "Fundamentals of Data Engineering"
-    editora: "O'Reilly"
-    ano: 2022
+    titulo: "Fundamentos de Engenharia de Dados: projete e construa sistemas de dados robustos"
+    editora: "Novatec"
+    ano: 2023
     modulo: "todos"
-    nota: "Referência estruturante do ciclo de vida do dado adotado no plano."
+    nota: "É o conteúdo da disciplina: as 16 Semanas percorrem os capítulos 1 a 11 e os dois apêndices, na ordem do livro. Tradução de Fundamentals of Data Engineering (O'Reilly, 2022); a numeração de capítulos é idêntica nas duas edições."
   - autores: "KLEPPMANN, M."
     titulo: "Designing Data-Intensive Applications"
     editora: "O'Reilly"
     ano: 2017
     modulo: "I e II"
-    nota: "Armazenamento, replicação, particionamento e consistência."
+    nota: "Aprofunda os sistemas distribuídos das Semanas 4 e 8 — replicação, particionamento e consistência."
   - autores: "SILBERSCHATZ, A.; KORTH, H.; SUDARSHAN, S."
     titulo: "Database System Concepts"
     edicao: "7. ed."
     editora: "McGraw-Hill"
     ano: 2019
-    modulo: "I"
+    modulo: "pré-requisito"
     link: https://www.db-book.com/
-    nota: "Fundamentos e internals. Slides e material de apoio abertos no site oficial."
+    nota: "Internals de SGBD — conteúdo de Introdução a Banco de Dados, retomado aqui como consulta. Slides e material de apoio abertos no site oficial."
   - autores: "KIMBALL, R.; ROSS, M."
     titulo: "The Data Warehouse Toolkit"
     edicao: "3. ed."
     editora: "Wiley"
     ano: 2013
     modulo: "III"
-    nota: "Modelagem dimensional."
+    nota: "Aprofunda a modelagem dimensional da Semana 11."
   - autores: "ELMASRI, R.; NAVATHE, S."
     titulo: "Sistemas de Banco de Dados"
     edicao: "7. ed."
     editora: "Pearson"
     ano: 2018
-    modulo: "I"
-    nota: "Apoio em português."
+    modulo: "pré-requisito"
+    nota: "Apoio em português ao conteúdo de Introdução a Banco de Dados."
 
 complementar:
   - autores: "PETROV, A."
@@ -124,8 +124,6 @@ fontes_de_dados:
     link: https://dados.gov.br/
   - nome: "SNIS — Sistema Nacional de Informações sobre Saneamento"
     link: https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/snis
-  - nome: "Ministério das Cidades — dados e estatísticas"
-    link: https://www.gov.br/cidades/pt-br
   - nome: "IBGE — portal de dados"
     link: https://www.ibge.gov.br/estatisticas.html
   - nome: "Portal da Transparência"

@@ -39,24 +39,196 @@ longo de todo o ciclo de vida do dado.
 
 Ao fim da disciplina, o estudante deve ser capaz de:
 
-1. Explicar como um SGBD armazena, indexa e recupera dados, e usar esse
-   conhecimento para diagnosticar desempenho.
-2. Projetar o esquema físico de um sistema transacional e ajustá-lo com base em
-   planos de execução e medição.
-3. Caracterizar uma carga de trabalho e **decidir** entre famílias de bancos de
-   dados, registrando a decisão em um ADR.
-4. Implementar ingestão de dados em lote e em fluxo contínuo, incluindo captura
-   de mudanças (CDC).
-5. Avaliar compromissos de sistemas distribuídos — replicação, particionamento,
-   consistência — em cenários concretos.
-6. Modelar dados para consumo analítico e implementar transformações versionadas
-   e testadas.
-7. Orquestrar, monitorar e assegurar a qualidade de um fluxo de dados.
-8. Estruturar dados não estruturados para uso em sistemas de IA: *embeddings*,
-   busca híbrida, *feature store*.
-9. Aplicar requisitos de governança, linhagem, segurança e LGPD ao projeto de
-   uma plataforma de dados.
-10. Comunicar decisões técnicas de dados a público misto — técnico e gestor.
+1. Descrever o que é engenharia de dados e situar o engenheiro de dados entre as
+   demais funções técnicas e a liderança de uma organização.
+2. Nomear os cinco estágios do ciclo de vida da engenharia de dados e os seis
+   elementos subjacentes, e usá-los como vocabulário de projeto.
+3. Avaliar uma arquitetura de dados à luz dos princípios de boa arquitetura,
+   distinguindo acoplamento forte de fraco e decisão reversível de irreversível.
+4. Escolher tecnologias ao longo do ciclo de vida com base em custo total de
+   propriedade, interoperabilidade e medição própria, registrando a decisão em
+   um ADR.
+5. Caracterizar sistemas de origem — bancos de aplicação, APIs, arquivos, *logs*,
+   filas e fluxos — e as garantias que cada um oferece.
+6. Selecionar sistemas e abstrações de armazenamento, distinguindo arquivo,
+   bloco e objeto, e *warehouse*, *lake* e *lakehouse*.
+7. Implementar ingestão em lote e em fluxo contínuo, incluindo captura de dados
+   de alteração, com tratamento de dados atrasados e de falhas.
+8. Modelar e transformar dados para consumo analítico, escolhendo entre
+   normalização, modelagem dimensional, Data Vault e tabelas largas.
+9. Disponibilizar dados para análise, *machine learning* e ETL reverso, com
+   camadas semânticas e definições de métrica explícitas.
+10. Aplicar segurança e privacidade ao longo de todo o ciclo — privilégio mínimo,
+    criptografia, monitoramento — e comunicar decisões de dados a público misto,
+    técnico e gestor.
+
+## O livro-texto
+
+*Fundamentos de Engenharia de Dados*, de Joe Reis e Matt Housley (Novatec, 2023
+— tradução de *Fundamentals of Data Engineering*, O'Reilly, 2022), **é** o
+conteúdo desta disciplina. As 16 Semanas percorrem os capítulos 1 a 11 e os dois
+apêndices, na ordem do livro; os quatro módulos correspondem às suas três partes,
+com a Parte II dividida em dois. A numeração de capítulos é a mesma na edição em
+português e no original.
+
+O ciclo de vida em cinco estágios e os seis elementos subjacentes são o
+vocabulário que a disciplina inteira usa, do primeiro Encontro à defesa.
+
+Duas coisas que o livro não traz e que este plano acrescenta. A **LGPD** entra na
+Semana 14, ao lado do capítulo de segurança e privacidade, porque o Projeto
+Integrado exige análise de LGPD do que for construído e porque é a lei sob a qual
+esses dados são tratados. E os **elementos subjacentes** ganham tratamento
+explícito na Semana 2 e no Projeto Integrado, já que orquestração agendada e testes de
+qualidade são requisitos de produto do projeto e no livro não têm capítulo próprio.
+
+O que fica de fora: *internals* de SGBD — B-tree × LSM-tree, MVCC, níveis de
+isolamento, leitura de planos de execução — são conteúdo do pré-requisito,
+Introdução a Banco de Dados. Esta disciplina usa o banco; não o abre.
+
+As demais obras da bibliografia passam a ser complementares e aprofundam pontos
+específicos: Kleppmann nos sistemas distribuídos das Semanas 4 e 8, Kimball na
+modelagem dimensional da Semana 11, Silberschatz e Elmasri no que o pré-requisito
+deixou.
+
+O eixo transversal da disciplina, apresentado adiante, é o capítulo 4 —
+*Escolhendo tecnologias ao longo do ciclo de vida da engenharia de dados*. É a
+leitura que fundamenta o Método de Decisão e a exigência de medição própria na
+avaliação de ADR.
+
+## Plano das 16 Semanas
+
+A coluna **No livro** aponta o capítulo que sustenta cada Semana.
+
+Seguindo a estrutura do livro, os **elementos subjacentes** — segurança,
+gerenciamento de dados, DataOps, arquitetura de dados, orquestração e engenharia
+de software — não têm Semana própria. São apresentados na Semana 2 e retomados em
+cada estágio do ciclo, que é exatamente como o livro os trata. Qualidade de dados,
+testes e orquestração agendada, exigidos pelo Projeto Integrado, entram por aí e
+são praticados no Projeto Integrado.
+
+### Módulo I — Fundamentos e componentes essenciais
+
+*Parte I do livro.* Semanas 1 a 5.
+
+**No livro-texto:** capítulos 1 a 4, na íntegra.
+
+<div class="table-scroll" markdown="1">
+
+| Semana | Tema | Conteúdo | No livro |
+|---|---|---|---|
+| 1 | Descrição do que é engenharia de dados | Definição do campo. Evolução do engenheiro de dados. Engenharia de dados × ciência de dados. Maturidade de dados e o que ela muda no trabalho. Habilidades, responsabilidades comerciais e técnicas, o engenheiro tipo A e tipo B. O engenheiro entre as demais funções técnicas e a liderança corporativa. Formação de Squads e escolha de domínio. | Cap. 1 |
+| 2 | O ciclo de vida da engenharia de dados | Os cinco estágios: geração, armazenamento, ingestão, transformação e disponibilização. Ciclo de vida do dado × ciclo de vida da engenharia de dados. Os seis elementos subjacentes que atravessam todos os estágios: segurança, gerenciamento de dados, DataOps, arquitetura de dados, orquestração e engenharia de software. | Cap. 2 |
+| 3 | Princípios de uma boa arquitetura de dados | Arquitetura corporativa × arquitetura de dados. Os nove princípios: escolher componentes comuns com sabedoria, planejar para falhas, projetar para escalabilidade, arquitetura como cerne da liderança, arquitetar sempre, sistemas fracamente acoplados, decisões reversíveis, priorizar a segurança, adotar FinOps. | Cap. 3 |
+| 4 | Conceitos e exemplos de arquitetura | Domínios e serviços. Sistemas distribuídos, escalabilidade e planejamento para falhas. Acoplamento forte × fraco: camadas, monolitos e microsserviços. Locatário único × multilocatário. Arquitetura orientada a eventos. Projetos *brownfield* × *greenfield*. Data warehouse, data lake, lakehouse, pilha de dados moderna, Lambda, Kappa, Dataflow, IoT e Data Mesh. | Cap. 3 |
+| 5 | Escolhendo tecnologias ao longo do ciclo | Tamanho e capacidade da equipe, velocidade de entrada no mercado, interoperabilidade. Custo total de propriedade, custo de oportunidade e FinOps. Tecnologias imutáveis × transitórias. *On-premises*, nuvem, híbrida, multicloud e os argumentos de repatriação. Construir × comprar; código aberto × jardim murado. Monolítico × modular e o padrão do monolito distribuído. *Serverless* × servidor. A guerra de *benchmarks*. | Cap. 4 |
+
+</div>
+
+### Módulo II — O ciclo em detalhes: origem, armazenamento e ingestão
+
+*Parte II do livro, primeira metade.* Semanas 6 a 9.
+
+**No livro-texto:** capítulos 5 a 7, mais o Apêndice A.
+
+<div class="table-scroll" markdown="1">
+
+| Semana | Tema | Conteúdo | No livro |
+|---|---|---|---|
+| 6 | Geração de dados em sistemas de origem | Como o dado é criado. Arquivos e dados não estruturados, APIs, bancos de dados de aplicação (OLTP), sistemas OLAP, captura de dados de alteração, *logs* e *logs* de banco de dados. CRUD e o padrão *insert-only*. Mensagens, fluxos e tipos de registro de tempo. Compartilhamento de dados, fontes de terceiros, filas de mensagens e plataformas de *streaming* de eventos. | Cap. 5 |
+| 7 | Armazenamento: os ingredientes crus | Unidade de disco magnético, unidade de estado sólido, memória de acesso aleatório, redes e CPU. Serialização baseada em linhas, colunar e híbrida. Compressão — gzip, bzip2, Snappy. *Cache* e a hierarquia de custo por acesso. | Cap. 6 e Apêndice A |
+| 8 | Sistemas e abstrações de armazenamento | Máquina única × armazenamento distribuído. Consistência eventual × consistência forte. Armazenamento de arquivos, de blocos, de objetos e de *streaming*; HDFS; sistemas baseados em memória. Índices, particionamento e *clustering*. Data warehouse, data lake, lakehouse e plataformas de dados. Catálogo de dados, compartilhamento, esquema, separação entre computação e armazenamento, ciclo de vida e retenção, multilocação. | Cap. 6 |
+| 9 | Ingestão | Dados limitados × ilimitados. Frequência. Ingestão síncrona × assíncrona. Confiabilidade, durabilidade e carga útil. Padrões *push*, *pull* e *poll*. Lote: *snapshot* × extração diferencial, ETL × ELT, tamanho de lote, migração. *Streaming*: evolução de esquema, dados que chegam atrasados, ordenação e entrega múltipla, *replay*, tempo de vida, filas de mensagens mortas. Formas de ingestão: conexão direta, CDC, APIs, filas, conectores gerenciados, objetos, EDI, *webhooks*, *web scraping*. | Cap. 7 |
+
+</div>
+
+### Módulo III — Consultas, modelagem, transformação e disponibilização
+
+*Parte II do livro, segunda metade.* Semanas 10 a 13.
+
+**No livro-texto:** capítulos 8 e 9, na íntegra.
+
+<div class="table-scroll" markdown="1">
+
+| Semana | Tema | Conteúdo | No livro |
+|---|---|---|---|
+| 10 | Consultas | O que é uma consulta e qual é a sua vida útil. O otimizador de consultas. Aprimorando o desempenho da consulta. Consultas sobre dados de *streaming*. | Cap. 8 |
+| 11 | Modelagem de dados | O que é um modelo de dados. Modelos conceitual, lógico e físico. Normalização. Técnicas de modelagem de dados analíticos em lote: Inmon, Kimball, Data Vault e tabelas largas. Modelando dados de *streaming*. | Cap. 8 |
+| 12 | Transformações | Transformações em lote. Visualizações materializadas, federação e virtualização de consultas. Transformações e processamento de *streaming*. Os elementos subjacentes em ação: gerenciamento de dados, DataOps e orquestração aplicados à transformação. | Cap. 8 |
+| 13 | Disponibilizando dados para análise, ML e ETL reverso | Confiança, caso de uso e quem é o usuário. Produtos de dados e autoatendimento. Definições e lógica de dados; Data Mesh. Análise de negócios, operacional e incorporada. *Machine learning*: o que um engenheiro de dados precisa saber. Formas de disponibilizar: troca de arquivos, bancos, *streaming*, federação de consultas, compartilhamento, camadas semânticas e de métricas, *notebooks*. ETL reverso. | Cap. 9 |
+
+</div>
+
+### Módulo IV — Segurança, privacidade e o futuro
+
+*Parte III do livro.* Semanas 14 e 15.
+
+**No livro-texto:** capítulos 10 e 11, mais o Apêndice B.
+
+<div class="table-scroll" markdown="1">
+
+| Semana | Tema | Conteúdo | No livro |
+|---|---|---|---|
+| 14 | Segurança e privacidade | Pessoas: o poder do pensamento negativo e a paranoia útil. Processos: falsa sensação × hábito de segurança, segurança ativa, princípio do privilégio mínimo, responsabilidade compartilhada na nuvem, *backup*, exemplo de política de segurança. Tecnologia: *patches*, criptografia, registro de *logs*, monitoramento e alertas, acesso à rede, segurança de baixo nível. Topologia de rede em nuvem, zonas, regiões e custos de saída. Complemento local: LGPD aplicada a plataformas de dados. | Cap. 10 e Apêndice B |
+| 15 | O futuro da engenharia de dados | Por que o ciclo de vida veio para ficar. A diminuição da complexidade e a ascensão de ferramentas fáceis de usar. O sistema operacional de dados em escala de nuvem e a melhoria na interoperabilidade. Engenharia de dados "empresarial" e a transformação das funções. Da pilha de dados moderna à pilha em tempo real. A fusão de dados com aplicações e a relação estreita com ML. Dados de matéria escura. | Cap. 11 |
+
+</div>
+
+### Encerramento
+
+<div class="table-scroll" markdown="1">
+
+| Semana | Tema | Conteúdo | No livro |
+|---|---|---|---|
+| 16 | Defesa e retrospectiva | Apresentação da plataforma completa a banca com perfil técnico e de gestão. Arguição sobre as decisões tomadas. Retrospectiva do ciclo de vida percorrido, estágio a estágio, e dos elementos subjacentes que o atravessaram. | Retomada do cap. 2 |
+
+</div>
+
+## Mapeamento com o roadmap de Engenharia de Dados
+
+O que a disciplina cobre, com que profundidade, e o que ela deliberadamente
+remete a outro lugar.
+
+<div class="table-scroll" markdown="1">
+
+| Bloco do roadmap | Onde é tratado | Profundidade |
+|---|---|---|
+| SQL e bancos relacionais | Semanas 6 e 10 | Uso, otimizador e desempenho de consulta |
+| Modelagem de dados: normalização, dimensional, Data Vault | Semana 11 | Aprofundada |
+| Bancos NoSQL: documento, chave-valor, colunar largo, grafo | Semanas 6 e 8 | **Menções** — o livro não percorre as famílias |
+| Data warehousing e OLAP | Semanas 8, 11 e 13 | Aprofundada |
+| Data lakes e lakehouse: Parquet, Iceberg, Delta | Semanas 7 e 8 | Aprofundada |
+| ETL/ELT e pipelines | Semanas 9 e 12 | Prática |
+| Processamento em lote e em fluxo: Kafka, CDC | Semanas 6 e 9 | Prática |
+| Orquestração: Airflow, Dagster | Semana 2 e Projeto Integrado | **Elemento subjacente** — sem Semana própria, conforme o livro |
+| Qualidade, testes e observabilidade | Semana 2 e Projeto Integrado | **Elemento subjacente** — idem |
+| Sistemas distribuídos: replicação, particionamento, consistência | Semanas 4 e 8 | Conceitual |
+| Governança, catálogo, linhagem e segurança | Semanas 8, 13 e 14 | Aprofundada |
+| LGPD | Semana 14 | **Complemento local** — não tratada pelo livro, exigida pelo Projeto Integrado |
+| Nuvem, IaC, Kubernetes | Semanas 5 e 14 (Apêndice B) | Conceitual — aprofundamento remetido a Computação em Nuvem / DevOps |
+| Spark e processamento distribuído em cluster | Seminários | **Introdutório** — remetido a Big Data / eletiva |
+| Dados vetoriais, *embeddings*, RAG | Seminários | **Fora do escopo do livro** — remetido aos Seminários Técnicos |
+| *Internals* de SGBD: B-tree, MVCC, isolamento, planos | — | **Fora do escopo** — pré-requisito, Introdução a Banco de Dados |
+| Arquiteturas organizacionais: *data mesh*, contratos | Semanas 4 e 13 | Conceitual |
+
+</div>
+
+## Metodologia
+
+Aprendizagem orientada a projeto, com **sala invertida** e trabalho contínuo de Squad.
+
+- **Encontro conceitual (2 h)** — exposição dialogada curta, de cerca de 40
+  minutos, seguida de estudo de caso ou leitura de *paper* e discussão dos
+  compromissos arquiteturais em jogo. A leitura prévia é obrigatória: o Encontro
+  discute o que você leu, não o resume.
+- **Projeto Integrado** — Squads de 4 a 5 pessoas constroem, ao longo do
+  semestre, uma plataforma de dados completa sobre um domínio real de dados
+  abertos, em quatro Entregas incrementais.
+- **Diário de bordo** — registro semanal curto por Squad: o que foi medido, o
+  que surpreendeu, o que foi decidido. É insumo das retrospectivas e da defesa
+  final.
+- **Seminários Técnicos** — nas Semanas 13 a 15, cada Squad apresenta um
+  aprofundamento sobre tópico do *roadmap* de Engenharia de Dados que os
+  Encontros não cobrem.
 
 ## O eixo transversal: decidir com método
 
@@ -78,39 +250,26 @@ produzidos no semestre:
 6. **Definir o gatilho de revisão** — sob qual métrica essa decisão deixa de
    valer.
 
+Esse método tem contrapartida direta no livro-texto: o capítulo 4 de
+*Fundamentos de Engenharia de Dados* trata a escolha de tecnologia ao longo do
+ciclo de vida — custo total de propriedade, tecnologias imutáveis × transitórias,
+construir × comprar, monolítico × modular. A seção sobre a *guerra de benchmarks*
+é a justificativa do passo 4: comparação publicada por fornecedor é otimizada
+para o caso do fornecedor, e por isso a medição tem de ser feita com dado do
+próprio domínio.
+
 O instrumento é o **ADR** (*Architecture Decision Record*), no formato Nygard:
 contexto, decisão, status, consequências. Cada Squad mantém um portfólio
 versionado no próprio repositório, com **5 ADRs obrigatórios** ao longo do
 semestre. O [guia de ADR]({{ '/adr/' | relative_url }}) traz o template e os
 critérios de avaliação.
 
-## Metodologia
-
-Aprendizagem orientada a projeto, com **sala invertida** e laboratório contínuo.
-
-- **Encontro conceitual (2 h)** — exposição dialogada curta, de cerca de 40
-  minutos, seguida de estudo de caso ou leitura de *paper* e discussão dos
-  compromissos arquiteturais em jogo. A leitura prévia é obrigatória: o Encontro
-  discute o que você leu, não o resume.
-- **Encontro de laboratório (2 h)** — trabalho de cada Squad no Projeto
-  Integrado, com a monitoria em sala.
-- **Projeto Integrado** — Squads de 4 a 5 pessoas constroem, ao longo do
-  semestre, uma plataforma de dados completa sobre um domínio real de dados
-  abertos, em quatro Entregas incrementais.
-- **Diário de bordo** — registro semanal curto por Squad: o que foi medido, o
-  que surpreendeu, o que foi decidido. É insumo das retrospectivas e da defesa
-  final.
-- **Seminários Técnicos** — nas Semanas 13 a 15, cada Squad apresenta um
-  aprofundamento sobre tópico do *roadmap* de Engenharia de Dados que os
-  Encontros não cobrem.
-
 ## O Projeto Integrado
 
 **"Do dado bruto à decisão pública."** Cada Squad escolhe um domínio de dados
 abertos governamentais brasileiros — saneamento e SNIS, habitação,
-transferências e execução orçamentária, mobilidade urbana, bases do Ministério
-das Cidades — e constrói a plataforma que permite responder a uma pergunta de
-gestão real.
+transferências e execução orçamentária, mobilidade urbana — e constrói a
+plataforma que permite responder a uma pergunta de gestão real.
 
 Requisitos mínimos do produto final:
 
@@ -118,8 +277,8 @@ Requisitos mínimos do produto final:
 - ingestão em lote **e** um fluxo de mudanças (CDC ou *streaming*);
 - camada de armazenamento analítico em formato aberto;
 - transformações versionadas com testes de qualidade e orquestração agendada;
-- camada de consumo dupla: painel analítico **e** busca semântica sobre o
-  componente não estruturado do domínio;
+- camada de consumo dupla: painel analítico **e** camada semântica de métricas,
+  com um caminho de ETL reverso;
 - catálogo, linhagem e análise de LGPD do que foi construído;
 - 5 ADRs.
 
@@ -169,80 +328,6 @@ quizzes, avaliação por pares e ensaio de reflexão crítica.
 A política regula **como** os instrumentos deste plano são conduzidos; ela não
 altera peso nem critério de avaliação.
 
-## Plano das 16 Semanas
-
-### Módulo I — Fundamentos e internals
-
-*O dado em repouso.* Semanas 1 a 5.
-
-| Semana | Tema | Conteúdo |
-|---|---|---|
-| 1 | Abertura: o ciclo de vida do dado | Panorama do ciclo de vida e das correntes que o atravessam — segurança, gestão, DataOps, arquitetura, orquestração. O papel do banco numa plataforma. Formação de Squads e escolha de domínio. |
-| 2 | Armazenamento e organização física | Páginas, *heap*, *tablespaces*, TOAST. Orientação a linha × a coluna. Compressão. B-tree × LSM-tree e suas consequências de escrita e leitura. |
-| 3 | Indexação e otimização de consultas | Tipos de índice — B-tree, hash, GIN, GiST, BRIN. Seletividade e estatísticas. Leitura de planos de execução. O otimizador e por que ele erra. |
-| 4 | Transações, concorrência e projeto físico | ACID na prática. Níveis de isolamento e as anomalias que cada um permite. MVCC. *Deadlocks*. Desnormalização deliberada. Particionamento local. |
-| 5 | Lógica no servidor e captura de mudanças | Funções, procedimentos, *triggers*, PL/pgSQL. Quando pôr lógica no banco e quando não. *Write-ahead log* e decodificação lógica como fundamento de CDC. |
-
-### Módulo II — Sistemas distribuídos e ingestão
-
-*O dado em trânsito.* Semanas 6 a 8.
-
-| Semana | Tema | Conteúdo |
-|---|---|---|
-| 6 | Compromissos de sistemas distribuídos | Replicação e seus modos. Particionamento e *rebalancing*. Modelos de consistência. Partição de rede e o que se escolhe quando ela acontece. Conceitual com experimento. |
-| 7 | Famílias não relacionais | Documento, chave-valor, colunar largo e grafo. O que cada família otimiza e o que cobra em troca. Comparação decisória a partir de uma carga real. |
-| 8 | Ingestão: lote e fluxo contínuo | *Batch* × *streaming*. Semântica de entrega. Janelas e dados atrasados. Filas e *log* distribuído. Formatos colunares (Parquet) e tabelas abertas (Iceberg, Delta). Data lake × warehouse × lakehouse. |
-
-### Módulo III — Modelagem analítica e transformação
-
-*O dado em uso.* Semanas 9 a 12.
-
-| Semana | Tema | Conteúdo |
-|---|---|---|
-| 9 | OLTP → OLAP e modelagem dimensional | Por que analítico é outro problema. Fato e dimensão. Estrela × floco de neve. Granularidade. Dimensões de variação lenta. |
-| 10 | Modelagem alternativa e ELT | Data Vault, *one big table*, *wide tables*. ETL × ELT e por que a ordem mudou. Transformação declarativa e versionada. Camadas *bronze*, *silver*, *gold*. |
-| 11 | Qualidade, testes e contratos de dados | Dimensões de qualidade. Testes de esquema, de volume, de distribuição. *Data contracts*. *Schema evolution*. Idempotência e reprocessamento. |
-| 12 | Orquestração e observabilidade | Grafos de dependência, agendamento, *backfill*, *retry*. SLA e *freshness*. Linhagem operacional. Custo como métrica de engenharia. |
-
-### Módulo IV — Dados não estruturados, IA e governança
-
-*O dado como ativo.* Semanas 13 a 15.
-
-| Semana | Tema | Conteúdo |
-|---|---|---|
-| 13 | Dados não estruturados e representações vetoriais | Texto, imagem e *log* como dado de primeira classe. *Chunking*. *Embeddings*. Distância e similaridade. Índices vetoriais (HNSW, IVF) e o compromisso entre *recall* e latência. |
-| 14 | Busca híbrida e dados para IA | Busca léxica × semântica × híbrida. *Reranking*. Recuperação aumentada (RAG) como problema de engenharia de dados. *Feature stores*, treino × serviço e *feature skew*. Dados sintéticos e avaliação. |
-| 15 | Governança, segurança e LGPD | Catálogo e linhagem. Classificação de dados. Anonimização, pseudonimização e *k*-anonimato. Controle de acesso em nível de linha e de coluna. Retenção e descarte. LGPD aplicada a plataformas de dados. Arquiteturas organizacionais — *mesh*, *lakehouse*, contratos entre domínios. |
-
-### Encerramento
-
-| Semana | Tema | Conteúdo |
-|---|---|---|
-| 16 | Defesa e retrospectiva | Apresentação da plataforma completa a banca com perfil técnico e de gestão. Arguição sobre as decisões tomadas. Retrospectiva do ciclo de vida percorrido. |
-
-## Mapeamento com o roadmap de Engenharia de Dados
-
-O que a disciplina cobre, com que profundidade, e o que ela deliberadamente
-remete a outro lugar.
-
-| Bloco do roadmap | Onde é tratado | Profundidade |
-|---|---|---|
-| SQL e bancos relacionais | Semanas 2–5 | Aprofundada — *internals*, planos, *tuning* |
-| Modelagem de dados: normalização, dimensional, Data Vault | Semanas 4, 9, 10 | Aprofundada |
-| Bancos NoSQL: documento, chave-valor, colunar largo, grafo | Semana 7 | Comparativa e decisória |
-| Data warehousing e OLAP | Semanas 8–10 | Aprofundada |
-| Data lakes e lakehouse: Parquet, Iceberg, Delta | Semana 8 | Prática |
-| ETL/ELT e pipelines | Semanas 8, 10 | Prática |
-| Processamento em lote e em fluxo: Kafka, CDC | Semanas 5, 8 | Prática |
-| Orquestração: Airflow, Dagster | Semana 12 | Prática |
-| Qualidade, testes e observabilidade | Semanas 11–12 | Aprofundada |
-| Sistemas distribuídos: replicação, particionamento, consistência | Semana 6 | Conceitual, com experimento |
-| Governança, catálogo, linhagem, segurança, LGPD | Semana 15 | Aprofundada |
-| Nuvem, IaC, Kubernetes | Semana 12 (menção) e Seminários | **Fora do escopo** — remetido a Computação em Nuvem / DevOps |
-| Spark e processamento distribuído em cluster | Seminários | **Introdutório** — remetido a Big Data / eletiva |
-| Dados vetoriais, *embeddings*, RAG, *feature stores* | Semanas 13–14 | **Acréscimo desta proposta** — ainda pouco presente no roadmap |
-| Arquiteturas organizacionais: *data mesh*, contratos | Semana 15 | Conceitual |
-
 ## Recursos e ferramental
 
 Toda a stack é software livre e executável localmente, alinhada à prática do
@@ -250,15 +335,15 @@ Lab Livre e reprodutível sem custo de nuvem. A tabela completa por camada, com
 link para a documentação oficial de cada ferramenta, está em
 [Materiais e ambiente]({{ '/materiais/#stack' | relative_url }}).
 
-Em resumo: PostgreSQL com pgvector e PostGIS no transacional; DuckDB no
+Em resumo: PostgreSQL com PostGIS no transacional; DuckDB no
 analítico; MinIO para objetos; Parquet, Iceberg ou Delta nos formatos abertos;
 Redpanda ou Kafka com Debezium no fluxo e CDC; dbt ou SQLMesh na transformação;
 Airflow ou Dagster na orquestração; MongoDB, Neo4j e Redis nos não relacionais;
 Great Expectations na qualidade; OpenMetadata ou DataHub no catálogo; Metabase
 ou Superset no consumo; Docker Compose no empacotamento.
 
-Fontes de dados sugeridas: Portal Brasileiro de Dados Abertos, SNIS, bases do
-Ministério das Cidades, IBGE e Portal da Transparência.
+Fontes de dados sugeridas: Portal Brasileiro de Dados Abertos, SNIS, IBGE e
+Portal da Transparência.
 
 ## Bibliografia
 
@@ -274,6 +359,6 @@ Ministério das Cidades, IBGE e Portal da Transparência.
 {{ forloop.index }}. {{ obra.autores }} **{{ obra.titulo }}.**{% if obra.edicao %} {{ obra.edicao }}{% endif %}{% if obra.editora %} {{ obra.editora }},{% endif %} {{ obra.ano }}.{% if obra.link %} [Disponível em linha]({{ obra.link }}).{% endif %}
 {%- endfor %}
 
-Documentação oficial de PostgreSQL, pgvector, DuckDB, Apache Iceberg, dbt,
+Documentação oficial de PostgreSQL, DuckDB, Apache Iceberg, dbt,
 Apache Airflow e Debezium é material de consulta corrente da disciplina, com
 links em [Materiais]({{ '/materiais/' | relative_url }}).

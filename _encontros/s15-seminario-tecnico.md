@@ -2,7 +2,7 @@
 semana: 15
 tipo: seminario
 titular: docente
-modulo: "IV — Dados não estruturados, IA e governança"
+modulo: "IV — Segurança, privacidade e o futuro"
 titulo: "Seminário Técnico — terceira rodada"
 resumo: >-
   Última rodada de apresentações de Squad.

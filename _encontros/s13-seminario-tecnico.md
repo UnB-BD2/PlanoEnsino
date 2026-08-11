@@ -2,7 +2,7 @@
 semana: 13
 tipo: seminario
 titular: docente
-modulo: "IV — Dados não estruturados, IA e governança"
+modulo: "IV — Segurança, privacidade e o futuro"
 titulo: "Seminário Técnico — primeira rodada"
 resumo: >-
   Apresentações de Squad sobre temas do roadmap de Engenharia de Dados que os Encontros não cobrem.

@@ -50,12 +50,12 @@ Seminário e banca usam `sNN-seminario-…` e `sNN-banca-…`.
 ```yaml
 ---
 semana: 3
-tipo: conceitual              # conceitual | seminario | banca | laboratorio
+tipo: conceitual              # conceitual | seminario | banca
 titular: docente              # docente | monitoria
-modulo: "I — Fundamentos e internals"
-titulo: "Indexação e otimização de consultas"
+modulo: "I — Fundamentos e componentes essenciais"
+titulo: "Princípios de uma boa arquitetura de dados"
 objetivos:
-  - "Escolher o tipo de índice a partir da seletividade e do padrão de acesso"
+  - "Classificar uma decisão como reversível ou irreversível e ajustar o rigor a ela"
 slides: /static_files/slides/s03-indexacao.pdf
 leitura_previa:
   - titulo: "Database System Concepts, cap. 14"
@@ -80,15 +80,12 @@ igual ao nome do arquivo sem `.md`:
 ```yaml
 - data: 2026-08-25
   semana: 3
-  encontro: s03-conceitual-indexacao
+  encontro: s03-conceitual-principios-de-arquitetura
 ```
 
 Quando uma Semana tem mais de um Encontro — como as 13 a 15, com conceitual e
 seminário —, a ligação entre eles é reconstruída sozinha pelo campo `semana`
 ([ADR-0003](./docs/adr/0003-encontro-como-unidade-de-conteudo.md)).
-
-O tipo `laboratorio` continua suportado pelo tema, mas não há Encontro de
-laboratório publicado nesta Oferta.
 
 ### Corrigir um link ou um erro de texto
 

@@ -18,4 +18,5 @@ parte mais instrutiva do semestre — e é também a evidência de que o repert�
 mudou.
 
 Uma pergunta para fechar: **o que você respondeu na Semana 1, quando perguntamos
-o que acontece no disco ao escrever uma linha?** E o que você responderia agora?
+o que é engenharia de dados?** E o que você responderia agora, depois de ter
+percorrido os cinco estágios com as mãos?

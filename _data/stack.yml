@@ -10,7 +10,7 @@
       nota: "Base de tudo. Também é a opção nula de quase todo ADR da disciplina."
     - nome: "pgvector"
       doc: https://github.com/pgvector/pgvector
-      nota: "Extensão de busca vetorial. Usada na E4."
+      nota: "Extensão de busca vetorial. Fora do conteúdo do plano; disponível para o Seminário Técnico de busca vetorial."
     - nome: "PostGIS"
       doc: https://postgis.net/documentation/
       nota: "Extensão geoespacial, útil em domínios de mobilidade e saneamento."

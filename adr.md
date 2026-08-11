@@ -247,8 +247,8 @@ decisão estrutural daquela etapa.
 
 | Entrega | Decisão típica |
 |---|---|
-| [E1]({{ '/projeto/e1/' | relative_url }}) | Modelagem física: normalização, particionamento, tipo de índice |
+| [E1]({{ '/projeto/e1/' | relative_url }}) | Modelagem do sistema de origem: CRUD × *insert-only*, normalização, carimbo de tempo |
 | [E2]({{ '/projeto/e2/' | relative_url }}) | Mecanismo de ingestão: CDC × *batch*, formato de tabela aberta |
 | [E3]({{ '/projeto/e3/' | relative_url }}) | Modelagem analítica ou ferramenta de transformação |
-| [E4]({{ '/projeto/e4/' | relative_url }}) | Índice vetorial e parâmetros de *recall* × latência |
+| [E4]({{ '/projeto/e4/' | relative_url }}) | Como o dado é disponibilizado: camada semântica, federação, ETL reverso |
 | Livre | A decisão que mais custou à Squad, em qualquer ponto do ciclo |

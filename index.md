@@ -12,10 +12,13 @@ resumo: >-
 {% include ciclo_do_dado.html %}
 
 A disciplina segue um fio condutor único: **o ciclo de vida do dado**, do byte
-gravado em disco à decisão tomada por quem lê um painel. Começamos em páginas,
-índices e planos de execução; passamos por replicação, ingestão e captura de
-mudanças; chegamos a modelagem analítica, qualidade e orquestração; e terminamos
-em busca vetorial, governança e LGPD.
+gravado em disco à decisão tomada por quem lê um painel. Começamos pelo campo e
+seus princípios de arquitetura; passamos por sistemas de origem, armazenamento e
+ingestão; chegamos a consulta, modelagem, transformação e disponibilização; e
+terminamos em segurança, privacidade e LGPD.
+
+O conteúdo é o de *Fundamentos de Engenharia de Dados*, de Reis e Housley,
+percorrido na ordem do livro.
 
 O eixo transversal é o **Método de Decisão**: escolher tecnologia de dados é um
 método, não uma preferência. Caracterizar a carga, explicitar as restrições,

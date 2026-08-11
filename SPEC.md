@@ -91,10 +91,12 @@ Uma linha por **Encontro** (~30), gerada de `_data/cronograma.yml`, agrupada por
 Datas são **declaradas**, nunca calculadas ([ADR-0002](./docs/adr/0002-material-ancorado-em-semana-nao-em-data.md)).
 
 Módulos:
-- **I — Fundamentos e internals** (Semanas 1–5): armazenamento físico, indexação e otimização, transações e concorrência, lógica no servidor e CDC.
-- **II — Sistemas distribuídos e ingestão** (6–8): *tradeoffs* distribuídos, famílias não relacionais, ingestão batch e contínua, formatos abertos.
-- **III — Modelagem analítica e transformação** (9–12): OLTP→OLAP, dimensional, Data Vault/ELT, qualidade e contratos, orquestração e observabilidade.
-- **IV — Dados não estruturados, IA e governança** (13–15): vetores e busca híbrida, dados para IA, governança e LGPD.
+O conteúdo é o de *Fundamentos de Engenharia de Dados* (Reis & Housley, Novatec, 2023), percorrido na ordem do livro; os módulos correspondem às partes dele.
+
+- **I — Fundamentos e componentes essenciais** (Semanas 1–5): o campo, o ciclo de vida e seus elementos subjacentes, princípios e exemplos de arquitetura, escolha de tecnologias. Livro, cap. 1 a 4.
+- **II — Origem, armazenamento e ingestão** (6–9): sistemas de origem, ingredientes crus do armazenamento, sistemas e abstrações, ingestão. Livro, cap. 5 a 7 e Apêndice A.
+- **III — Consultas, modelagem, transformação e disponibilização** (10–13): consultas e otimizador, modelagem, transformações, disponibilização e ETL reverso. Livro, cap. 8 e 9.
+- **IV — Segurança, privacidade e o futuro** (14–15): segurança e privacidade com LGPD como complemento local, e o futuro do campo. Livro, cap. 10 e 11 e Apêndice B.
 - **Encerramento** (16): defesa e retrospectiva.
 
 ### RF-04 — Encontros (`/encontros/`, `/encontros/:slug/`)
@@ -102,12 +104,14 @@ Módulos:
 
 Encontro **conceitual**: objetivos de aprendizagem, slides embutidos com download, leitura prévia obrigatória, caso ou paper discutido, material complementar.
 
-Encontro de **laboratório**: roteiro, pré-requisitos de ambiente, entregável da sessão.
+Encontro de **Seminário Técnico** e de **banca**: objetivos, regras e link para a avaliação correspondente.
 
-Toda página de Encontro exibe link para os demais Encontros da mesma Semana — o par conceito/laboratório existe no domínio e precisa ser reconstruído na navegação, já que não coabita mais o mesmo arquivo.
+Toda página de Encontro exibe link para os demais Encontros da mesma Semana, reconstruídos pelo campo `semana` — nas Semanas 13 a 15, o conceitual e o Seminário Técnico.
+
+Não há Encontro de laboratório: o trabalho de Squad acontece no **Projeto Integrado**, fora da grade de Encontros.
 
 ### RF-05 — Projeto Integrado (`/projeto/`)
-Especificação de *"Do dado bruto à decisão pública"*: formação das Squads (4–5), escolha do domínio de dados abertos brasileiros, **requisitos mínimos de produto** (fonte OLTP modelada e populada; ingestão batch + CDC/streaming; camada analítica em formato aberto; transformações versionadas com testes de qualidade e orquestração agendada; consumo duplo — dashboard analítico e busca semântica; catálogo, linhagem e análise de LGPD; 5 ADRs) e as quatro **Entregas** E1–E4 com escopo, data e peso. Cada Entrega tem página própria com *checklist* de aceite.
+Especificação de *"Do dado bruto à decisão pública"*: formação das Squads (4–5), escolha do domínio de dados abertos brasileiros, **requisitos mínimos de produto** (fonte OLTP modelada e populada; ingestão batch + CDC/streaming; camada analítica em formato aberto; transformações versionadas com testes de qualidade e orquestração agendada; consumo duplo — painel analítico e camada semântica com ETL reverso; catálogo, linhagem e análise de LGPD; 5 ADRs) e as quatro **Entregas** E1–E4 com escopo, data e peso. Cada Entrega tem página própria com *checklist* de aceite.
 
 ### RF-06 — Avaliação e rubricas (`/avaliacao/`)
 De `_data/avaliacao.yml`:
@@ -237,10 +241,10 @@ Disciplina/
 │   └── seminarios.yml
 │
 ├── _encontros/                     # coleção: um arquivo por Encontro
-│   ├── s01-conceitual-ciclo-de-vida-do-dado.md
-│   ├── s01-lab-formacao-de-squads.md
-│   ├── s02-conceitual-armazenamento-fisico.md
-│   ├── s02-lab-paginas-e-planos.md
+│   ├── s01-conceitual-o-que-e-engenharia-de-dados.md
+│   ├── s02-conceitual-ciclo-de-vida-da-engenharia-de-dados.md
+│   ├── s03-conceitual-principios-de-arquitetura.md
+│   ├── s13-seminario-tecnico.md
 │   └── ...
 ├── _announcements/
 ├── _posts/
@@ -282,12 +286,12 @@ Slug: `sNN-conceitual-<assunto>.md` — Semana no prefixo, tipo em seguida, orde
 ---
 layout: encontro
 semana: 2
-tipo: conceitual              # conceitual | laboratorio | seminario | banca
+tipo: conceitual              # conceitual | seminario | banca
 titular: docente              # docente | monitoria
-modulo: "I — Fundamentos e internals"
-titulo: "Armazenamento físico e organização de dados"
+modulo: "I — Fundamentos e componentes essenciais"
+titulo: "O ciclo de vida da engenharia de dados"
 objetivos:
-  - "Explicar como o SGBD organiza páginas, heap e tablespaces"
+  - "Nomear os cinco estágios do ciclo e os seis elementos subjacentes"
   - "Contrastar orientação a linha e a coluna a partir do padrão de acesso"
   - "Diferenciar B-tree e LSM-tree pelo perfil de escrita e leitura"
 slides: /static_files/slides/s02-armazenamento-fisico.pdf
@@ -302,24 +306,9 @@ complementar:
 
 **Não existe campo `data`.** O Encontro conhece a Semana; a data vive só no cronograma.
 
-### 8.2 Encontro de laboratório
+### 8.2 Encontro de Seminário Técnico e de banca
 
-Slug: `sNN-lab-<assunto>.md`.
-
-```yaml
----
-layout: encontro
-semana: 2
-tipo: laboratorio
-titular: monitoria
-modulo: "I — Fundamentos e internals"
-titulo: "Medindo páginas e lendo planos de execução"
-roteiro: /static_files/roteiros/s02-paginas-e-planos.md
-requisitos_ambiente:
-  - "PostgreSQL 16 via Docker Compose"
-entregavel: "Registro no diário da squad com as medições da sessão"
----
-```
+Slug: `sNN-seminario-tecnico.md` e `sNN-banca-<assunto>.md`. Mesmo contrato do conceitual, sem `slides` e sem `leitura_previa`; as regras vivem em `_data/seminarios.yml`.
 
 O par com o Encontro conceitual da mesma Semana é resolvido pelo campo `semana`, e renderizado pelo include `encontros_da_semana`.
 
@@ -330,10 +319,10 @@ Uma linha por Encontro, data escrita à mão:
 ```yaml
 - data: 2026-08-18
   semana: 2
-  encontro: s02-conceitual-armazenamento-fisico
-- data: 2026-08-20
-  semana: 2
-  encontro: s02-lab-paginas-e-planos
+  encontro: s02-conceitual-ciclo-de-vida-da-engenharia-de-dados
+- data: 2026-11-05
+  semana: 13
+  encontro: s13-seminario-tecnico
 ```
 
 ### 8.4 Entrega (`_data/entregas.yml`)
@@ -470,8 +459,8 @@ end
 ```bash
 git clone https://github.com/UnB-BD2/Disciplina.git && cd Disciplina
 make serve            # http://localhost:4000/Disciplina/
-# edita _encontros/s03-conceitual-indexacao.md → recarrega sozinho
-git checkout -b s03-indexacao && git commit && git push
+# edita _encontros/s03-conceitual-principios-de-arquitetura.md → recarrega sozinho
+git checkout -b s03-principios && git commit && git push
 gh pr create          # CI verde → merge → publica
 ```
 

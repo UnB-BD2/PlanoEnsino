@@ -40,25 +40,25 @@ temas:
     resumo: >-
       TimescaleDB, InfluxDB e ClickHouse: compressão, downsampling, política de
       retenção e por que série temporal justifica motor próprio.
-    roadmap: "Famílias especializadas — tratado só de forma comparativa na Semana 7"
+    roadmap: "Famílias especializadas — o livro-texto não percorre as famílias de banco de dados"
     squad: ""
   - titulo: "Motores de busca textual: Elasticsearch e OpenSearch"
     resumo: >-
       Índice invertido, BM25, analisadores para português e a fronteira com a
-      busca vetorial da Semana 14.
-    roadmap: "Busca — a disciplina cobre a metade semântica, não a léxica em profundidade"
+      busca vetorial, que ficou fora do plano.
+    roadmap: "Busca — fora do escopo do livro-texto e do plano"
     squad: ""
   - titulo: "Data mesh e contratos entre domínios na prática"
     resumo: >-
       A tese organizacional além do slogan: onde o mesh resolve, onde ele só
       renomeia o problema, e o que um contrato de dados precisa ter para valer.
-    roadmap: "Arquiteturas organizacionais — conceitual na Semana 15"
+    roadmap: "Arquiteturas organizacionais — conceitual nas Semanas 4 e 13"
     squad: ""
   - titulo: "Privacidade diferencial e dados sintéticos"
     resumo: >-
-      Além da anonimização da Semana 15: garantia formal, orçamento de
+      Além da privacidade da Semana 14: garantia formal, orçamento de
       privacidade e o compromisso com utilidade do dado.
-    roadmap: "Governança — aprofundamento além da Semana 15"
+    roadmap: "Governança — aprofundamento além da Semana 14"
     squad: ""
   - titulo: "Bancos de dados embarcados e o computador de ponta"
     resumo: >-
@@ -68,9 +68,9 @@ temas:
     squad: ""
   - titulo: "Observabilidade de dados e detecção de anomalia em pipeline"
     resumo: >-
-      Além dos testes da Semana 11: perfilamento contínuo, detecção estatística
+      Além dos testes do Projeto Integrado: perfilamento contínuo, detecção estatística
       de desvio e o custo de alarme falso na confiança do time.
-    roadmap: "Qualidade e observabilidade — aprofundamento além das Semanas 11 e 12"
+    roadmap: "Qualidade e observabilidade — elemento subjacente no plano, sem Semana própria"
     squad: ""
   - titulo: "Formatos de tabela aberta em disputa: Iceberg, Delta e Hudi"
     resumo: >-
@@ -82,5 +82,18 @@ temas:
     resumo: >-
       Feature skew, viagem no tempo em feature, e por que o problema é de
       engenharia de dados antes de ser de aprendizado de máquina.
-    roadmap: "Dados para IA — mencionado na Semana 14"
+    roadmap: "Dados para IA — mencionado na Semana 13"
+    squad: ""
+  - titulo: "Busca vetorial, embeddings e RAG"
+    resumo: >-
+      Chunking, embeddings, distância e índices aproximados (HNSW, IVF): o
+      compromisso entre recall e latência, medido no corpus da própria Squad.
+      Compare com busca léxica no PostgreSQL que vocês já têm.
+    roadmap: "Dados não estruturados e IA — fora do escopo do livro-texto"
+    squad: ""
+  - titulo: "Famílias não relacionais: documento, chave-valor, colunar largo e grafo"
+    resumo: >-
+      O que cada família otimiza e o que cobra em troca. Escolha uma carga real
+      da plataforma da Squad e compare com a opção nula: continuar no PostgreSQL.
+    roadmap: "NoSQL — o livro-texto apenas menciona as famílias"
     squad: ""

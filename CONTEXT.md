@@ -15,7 +15,7 @@ Unidade de ancoragem temporal do material: uma das 16 semanas letivas de uma **O
 _Avoid_: data, sessão
 
 **Encontro**:
-Unidade de conteúdo do material: uma sessão presencial de 2h, de natureza conceitual ou de laboratório. Tem material e titularidade próprios — slides pertencem à docente, roteiros de laboratório à monitoria.
+Unidade de conteúdo do material: uma sessão presencial de 2h, de natureza conceitual, de **Seminário Técnico** ou de banca. Tem material e titularidade próprios.
 _Avoid_: aula, sessão, lecture
 
 ### O que se constrói e se avalia
@@ -64,17 +64,17 @@ _Avoid_: programa, syllabus
 
 ## Diálogo de exemplo
 
-> — Onde eu ponho o roteiro do laboratório de índices?
+> — Onde eu ponho o material sobre modelagem dimensional?
 >
-> — No **Encontro** de laboratório da **Semana** 3. O conceitual da mesma Semana é o de indexação e otimização — os dois formam par, mas são arquivos separados porque quem escreve o roteiro é a monitoria.
+> — No **Encontro** conceitual da **Semana** 11, que é a parte de modelagem do capítulo 8 do livro-texto.
 >
-> — E a data? A Semana 3 cai em qual dia?
+> — E a data? A Semana 11 cai em qual dia?
 >
 > — O Encontro não sabe a data dele. Isso vive só no cronograma, e é declarado à mão, porque tem feriado no meio e a conta erraria calada.
 >
-> — Certo. E a E2, que é na Semana 8 — é um Encontro também?
+> — Certo. E a E3, que é na Semana 13 — é um Encontro também?
 >
-> — Não. **Entrega** não é Encontro; é marco do **Projeto Integrado**. Ela cai numa Semana, mas não ocupa uma sessão. O que acontece no laboratório daquela Semana é a **Squad** trabalhando na entrega, o que é outra coisa.
+> — Não. **Entrega** não é Encontro; é marco do **Projeto Integrado**. Ela cai numa Semana, mas não ocupa uma sessão. Repare que a Semana 13 tem dois Encontros — o conceitual e o primeiro **Seminário Técnico** —, e o que liga os dois é o número da Semana.
 >
 > — E se a squad escolher DuckDB em vez de Postgres para a camada analítica, isso vira o quê?
 >

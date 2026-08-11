@@ -3,56 +3,63 @@
 # `data` é declarada à mão, como no cronograma. Entrega não é Encontro: cai numa
 # Semana, mas não ocupa uma sessão.
 #
+# Cada Entrega vem DEPOIS do conteúdo que ela exige: E1 após sistemas de origem
+# (Semana 6), E2 após ingestão (Semana 9), E3 após transformação (Semana 12),
+# E4 no encerramento.
+#
 # PENDENTE (D5): datas conferidas contra o calendário oficial de 2026/2.
 
 - id: E1
   titulo: "Fonte transacional modelada e populada"
-  semana: 5
-  data: 2026-09-08
+  semana: 7
+  data: 2026-09-22
   peso: 10
   resumo: >-
-    O ponto de partida do ciclo de vida do dado: um sistema OLTP real, com
-    esquema físico justificado por medição e carga reprodutível a partir de
-    dados abertos brasileiros.
+    O primeiro estágio do ciclo de vida: um sistema de origem OLTP real, com
+    esquema versionado e carga reprodutível a partir de dados abertos
+    brasileiros.
   checklist:
     - "Domínio de dados abertos brasileiros escolhido, com a pergunta de gestão que a plataforma vai responder escrita em uma frase"
     - "Esquema físico versionado com migrações, executáveis do zero em ordem"
     - "Carga reprodutível: um comando popula o banco a partir da fonte pública, sem passo manual"
-    - "Volume mínimo que torne o plano de execução interessante — não bastam 100 linhas"
-    - "Ao menos um índice criado por decisão medida, com `EXPLAIN (ANALYZE, BUFFERS)` antes e depois no repositório"
-    - "1 ADR sobre a escolha de modelagem física (normalização, particionamento, tipo de índice)"
+    - "Volume mínimo que torne a plataforma interessante — não bastam 100 linhas"
+    - "Caracterização da carga de trabalho do domínio, no formato do passo 1 do Método de Decisão: volume, taxa de escrita e leitura, padrão de acesso, latência tolerada"
+    - "Declaração de como a origem trata histórico: CRUD que sobrescreve ou insert-only, e o que isso permite perguntar"
+    - "1 ADR sobre a escolha de modelagem do sistema de origem"
     - "README que permite a terceiro subir tudo com Docker Compose"
 
 - id: E2
   titulo: "Ingestão em lote e captura de mudanças"
-  semana: 8
-  data: 2026-09-29
+  semana: 10
+  data: 2026-10-13
   peso: 12
   resumo: >-
-    O dado em trânsito: sai do OLTP e chega ao armazenamento analítico em
-    formato aberto, por dois caminhos de natureza diferente.
+    O dado sai da origem e chega ao armazenamento analítico em formato aberto,
+    por dois caminhos de natureza diferente.
   checklist:
     - "Ingestão em lote da fonte pública, idempotente e reexecutável"
     - "Fluxo de mudanças a partir do OLTP — CDC por decodificação lógica ou streaming"
     - "Camada de armazenamento analítico em formato aberto (Parquet, e tabela Iceberg ou Delta)"
     - "Semântica de entrega declarada e demonstrada: o que acontece se o consumidor reprocessar"
     - "Tratamento explícito de dado atrasado e de reprocessamento de janela"
+    - "Escolha de serialização e compressão justificada pelo padrão de acesso, não por padrão da ferramenta"
     - "1 ADR sobre a escolha do mecanismo de ingestão, com a opção nula considerada"
-    - "Diário de bordo das Semanas 5 a 8 no repositório"
+    - "Diário de bordo das Semanas 7 a 10 no repositório"
 
 - id: E3
   titulo: "Camada analítica transformada, testada e orquestrada"
-  semana: 12
-  data: 2026-10-27
+  semana: 13
+  data: 2026-11-03
   peso: 14
   resumo: >-
-    O dado em uso: modelagem dimensional, transformação versionada, testes de
-    qualidade e orquestração agendada com observabilidade.
+    Consulta, modelagem e transformação: o modelo analítico versionado, testado
+    e orquestrado, respondendo à pergunta declarada na E1.
   checklist:
     - "Modelo analítico com fato e dimensão, granularidade declarada e ao menos uma dimensão de variação lenta"
     - "Transformações versionadas em ferramenta declarativa (dbt ou SQLMesh), organizadas em camadas"
     - "Testes de dados: esquema, volume, unicidade, integridade referencial e ao menos um de distribuição"
     - "Orquestração agendada com grafo de dependência, retry e backfill demonstrado"
+    - "Ao menos uma consulta otimizada a partir do plano de execução, com `EXPLAIN (ANALYZE, BUFFERS)` antes e depois no repositório"
     - "Métrica de freshness e SLA declarado para ao menos uma tabela de consumo"
     - "1 ADR sobre a escolha de modelagem analítica ou de ferramenta de transformação"
     - "Painel analítico respondendo à pergunta de gestão declarada na E1"
@@ -63,15 +70,15 @@
   data: 2026-11-24
   peso: 14
   resumo: >-
-    O dado como ativo: busca semântica sobre o componente não estruturado,
-    catálogo, linhagem, análise de LGPD, e a defesa da plataforma diante de
-    banca com perfil técnico e de gestão.
+    O último estágio do ciclo: disponibilização com camada semântica e ETL
+    reverso, catálogo, linhagem, análise de LGPD, e a defesa da plataforma
+    diante de banca com perfil técnico e de gestão.
   checklist:
-    - "Consumo duplo funcionando: painel analítico e busca semântica sobre o componente não estruturado do domínio"
-    - "Índice vetorial com escolha de parâmetros justificada por recall × latência medidos"
+    - "Consumo duplo funcionando: painel analítico e uma camada semântica de métricas, com definição versionada de cada métrica"
+    - "Um caminho de ETL reverso: ao menos uma métrica tratada retorna a um sistema operacional onde alguém agiria"
     - "Catálogo e linhagem publicados, cobrindo da fonte ao consumo"
     - "Análise de LGPD do que foi construído: dado pessoal identificado, base legal, retenção e descarte"
-    - "Controle de acesso demonstrado em ao menos um recorte de linha ou de coluna"
+    - "Controle de acesso demonstrado em ao menos um recorte de linha ou de coluna, aplicando privilégio mínimo"
     - "Portfólio completo dos 5 ADRs, com os gatilhos de revisão de cada um"
     - "Retrospectiva do ciclo de vida percorrido, no diário de bordo"
     - "Defesa de 20 minutos com arguição, para público técnico e de gestão"

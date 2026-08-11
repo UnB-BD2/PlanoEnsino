@@ -62,13 +62,17 @@ Semana 1:
 
 - **Volume suficiente.** O domínio precisa gerar dado bastante para que um plano
   de execução seja interessante e uma transformação seja não trivial. Uma tabela
-  de 400 linhas não ensina nada sobre índice.
-- **Componente não estruturado.** A E4 exige busca semântica. O domínio precisa
-  ter texto — ementas, descrições de contrato, relatórios, pareceres, respostas
-  abertas. Escolher um domínio puramente numérico na Semana 1 cria um problema
-  que só aparece na Semana 13, quando não há mais tempo de trocar.
+  de 400 linhas não ensina nada sobre modelagem analítica.
+- **História que muda.** O domínio precisa ter série ao longo do tempo e
+  entidades que mudam de estado — município que troca de nome, prestador que muda
+  de razão social, classificação revista. É disso que dependem a captura de
+  mudanças da E2 e a dimensão de variação lenta da E3. Uma foto única de um ano
+  só não sustenta nem uma nem outra.
+- **Alguém do outro lado.** A E4 exige um caminho de ETL reverso: uma métrica
+  tratada que volta para onde alguém agiria. Vale a pena imaginar já na Semana 1
+  quem seria esse consumidor no seu domínio.
 
-{% include callout.html tipo="atencao" texto="Confira o componente não estruturado **antes** de fechar o domínio. É o erro mais caro que uma Squad comete na Semana 1, e ele só se manifesta na Semana 13." %}
+{% include callout.html tipo="atencao" texto="Confira **antes** de fechar o domínio se ele tem série temporal e entidades que mudam de estado. É o erro mais caro que uma Squad comete na Semana 1, e ele só se manifesta na E2, quando não há mais tempo de trocar." %}
 
 ## Requisitos mínimos do produto
 
@@ -79,7 +83,7 @@ A plataforma final, ao fim da E4, precisa ter:
   <li><strong>ingestão em lote</strong> e um <strong>fluxo de mudanças</strong> — CDC ou <em>streaming</em></li>
   <li>camada de <strong>armazenamento analítico em formato aberto</strong></li>
   <li><strong>transformações versionadas</strong> com testes de qualidade e orquestração agendada</li>
-  <li>camada de <strong>consumo dupla</strong>: painel analítico <em>e</em> busca semântica sobre o componente não estruturado</li>
+  <li>camada de <strong>consumo dupla</strong>: painel analítico <em>e</em> camada semântica de métricas, com um caminho de <strong>ETL reverso</strong></li>
   <li><strong>catálogo, linhagem e análise de LGPD</strong> do que foi construído</li>
   <li><strong>5 ADRs</strong>, aplicando o Método de Decisão</li>
 </ul>

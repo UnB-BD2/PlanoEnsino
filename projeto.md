@@ -22,7 +22,7 @@ não é obstáculo à disciplina; é o objeto dela.
 
 ## Formação das Squads
 
-Squads de **4 a 5 pessoas**, formadas na Semana 1 e mantidas até a defesa.
+Squads de **4 a 7 pessoas**, formadas na Semana 1 e mantidas até a defesa.
 Menos de 4 sobrecarrega; mais de 5 esconde quem não participa.
 
 O trabalho acontece num **repositório público** da Squad, sob organização
@@ -73,24 +73,6 @@ Semana 1:
   quem seria esse consumidor no seu domínio.
 
 {% include callout.html tipo="atencao" texto="Confira **antes** de fechar o domínio se ele tem série temporal e entidades que mudam de estado. É o erro mais caro que uma Squad comete na Semana 1, e ele só se manifesta na E2, quando não há mais tempo de trocar." %}
-
-## Requisitos mínimos do produto
-
-A plataforma final, ao fim da E4, precisa ter:
-
-<ul class="checklist">
-  <li>uma <strong>fonte transacional (OLTP)</strong> modelada e populada</li>
-  <li><strong>ingestão em lote</strong> e um <strong>fluxo de mudanças</strong> — CDC ou <em>streaming</em></li>
-  <li>camada de <strong>armazenamento analítico em formato aberto</strong></li>
-  <li><strong>transformações versionadas</strong> com testes de qualidade e orquestração agendada</li>
-  <li>camada de <strong>consumo dupla</strong>: painel analítico <em>e</em> camada semântica de métricas, com um caminho de <strong>ETL reverso</strong></li>
-  <li><strong>catálogo, linhagem e análise de LGPD</strong> do que foi construído</li>
-  <li><strong>5 ADRs</strong>, aplicando o Método de Decisão</li>
-</ul>
-
-Nenhum desses itens é opcional, e nenhum deles exige nuvem paga: a
-[stack completa]({{ '/materiais/#stack' | relative_url }}) é software livre e
-roda em Docker Compose na máquina de vocês.
 
 ## Como o trabalho é avaliado
 

@@ -123,9 +123,8 @@ um [ADR]({{ '/adr/' | relative_url }}).
 
 ## Fontes de dados abertos
 
-Sugestões para o [Projeto Integrado]({{ '/projeto/' | relative_url }}). A Squad
-pode propor outro domínio, desde que tenha volume suficiente e um componente
-textual — a E4 depende dele.
+As fontes dos **dois domínios** do [Projeto Integrado]({{ '/projeto/' | relative_url }}).
+Nesta Oferta o domínio não é livre: cada Squad escolhe um dos dois.
 
 <ul>
 {%- for f in m.fontes_de_dados %}

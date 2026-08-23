@@ -36,6 +36,8 @@ constrói do zero e improvisa; numa com plataforma madura, ele escala e governa.
 Boa parte das discussões inúteis sobre "a ferramenta certa" some quando se
 pergunta primeiro em que estágio a organização está.
 
-Nesta Semana as Squads são formadas e cada uma escolhe seu domínio de dados
-abertos. Leia antes a página do [Projeto Integrado]({{ '/projeto/' | relative_url }}):
-a escolha de domínio tem dois requisitos que só doem lá na frente.
+Nesta Semana as Squads são formadas e cada uma escolhe entre os **dois domínios**
+da Oferta: o observatório de dados abertos da UnB, ou o monitor dos conselhos
+nacionais no Diário Oficial. Leia antes a página do
+[Projeto Integrado]({{ '/projeto/' | relative_url }}) — a escolha vale o semestre
+inteiro e não se troca na Semana 8.

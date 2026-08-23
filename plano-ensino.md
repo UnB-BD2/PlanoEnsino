@@ -74,43 +74,17 @@ português e no original.
 O ciclo de vida em cinco estágios e os seis elementos subjacentes são o
 vocabulário que a disciplina inteira usa, do primeiro Encontro à defesa.
 
-Duas coisas que o livro não traz e que este plano acrescenta. A **LGPD** entra na
-Semana 14, ao lado do capítulo de segurança e privacidade, porque o Projeto
-Integrado exige análise de LGPD do que for construído e porque é a lei sob a qual
-esses dados são tratados. E os **elementos subjacentes** ganham tratamento
-explícito na Semana 2 e no Projeto Integrado, já que orquestração agendada e testes de
-qualidade são requisitos de produto do projeto e no livro não têm capítulo próprio.
-
-O que fica de fora: *internals* de SGBD — B-tree × LSM-tree, MVCC, níveis de
-isolamento, leitura de planos de execução — são conteúdo do pré-requisito,
-Introdução a Banco de Dados. Esta disciplina usa o banco; não o abre.
-
-As demais obras da bibliografia passam a ser complementares e aprofundam pontos
-específicos: Kleppmann nos sistemas distribuídos das Semanas 4 e 8, Kimball na
-modelagem dimensional da Semana 11, Silberschatz e Elmasri no que o pré-requisito
-deixou.
-
-O eixo transversal da disciplina, apresentado adiante, é o capítulo 4 —
-*Escolhendo tecnologias ao longo do ciclo de vida da engenharia de dados*. É a
-leitura que fundamenta o Método de Decisão e a exigência de medição própria na
-avaliação de ADR.
 
 ## Plano das 16 Semanas
 
-A coluna **No livro** aponta o capítulo que sustenta cada Semana.
-
 Seguindo a estrutura do livro, os **elementos subjacentes** — segurança,
 gerenciamento de dados, DataOps, arquitetura de dados, orquestração e engenharia
-de software — não têm Semana própria. São apresentados na Semana 2 e retomados em
-cada estágio do ciclo, que é exatamente como o livro os trata. Qualidade de dados,
-testes e orquestração agendada, exigidos pelo Projeto Integrado, entram por aí e
-são praticados no Projeto Integrado.
+de software.
 
 ### Módulo I — Fundamentos e componentes essenciais
 
-*Parte I do livro.* Semanas 1 a 5.
 
-**No livro-texto:** capítulos 1 a 4, na íntegra.
+
 
 <div class="table-scroll" markdown="1">
 
@@ -126,9 +100,7 @@ são praticados no Projeto Integrado.
 
 ### Módulo II — O ciclo em detalhes: origem, armazenamento e ingestão
 
-*Parte II do livro, primeira metade.* Semanas 6 a 9.
 
-**No livro-texto:** capítulos 5 a 7, mais o Apêndice A.
 
 <div class="table-scroll" markdown="1">
 
@@ -143,10 +115,6 @@ são praticados no Projeto Integrado.
 
 ### Módulo III — Consultas, modelagem, transformação e disponibilização
 
-*Parte II do livro, segunda metade.* Semanas 10 a 13.
-
-**No livro-texto:** capítulos 8 e 9, na íntegra.
-
 <div class="table-scroll" markdown="1">
 
 | Semana | Tema | Conteúdo | No livro |
@@ -160,9 +128,6 @@ são praticados no Projeto Integrado.
 
 ### Módulo IV — Segurança, privacidade e o futuro
 
-*Parte III do livro.* Semanas 14 e 15.
-
-**No livro-texto:** capítulos 10 e 11, mais o Apêndice B.
 
 <div class="table-scroll" markdown="1">
 
@@ -183,46 +148,14 @@ são praticados no Projeto Integrado.
 
 </div>
 
-## Mapeamento com o roadmap de Engenharia de Dados
-
-O que a disciplina cobre, com que profundidade, e o que ela deliberadamente
-remete a outro lugar.
-
-<div class="table-scroll" markdown="1">
-
-| Bloco do roadmap | Onde é tratado | Profundidade |
-|---|---|---|
-| SQL e bancos relacionais | Semanas 6 e 10 | Uso, otimizador e desempenho de consulta |
-| Modelagem de dados: normalização, dimensional, Data Vault | Semana 11 | Aprofundada |
-| Bancos NoSQL: documento, chave-valor, colunar largo, grafo | Semanas 6 e 8 | **Menções** — o livro não percorre as famílias |
-| Data warehousing e OLAP | Semanas 8, 11 e 13 | Aprofundada |
-| Data lakes e lakehouse: Parquet, Iceberg, Delta | Semanas 7 e 8 | Aprofundada |
-| ETL/ELT e pipelines | Semanas 9 e 12 | Prática |
-| Processamento em lote e em fluxo: Kafka, CDC | Semanas 6 e 9 | Prática |
-| Orquestração: Airflow, Dagster | Semana 2 e Projeto Integrado | **Elemento subjacente** — sem Semana própria, conforme o livro |
-| Qualidade, testes e observabilidade | Semana 2 e Projeto Integrado | **Elemento subjacente** — idem |
-| Sistemas distribuídos: replicação, particionamento, consistência | Semanas 4 e 8 | Conceitual |
-| Governança, catálogo, linhagem e segurança | Semanas 8, 13 e 14 | Aprofundada |
-| LGPD | Semana 14 | **Complemento local** — não tratada pelo livro, exigida pelo Projeto Integrado |
-| Nuvem, IaC, Kubernetes | Semanas 5 e 14 (Apêndice B) | Conceitual — aprofundamento remetido a Computação em Nuvem / DevOps |
-| Spark e processamento distribuído em cluster | Seminários | **Introdutório** — remetido a Big Data / eletiva |
-| Dados vetoriais, *embeddings*, RAG | Seminários | **Fora do escopo do livro** — remetido aos Seminários Técnicos |
-| *Internals* de SGBD: B-tree, MVCC, isolamento, planos | — | **Fora do escopo** — pré-requisito, Introdução a Banco de Dados |
-| Arquiteturas organizacionais: *data mesh*, contratos | Semanas 4 e 13 | Conceitual |
-
-</div>
-
 ## Metodologia
 
 Aprendizagem orientada a projeto, com **sala invertida** e trabalho contínuo de Squad.
 
-- **Encontro conceitual (2 h)** — exposição dialogada curta, de cerca de 40
-  minutos, seguida de estudo de caso ou leitura de *paper* e discussão dos
-  compromissos arquiteturais em jogo. A leitura prévia é obrigatória: o Encontro
-  discute o que você leu, não o resume.
-- **Projeto Integrado** — Squads de 4 a 5 pessoas constroem, ao longo do
-  semestre, uma plataforma de dados completa sobre um domínio real de dados
-  abertos, em quatro Entregas incrementais.
+- **Encontro conceitual (2 h)** 
+- **Projeto Integrado** — Squads de 4 a 7 pessoas constroem, ao longo do
+  semestre, uma plataforma de dados completa sobre um de dois domínios reais de
+  dados abertos, em quatro Entregas incrementais.
 - **Diário de bordo** — registro semanal curto por Squad: o que foi medido, o
   que surpreendeu, o que foi decidido. É insumo das retrospectivas e da defesa
   final.
@@ -250,14 +183,6 @@ produzidos no semestre:
 6. **Definir o gatilho de revisão** — sob qual métrica essa decisão deixa de
    valer.
 
-Esse método tem contrapartida direta no livro-texto: o capítulo 4 de
-*Fundamentos de Engenharia de Dados* trata a escolha de tecnologia ao longo do
-ciclo de vida — custo total de propriedade, tecnologias imutáveis × transitórias,
-construir × comprar, monolítico × modular. A seção sobre a *guerra de benchmarks*
-é a justificativa do passo 4: comparação publicada por fornecedor é otimizada
-para o caso do fornecedor, e por isso a medição tem de ser feita com dado do
-próprio domínio.
-
 O instrumento é o **ADR** (*Architecture Decision Record*), no formato Nygard:
 contexto, decisão, status, consequências. Cada Squad mantém um portfólio
 versionado no próprio repositório, com **5 ADRs obrigatórios** ao longo do
@@ -266,10 +191,18 @@ critérios de avaliação.
 
 ## O Projeto Integrado
 
-**"Do dado bruto à decisão pública."** Cada Squad escolhe um domínio de dados
-abertos governamentais brasileiros — saneamento e SNIS, habitação,
-transferências e execução orçamentária, mobilidade urbana — e constrói a
-plataforma que permite responder a uma pergunta de gestão real.
+**"Do dado bruto à decisão pública."** Nesta Oferta há **dois domínios**, e cada
+Squad escolhe um deles na Semana 1:
+
+- **Observatório de dados abertos da UnB** — perfil socioeconômico do discente,
+  tempo médio para formar e ranking de cursos, evasão por curso, e como a
+  universidade investe. Fonte: [dados.unb.br](https://dados.unb.br), 65 conjuntos.
+- **Monitor dos conselhos nacionais no Diário Oficial** — quais conselhos estão
+  ativos e o que de fato fazem, a partir de 41.642 publicações do DOU cobrindo 90
+  conselhos entre 2019 e 2024.
+
+Dentro do domínio escolhido, a Squad formula a pergunta de gestão que a
+plataforma vai responder e constrói tudo em função dela.
 
 Requisitos mínimos do produto final:
 
@@ -342,8 +275,8 @@ Airflow ou Dagster na orquestração; MongoDB, Neo4j e Redis nos não relacionai
 Great Expectations na qualidade; OpenMetadata ou DataHub no catálogo; Metabase
 ou Superset no consumo; Docker Compose no empacotamento.
 
-Fontes de dados sugeridas: Portal Brasileiro de Dados Abertos, SNIS, IBGE e
-Portal da Transparência.
+Fontes de dados: portal de dados abertos da UnB, base de publicações de
+conselhos no DOU, Imprensa Nacional, Portal da Transparência e IBGE.
 
 ## Bibliografia
 

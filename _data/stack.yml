@@ -13,7 +13,7 @@
       nota: "Extensão de busca vetorial. Fora do conteúdo do plano; disponível para o Seminário Técnico de busca vetorial."
     - nome: "PostGIS"
       doc: https://postgis.net/documentation/
-      nota: "Extensão geoespacial, útil em domínios de mobilidade e saneamento."
+      nota: "Extensão geoespacial. Útil para recortes territoriais em qualquer um dos dois domínios."
 
 - camada: "Analítico local"
   modulo: "III"

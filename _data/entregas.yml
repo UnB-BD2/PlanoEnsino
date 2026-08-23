@@ -16,10 +16,10 @@
   peso: 10
   resumo: >-
     O primeiro estágio do ciclo de vida: um sistema de origem OLTP real, com
-    esquema versionado e carga reprodutível a partir de dados abertos
-    brasileiros.
+    esquema versionado e carga reprodutível a partir da fonte pública do
+    domínio escolhido.
   checklist:
-    - "Domínio de dados abertos brasileiros escolhido, com a pergunta de gestão que a plataforma vai responder escrita em uma frase"
+    - "Domínio escolhido entre os dois da Oferta — dados abertos da UnB ou conselhos no DOU — com a pergunta de gestão escrita em uma frase"
     - "Esquema físico versionado com migrações, executáveis do zero em ordem"
     - "Carga reprodutível: um comando popula o banco a partir da fonte pública, sem passo manual"
     - "Volume mínimo que torne a plataforma interessante — não bastam 100 linhas"

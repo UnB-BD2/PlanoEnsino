@@ -6,7 +6,7 @@ resumo: >-
   Como um banco de dados realmente funciona por dentro, como o dado se move
   entre sistemas, e como escolher a tecnologia certa com medição em vez de
   preferência. Ao longo do semestre, cada Squad constrói uma plataforma de
-  dados completa sobre dados abertos brasileiros.
+  dados completa sobre dados abertos da UnB ou dos conselhos nacionais.
 ---
 
 {% include ciclo_do_dado.html %}

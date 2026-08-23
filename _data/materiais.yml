@@ -42,18 +42,18 @@ complementar:
     titulo: "Database Internals"
     editora: "O'Reilly"
     ano: 2019
-    modulo: "I"
+    modulo: "pré-requisito"
   - autores: "WINAND, M."
     titulo: "SQL Performance Explained"
     ano: 2012
-    modulo: "I"
+    modulo: "III"
     link: https://use-the-index-luke.com/
     nota: "O material aberto *Use The Index, Luke!* cobre boa parte do livro."
   - autores: "SADALAGE, P.; FOWLER, M."
     titulo: "NoSQL Distilled"
     editora: "Addison-Wesley"
     ano: 2012
-    modulo: "II"
+    modulo: "seminários"
   - autores: "DENSMORE, J."
     titulo: "Data Pipelines Pocket Reference"
     editora: "O'Reilly"
@@ -79,13 +79,13 @@ complementar:
     titulo: "Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs"
     editora: "IEEE TPAMI"
     ano: 2020
-    modulo: "IV"
+    modulo: "seminários"
     link: https://arxiv.org/abs/1603.09320
   - autores: "LEWIS, P. et al."
     titulo: "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks"
     editora: "NeurIPS"
     ano: 2020
-    modulo: "IV"
+    modulo: "seminários"
     link: https://arxiv.org/abs/2005.11401
   - autores: "ARMBRUST, M. et al."
     titulo: "Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics"
@@ -118,13 +118,15 @@ templates:
     arquivo: /static_files/templates/ai-usage.md
     nota: "Registro de uso de assistentes e agentes de IA, exigido pela política da disciplina."
 
-# Fontes de dados abertos sugeridas para o Projeto Integrado.
+# Fontes dos dois domínios do Projeto Integrado.
 fontes_de_dados:
-  - nome: "Portal Brasileiro de Dados Abertos"
-    link: https://dados.gov.br/
-  - nome: "SNIS — Sistema Nacional de Informações sobre Saneamento"
-    link: https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/snis
-  - nome: "IBGE — portal de dados"
-    link: https://www.ibge.gov.br/estatisticas.html
+  - nome: "Dados Abertos da UnB — portal CKAN com 65 conjuntos e API"
+    link: https://dados.unb.br
+  - nome: "Base de publicações de conselhos no DOU — 41.642 registros, 90 conselhos, 2019–2024"
+    link: https://docs.google.com/spreadsheets/d/1zZnlfwgsdF7YjzMovpn36rjia0x0bfUJkVxcxeoIejI/edit
+  - nome: "Imprensa Nacional — Diário Oficial da União"
+    link: https://www.in.gov.br/leiturajornal
   - nome: "Portal da Transparência"
     link: https://portaldatransparencia.gov.br/
+  - nome: "IBGE — portal de dados"
+    link: https://www.ibge.gov.br/estatisticas.html

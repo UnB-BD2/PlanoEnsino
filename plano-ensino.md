@@ -154,8 +154,8 @@ Aprendizagem orientada a projeto, com **sala invertida** e trabalho contínuo de
 
 - **Encontro conceitual (2 h)** 
 - **Projeto Integrado** — Squads de 4 a 7 pessoas constroem, ao longo do
-  semestre, uma plataforma de dados completa sobre um domínio real de dados
-  abertos, em quatro Entregas incrementais.
+  semestre, uma plataforma de dados completa sobre um de dois domínios reais de
+  dados abertos, em quatro Entregas incrementais.
 - **Diário de bordo** — registro semanal curto por Squad: o que foi medido, o
   que surpreendeu, o que foi decidido. É insumo das retrospectivas e da defesa
   final.
@@ -191,10 +191,18 @@ critérios de avaliação.
 
 ## O Projeto Integrado
 
-**"Do dado bruto à decisão pública."** Cada Squad escolhe um domínio de dados
-abertos governamentais brasileiros — saneamento e SNIS, habitação,
-transferências e execução orçamentária, mobilidade urbana — e constrói a
-plataforma que permite responder a uma pergunta de gestão real.
+**"Do dado bruto à decisão pública."** Nesta Oferta há **dois domínios**, e cada
+Squad escolhe um deles na Semana 1:
+
+- **Observatório de dados abertos da UnB** — perfil socioeconômico do discente,
+  tempo médio para formar e ranking de cursos, evasão por curso, e como a
+  universidade investe. Fonte: [dados.unb.br](https://dados.unb.br), 65 conjuntos.
+- **Monitor dos conselhos nacionais no Diário Oficial** — quais conselhos estão
+  ativos e o que de fato fazem, a partir de 41.642 publicações do DOU cobrindo 90
+  conselhos entre 2019 e 2024.
+
+Dentro do domínio escolhido, a Squad formula a pergunta de gestão que a
+plataforma vai responder e constrói tudo em função dela.
 
 Requisitos mínimos do produto final:
 
@@ -267,8 +275,8 @@ Airflow ou Dagster na orquestração; MongoDB, Neo4j e Redis nos não relacionai
 Great Expectations na qualidade; OpenMetadata ou DataHub no catálogo; Metabase
 ou Superset no consumo; Docker Compose no empacotamento.
 
-Fontes de dados sugeridas: Portal Brasileiro de Dados Abertos, SNIS, IBGE e
-Portal da Transparência.
+Fontes de dados: portal de dados abertos da UnB, base de publicações de
+conselhos no DOU, Imprensa Nacional, Portal da Transparência e IBGE.
 
 ## Bibliografia
 
